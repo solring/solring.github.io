@@ -1,0 +1,183 @@
+
+<!DOCTYPE html>
+<html lang="chinese (traditional)">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="http://solring.github.io/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="http://solring.github.io/theme/pygments/monokai.min.css">
+  <link rel="stylesheet" type="text/css" href="http://solring.github.io/theme/font-awesome/css/font-awesome.min.css">
+
+
+    <link href="http://solring.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Solring Lin Atom">
+
+
+
+
+
+<meta name="author" content="Solring Lin" />
+<meta name="description" content="(archive) [OpenCV][Android] Build OpenCV Android SDK &amp; enable OpenCL" />
+<meta name="keywords" content="">
+
+<meta property="og:site_name" content="Solring Lin"/>
+<meta property="og:title" content="[OpenCV][Android] Build OpenCV Android SDK &amp; enable OpenCL"/>
+<meta property="og:description" content="(archive) [OpenCV][Android] Build OpenCV Android SDK &amp; enable OpenCL"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="http://solring.github.io/opencvandroid-build-opencv-android-sdk-enable-opencl.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2015-11-04 08:22:00+08:00"/>
+<meta property="article:modified_time" content="2015-11-04 08:22:00+08:00"/>
+<meta property="article:author" content="http://solring.github.io/author/solring-lin.html">
+<meta property="article:section" content="Archive"/>
+<meta property="og:image" content="images/profile.jpg">
+
+  <title>Solring Lin &ndash; [OpenCV][Android] Build OpenCV Android SDK &amp; enable OpenCL</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="http://solring.github.io">
+        <img src="images/profile.jpg" alt="SOLRING LIN" title="SOLRING LIN">
+      </a>
+      <h1><a href="http://solring.github.io">SOLRING LIN</a></h1>
+
+<p>Software Developer</p>
+      <nav>
+        <ul class="list">
+
+          <li><a href="#" target="_blank">About</a></li>
+          <li><a href="sherry12714@gmail.com" target="_blank">Email</a></li>
+        </ul>
+      </nav>
+
+      <ul class="social">
+        <li><a class="sc-github" href="http://github.com/solring" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-linkedin" href="https://www.linkedin.com/in/sherry-lin-73312843/" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+        <li><a class="sc-twitter" href="http://twitter.com/solringlin" target="_blank"><i class="fa fa-twitter"></i></a></li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+    <nav>
+      <a href="http://solring.github.io">    Home
+</a>
+
+      <a href="/archives.html">Archives</a>
+      <a href="/categories.html">categories</a>
+      <a href="/tags.html">Tags</a>
+
+      <a href="http://solring.github.io/feeds/all.atom.xml">    Atom
+</a>
+
+    </nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="opencvandroid-build-opencv-android-sdk-enable-opencl">[OpenCV][Android] Build OpenCV Android SDK & enable OpenCL</h1>
+    <p>
+          Posted on 三 04 11月 2015 in <a href="http://solring.github.io/category/archive.html">Archive</a>
+
+
+    </p>
+  </header>
+
+
+  <div>
+    <h2>設NDK環境變數</h2>
+<div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">ANDROID_NDK</span><span class="o">=</span>/path/to/your/ndk
+</pre></div>
+
+
+<h2>修改cmake參數</h2>
+<p>到opencv的source root
+修改 <em>platforms/scripts/cmake_android_arm.sh</em>
+加上<code>-DWITH_OPENCL=ON</code>
+如果要加build opencv contrib也可以改在這裡</p>
+<h2>執行script</h2>
+<div class="highlight"><pre><span></span>cd platform
+./script/cmake_android_arm.sh
+</pre></div>
+
+
+<p>執行完後會在<em>platform</em>底下出現<em>build_android_arm</em>的資料夾
+要修改資料夾路徑可以在<em>platforms/scripts/cmake_android_arm.sh</em>裡面修改</p>
+<h2>Make</h2>
+<p>進去<em>build_android_arm</em>直接make</p>
+<div class="highlight"><pre><span></span>cd build_android_arm
+make -j4
+</pre></div>
+
+
+<p>NOTE: 這邊我有遇到一個奇怪的error</p>
+<div class="highlight"><pre><span></span>/usr/include/eigen3/unsupported/Eigen/src/MatrixFunctions/MatrixExponential.h:284:61: error: there are no arguments to &#39;log2&#39; that depend on a template parameter, so a declaration of &#39;log2&#39; must be available [-fpermissive]
+    m_squarings = (max)(0, (int)ceil(log2(m_l1norm / maxnorm)));   
+......
+/usr/include/eigen3/unsupported/Eigen/src/MatrixFunctions/MatrixExponential.h:284:61: error: &#39;log2&#39; was not declared in this scope
+</pre></div>
+
+
+<p>大致上是找不到log2這個function的意思
+仔細看<em>MatrixExponential.h</em> 發現最前面有log2的宣告</p>
+<div class="highlight"><pre><span></span><span class="cp">#ifdef _MSC_VER</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">Scalar</span><span class="o">&gt;</span> <span class="n">Scalar</span> <span class="n">log2</span><span class="p">(</span><span class="n">Scalar</span> <span class="n">v</span><span class="p">)</span> <span class="p">{</span> <span class="k">using</span> <span class="n">std</span><span class="o">::</span><span class="n">log</span><span class="p">;</span> <span class="k">return</span> <span class="nf">log</span><span class="p">(</span><span class="n">v</span><span class="p">)</span><span class="o">/</span><span class="n">log</span><span class="p">(</span><span class="n">Scalar</span><span class="p">(</span><span class="mi">2</span><span class="p">));</span> <span class="p">}</span>
+<span class="cp">#endif</span>
+</pre></div>
+
+
+<p>看起來是為了補充 Microsoft c+ compiler缺的log2
+可能預設ndk用的std lib也沒有log2
+為了方便，我這邊就--很dirty--的直接把ifdef那兩行註解掉 : P
+直接用這裡寫的log2</p>
+<h2>在java專案裡使用</h2>
+<p>編好之後，原本 opencv android sdk 裡附的 <em>opencv_java3.so</em> 就在 <em>build_android_arm/lib</em> 裡
+替換掉專案裡的<em>opencv_java3.so</em>就可以了
+(當然，在java層要記得load :P)</p>
+<p>另外也需要把用到的的<em>opencv_contrib</em> headers放到sdk裡
+或是一起放到jni資料夾裡, 自己在Android.mk裡面加include路徑
+就可以在jni c++ source裡面用opencv_contrib裡面的東西了~</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+    </p>
+  </div>
+
+
+
+
+
+</article>
+
+    <footer>
+<p>&copy;  </p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Solring Lin ",
+  "url" : "http://solring.github.io",
+  "image": "images/profile.jpg",
+  "description": "Technical notes and everything."
+}
+</script>
+
+</body>
+</html>

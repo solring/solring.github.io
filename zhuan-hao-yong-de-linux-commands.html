@@ -1,0 +1,232 @@
+
+<!DOCTYPE html>
+<html lang="chinese (traditional)">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="http://solring.github.io/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="http://solring.github.io/theme/pygments/monokai.min.css">
+  <link rel="stylesheet" type="text/css" href="http://solring.github.io/theme/font-awesome/css/font-awesome.min.css">
+
+
+    <link href="http://solring.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Solring Lin Atom">
+
+
+
+
+
+<meta name="author" content="Solring Lin" />
+<meta name="description" content="(archive) [轉] 好用的Linux commands" />
+<meta name="keywords" content="">
+
+<meta property="og:site_name" content="Solring Lin"/>
+<meta property="og:title" content="[轉] 好用的Linux commands"/>
+<meta property="og:description" content="(archive) [轉] 好用的Linux commands"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="http://solring.github.io/zhuan-hao-yong-de-linux-commands.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2015-10-01 23:44:00+08:00"/>
+<meta property="article:modified_time" content="2015-10-01 23:44:00+08:00"/>
+<meta property="article:author" content="http://solring.github.io/author/solring-lin.html">
+<meta property="article:section" content="Archive"/>
+<meta property="og:image" content="images/profile.jpg">
+
+  <title>Solring Lin &ndash; [轉] 好用的Linux commands</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="http://solring.github.io">
+        <img src="images/profile.jpg" alt="SOLRING LIN" title="SOLRING LIN">
+      </a>
+      <h1><a href="http://solring.github.io">SOLRING LIN</a></h1>
+
+<p>Software Developer</p>
+      <nav>
+        <ul class="list">
+
+          <li><a href="#" target="_blank">About</a></li>
+          <li><a href="sherry12714@gmail.com" target="_blank">Email</a></li>
+        </ul>
+      </nav>
+
+      <ul class="social">
+        <li><a class="sc-github" href="http://github.com/solring" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-linkedin" href="https://www.linkedin.com/in/sherry-lin-73312843/" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+        <li><a class="sc-twitter" href="http://twitter.com/solringlin" target="_blank"><i class="fa fa-twitter"></i></a></li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+    <nav>
+      <a href="http://solring.github.io">    Home
+</a>
+
+      <a href="/archives.html">Archives</a>
+      <a href="/categories.html">categories</a>
+      <a href="/tags.html">Tags</a>
+
+      <a href="http://solring.github.io/feeds/all.atom.xml">    Atom
+</a>
+
+    </nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="zhuan-hao-yong-de-linux-commands">[轉] 好用的Linux commands</h1>
+    <p>
+          Posted on 四 01 10月 2015 in <a href="http://solring.github.io/category/archive.html">Archive</a>
+
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>兵器大全(?
+http://www.tecmint.com/10-most-dangerous-commands-you-should-never-execute-on-linux/</p>
+<hr>
+<p>同場加映好用的Linux指令
+http://www.tecmint.com/10-most-dangerous-commands-you-should-never-execute-on-linux/</p>
+<ul>
+<li>
+<p>sudo !!
+自動將上一個指令用sudo執行
+當run完一串指令才發現權限不足時很好用lol</p>
+</li>
+<li>
+<p>shuf
+shuffle lines</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span># ls 
+Desktop  Documents  Downloads  Music  Pictures  Public  Templates  Videos
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>#  ls | shuf (shuffle Input)
+Music 
+Documents 
+Templates 
+Pictures 
+Public 
+Desktop 
+Downloads 
+Videos
+</pre></div>
+
+
+<ul>
+<li>
+<p>mtr
+traceroute + ping
+可能需要額外安裝</p>
+</li>
+<li>
+<p>ss
+socket information</p>
+</li>
+<li>
+<p>tree
+印出目前位置的子目錄結構</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="p">|</span>-- Desktop 
+<span class="p">|</span>-- Documents 
+<span class="p">|</span>   <span class="sb">`</span>-- <span class="m">37</span>.odt 
+<span class="p">|</span>-- Downloads 
+<span class="p">|</span>   <span class="p">|</span>-- attachments.zip 
+<span class="p">|</span>   <span class="p">|</span>-- ttf-indic-fonts_0.5.11_all.deb 
+<span class="p">|</span>   <span class="p">|</span>-- ttf-indic-fonts_1.1_all.deb 
+<span class="p">|</span>   <span class="sb">`</span>-- wheezy-nv-install.sh 
+<span class="p">|</span>-- Music 
+<span class="p">|</span>-- Pictures 
+<span class="p">|</span>   <span class="p">|</span>-- Screenshot from <span class="m">2013</span>-10-22 <span class="m">12</span>:03:49.png 
+<span class="p">|</span>   <span class="sb">`</span>-- Screenshot from <span class="m">2013</span>-10-22 <span class="m">12</span>:12:38.png 
+<span class="p">|</span>-- Public 
+<span class="p">|</span>-- Templates 
+<span class="sb">`</span>-- Videos 
+<span class="m">10</span> directories, <span class="m">23</span> files
+</pre></div>
+
+
+<ul>
+<li>
+<p>pstree
+印出目前在跑的process的child process結構
+tree版ps</p>
+</li>
+<li>
+<p>^someString^otherString
+把上一個指令的某字串換成另一字串
+當打了一長串指令發現裡面打錯一小段的時候超好用的!</p>
+</li>
+<li>
+<blockquote>
+<p>file.txt
+清空某個文字檔</p>
+</blockquote>
+</li>
+<li>
+<p>at
+超快速排程</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span># echo &quot;ls -l &gt; /dev/pts/0&quot; | at 14:012
+</pre></div>
+
+
+<ul>
+<li>
+<p>stat file.txt
+顯示file資訊
+Size, Blocks, Access Permission, Date-time of file last access, Modify, change, etc.</p>
+</li>
+<li></li>
+</ul>
+  </div>
+  <div class="tag-cloud">
+    <p>
+    </p>
+  </div>
+
+
+
+
+
+</article>
+
+    <footer>
+<p>&copy;  </p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Solring Lin ",
+  "url" : "http://solring.github.io",
+  "image": "images/profile.jpg",
+  "description": "Technical notes and everything."
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,200 @@
+
+<!DOCTYPE html>
+<html lang="chinese (traditional)">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="http://solring.github.io/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="http://solring.github.io/theme/pygments/monokai.min.css">
+  <link rel="stylesheet" type="text/css" href="http://solring.github.io/theme/font-awesome/css/font-awesome.min.css">
+
+
+    <link href="http://solring.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Solring Lin Atom">
+
+
+
+
+
+<meta name="author" content="Solring Lin" />
+<meta name="description" content="(archive) 文字辨識相關" />
+<meta name="keywords" content="">
+
+<meta property="og:site_name" content="Solring Lin"/>
+<meta property="og:title" content="文字辨識相關"/>
+<meta property="og:description" content="(archive) 文字辨識相關"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="http://solring.github.io/wen-zi-bian-shi-xiang-guan.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2015-10-13 13:34:00+08:00"/>
+<meta property="article:modified_time" content="2015-10-13 13:34:00+08:00"/>
+<meta property="article:author" content="http://solring.github.io/author/solring-lin.html">
+<meta property="article:section" content="Archive"/>
+<meta property="og:image" content="images/profile.jpg">
+
+  <title>Solring Lin &ndash; 文字辨識相關</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="http://solring.github.io">
+        <img src="images/profile.jpg" alt="SOLRING LIN" title="SOLRING LIN">
+      </a>
+      <h1><a href="http://solring.github.io">SOLRING LIN</a></h1>
+
+<p>Software Developer</p>
+      <nav>
+        <ul class="list">
+
+          <li><a href="#" target="_blank">About</a></li>
+          <li><a href="sherry12714@gmail.com" target="_blank">Email</a></li>
+        </ul>
+      </nav>
+
+      <ul class="social">
+        <li><a class="sc-github" href="http://github.com/solring" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-linkedin" href="https://www.linkedin.com/in/sherry-lin-73312843/" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+        <li><a class="sc-twitter" href="http://twitter.com/solringlin" target="_blank"><i class="fa fa-twitter"></i></a></li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+    <nav>
+      <a href="http://solring.github.io">    Home
+</a>
+
+      <a href="/archives.html">Archives</a>
+      <a href="/categories.html">categories</a>
+      <a href="/tags.html">Tags</a>
+
+      <a href="http://solring.github.io/feeds/all.atom.xml">    Atom
+</a>
+
+    </nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="wen-zi-bian-shi-xiang-guan">文字辨識相關</h1>
+    <p>
+          Posted on 二 13 10月 2015 in <a href="http://solring.github.io/category/archive.html">Archive</a>
+
+
+    </p>
+  </header>
+
+
+  <div>
+    <h2>Android 環境設定</h2>
+<ul>
+<li>
+<p>在AndroidStudio上用OpenCV SDK
+http://stackoverflow.com/questions/27406303/opencv-in-android-studio</p>
+</li>
+<li>
+<p>Download latest OpenCV sdk for Android from OpenCV.org and decompress the zip file.</p>
+</li>
+<li>Import OpenCV to Android Studio, From File -&gt; New -&gt; Import Module, choose sdk/java folder in the unzipped opencv archive.</li>
+<li>Update build.gradle under imported OpenCV module to update 4 fields to match your project build.gradle a) compileSdkVersion b) buildToolsVersion c) minSdkVersion and 4) targetSdkVersion.</li>
+<li>Add module dependency by Application -&gt; Module Settings, and select the Dependencies tab. Click + icon at bottom, choose Module Dependency and select the imported OpenCV module.</li>
+<li>For Android Studio v1.2.2, to access to Module Settings : in the project view, right-click the dependent module -&gt; Open Module Settings</li>
+<li>Copy libs folder under sdk/native to Android Studio under app/src/main. In Android Studio, rename the copied libs directory to jniLibs and we are done.
+Step (6) is since Android studio expects native libs in app/src/main/jniLibs instead of older libs folder. For those new to Android OpenCV, don't miss below steps</li>
+</ul>
+<div class="highlight"><pre><span></span>include static{ System.loadLibrary(&quot;opencv_java&quot;); } 
+</pre></div>
+
+
+<p>(Note: for OpenCV version 3 at this step you should instead load the library opencv_java3.)
+For step(5), if you ignore any platform libs like x86, make sure your device/emulator is not on that platform.</p>
+<ul>
+<li>Android Camera
+http://blog.csdn.net/yanzi1225627/article/details/8605061
+http://ibuzzlog.blogspot.tw/2012/08/how-to-do-real-time-image-processing-in.html
+https://developer.qualcomm.com/software/snapdragon-sdk-android/facial-processing/user-guide</li>
+</ul>
+<p>"最后提醒的是，如果程序中加入了previewCallback，在surfaceDestroy释放camera的时候，最好执行myCamera.setOneShotPreviewCallback(null); 或者myCamera.setPreviewCallback(null);中止这种回调，然后再释放camera更安全。"</p>
+<ul>
+<li>Android camera &amp; screen座標
+http://blog.csdn.net/yanzi1225627/article/details/38098729</li>
+</ul>
+<h2>OpenCV Text detection</h2>
+<ul>
+<li>MSER
+http://www.mathworks.com/help/vision/examples/automatically-detect-and-recognize-text-in-natural-images.html#zmw57dd0e38
+https://en.wikipedia.org/wiki/Maximally_stable_extremal_regions
+http://www.micc.unifi.it/delbimbo/wp-content/uploads/2011/03/slide_corso/A34%20MSER.pdf</li>
+</ul>
+<p>不錯的中文解釋
+http://blog.sciencenet.cn/blog-1327159-849648.html</p>
+<ul>
+<li>
+<p>Canny Edge Detector
+http://docs.opencv.org/doc/tutorials/imgproc/imgtrans/canny_detector/canny_detector.html</p>
+</li>
+<li>
+<p>把camera preview轉Mat, 灰階化
+http://www.jayrambhia.com/blog/opencv-android-image/</p>
+</li>
+</ul>
+<p>Android onPreviewFrame傳回來的data是YUV4:2:0的形式</p>
+<ul>
+<li>
+<p>OpenCV image rotation
+http://opencv-code.com/quick-tips/how-to-rotate-image-in-opencv/</p>
+</li>
+<li>
+<p>YUV to RGB
+http://stackoverflow.com/questions/25666120/converting-from-yuv-colour-space-to-rgb-using-opencv
+一開始YUV Matrix的size不能亂設，不然轉換的時候會跑掉:P</p>
+</li>
+</ul>
+<h2>OCR lib</h2>
+<ul>
+<li>Tesseract
+https://github.com/tesseract-ocr/tesseract</li>
+</ul>
+  </div>
+  <div class="tag-cloud">
+    <p>
+    </p>
+  </div>
+
+
+
+
+
+</article>
+
+    <footer>
+<p>&copy;  </p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Solring Lin ",
+  "url" : "http://solring.github.io",
+  "image": "images/profile.jpg",
+  "description": "Technical notes and everything."
+}
+</script>
+
+</body>
+</html>

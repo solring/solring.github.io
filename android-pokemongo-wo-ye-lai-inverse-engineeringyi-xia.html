@@ -1,0 +1,262 @@
+
+<!DOCTYPE html>
+<html lang="chinese (traditional)">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="http://solring.github.io/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="http://solring.github.io/theme/pygments/monokai.min.css">
+  <link rel="stylesheet" type="text/css" href="http://solring.github.io/theme/font-awesome/css/font-awesome.min.css">
+
+
+    <link href="http://solring.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Solring Lin Atom">
+
+
+
+
+
+<meta name="author" content="Solring Lin" />
+<meta name="description" content="(archive) [Android] [PokemonGO] 我也來inverse engineering一下" />
+<meta name="keywords" content="">
+
+<meta property="og:site_name" content="Solring Lin"/>
+<meta property="og:title" content="[Android] [PokemonGO] 我也來inverse engineering一下"/>
+<meta property="og:description" content="(archive) [Android] [PokemonGO] 我也來inverse engineering一下"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="http://solring.github.io/android-pokemongo-wo-ye-lai-inverse-engineeringyi-xia.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2016-08-25 02:22:00+08:00"/>
+<meta property="article:modified_time" content="2016-08-25 02:22:00+08:00"/>
+<meta property="article:author" content="http://solring.github.io/author/solring-lin.html">
+<meta property="article:section" content="Archive"/>
+<meta property="og:image" content="images/profile.jpg">
+
+  <title>Solring Lin &ndash; [Android] [PokemonGO] 我也來inverse engineering一下</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="http://solring.github.io">
+        <img src="images/profile.jpg" alt="SOLRING LIN" title="SOLRING LIN">
+      </a>
+      <h1><a href="http://solring.github.io">SOLRING LIN</a></h1>
+
+<p>Software Developer</p>
+      <nav>
+        <ul class="list">
+
+          <li><a href="#" target="_blank">About</a></li>
+          <li><a href="sherry12714@gmail.com" target="_blank">Email</a></li>
+        </ul>
+      </nav>
+
+      <ul class="social">
+        <li><a class="sc-github" href="http://github.com/solring" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-linkedin" href="https://www.linkedin.com/in/sherry-lin-73312843/" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+        <li><a class="sc-twitter" href="http://twitter.com/solringlin" target="_blank"><i class="fa fa-twitter"></i></a></li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+    <nav>
+      <a href="http://solring.github.io">    Home
+</a>
+
+      <a href="/archives.html">Archives</a>
+      <a href="/categories.html">categories</a>
+      <a href="/tags.html">Tags</a>
+
+      <a href="http://solring.github.io/feeds/all.atom.xml">    Atom
+</a>
+
+    </nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="android-pokemongo-wo-ye-lai-inverse-engineeringyi-xia">[Android] [PokemonGO] 我也來inverse engineering一下</h1>
+    <p>
+          Posted on 四 25 8月 2016 in <a href="http://solring.github.io/category/archive.html">Archive</a>
+
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>其實大部分的分析就靠這篇<a href="http://www.inside.com.tw/2016/08/24/source-code-of-pokemon-go">神文</a>就可以了XD
+但其中對於Sensor/Location資訊是如何利用的著墨較少，所以只好自己來一下
+亂猜的部分很多，還請不吝指教&lt;(<em>    </em>)&gt;</p>
+<h1>Use dex2jar &amp; JD-GUI to decompile .dex files</h1>
+<p><em>(Update: 原文有附整理過的<a href="https://github.com/applidium/PokemonGo_Android_RE">source code</a>了--雖然是剛出的時候的版本，不想自己做的可以跳過這段:P)</em>
+因為我的目標不是創一個可build的專案，只要看懂裡面在幹麻就好
+所以就使用原文第一階段的方法，先用dex2jar把.dex轉成.jar file，然後用JD-GUI去讀</p>
+<h2>Compile dex2jar</h2>
+<p>RRRR　因為現在找不到prebuilt版的，只好從<a href="https://github.com/pxb1988/dex2jar">source</a>開始
+目前已經是用gradle build，還有gradle wrapper
+所以只要解壓縮，點兩下<code>gradlew.bat</code>就可以惹
+會在src外面產生<code>dex-tools-2.1-SNAPSHOT.zip</code>這個壓縮檔，裡面就是dex2jar全部的工具了
+(如果沒有在外面找到，也可以在dex-tools/build/distributions/找到)</p>
+<h3>Refs:</h3>
+<p>https://sourceforge.net/p/dex2jar/wiki/BuildFromSource/</p>
+<h2>Pull out Pokemon GO apk</h2>
+<p>找一支有root過的手機，從play上下載最新的程式 (本文使用2016/8/25的版本)
+再用adb pull下來
+(adb安裝方法可參考<a href="http://wangwangtc.blogspot.tw/2015/03/adbandroid.html">這篇</a>)
+通常production buildl的load都不能直接pull <code>/data/app</code>底下的東西
+所以我都會先copy到sdcard裡</p>
+<div class="highlight"><pre><span></span>cp -r /data/app/com.nianticlabs.pokemongo-2 /sdcard/pkgo
+//結尾不一定是2 看你更新了幾次 : P
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>adb pull /sdcard/pkgo
+</pre></div>
+
+
+<p>拉下來之後，可以看到這裡面有一個<code>base.apk</code>
+和其他prebuilt的native lib
+(都只有arm的，x86的phone繼續哭哭XD)
+<img alt="pkgo-lib.png" src="http://user-image.logdown.io/user/13673/blog/12890/post/804838/PvB7A5aRjq17IzZmVHfD_pkgo-lib.png"></p>
+<p>因為我們只需要看Android Location/Sensor API的部分
+所以就只要把<code>base.apk</code>用7zip之類的解壓縮之後
+拿裡面的<code>classes.dex</code></p>
+<h2>Turn .dex to .jar file</h2>
+<p><code>dex-tools-2.1-SNAPSHOT.zip</code>解壓縮之後
+用裡面的<code>d2j-dex2jar.bat</code>把base.apk轉成.classes檔</p>
+<div class="highlight"><pre><span></span>\<span class="p">&gt;</span> dex-tools-2.1-SNAPSHOT\d2j-dex2jar.bat classes.dex
+dex2jar classes.dex -<span class="p">&gt;</span> .\classes-dex2jar.jar
+</pre></div>
+
+
+<h2>Download JD-GUI</h2>
+<p>官網有各種平台的prebuilt程式，直接下載來用就對了~
+http://jd.benow.ca/
+打開剛剛gen出來的.jar檔就可以看到裡面的class啦~
+<img alt="pkgo-classes.png" src="http://user-image.logdown.io/user/13673/blog/12890/post/804838/Oc050z0JQKTajC5Ub9jQ_pkgo-classes.png"></p>
+<h1>Location/Sensor related analysis</h1>
+<p>核心功能部分幾乎都放在com.nianticlabs.nia這個package底下</p>
+<p>幾個簡單的conclusion:
+- 好險還是沒有用Proguard XD
+- 使用了Android的三種location來源: GPS, Network, Google的Fused location
+- Location update的min period都滿短的: GPS 1 sec, Network 5 sec (很噴電不意外 : /
+- 直接call Sensor API的部分主要是拿來偵測手機旋轉or取得玩家面向的方位
+- 有使用到Google的ActivityRecognition</p>
+<h2>Location part</h2>
+<h4>package: com.nianticlabs.nia.location</h4>
+<p>在<code>NianticLocationManager.java</code>裡面可以看到有三個Location provider
+``` java NianticLocationManager.java
+addProvider("fused", new FusedLocationProvider(this.context, this.gpsUpdateTimeMs, this.gpsUpdateDistanceM));
+addProvider("gps", new LocationManagerProvider(this.context, "gps", this.gpsUpdateTimeMs, this.gpsUpdateDistanceM));
+addProvider("network", new LocationManagerProvider(this.context, "network", this.netUpdateTimeMs, this.netUpdateDistanceM));</p>
+<div class="highlight"><pre><span></span>其中`LocationManagerProvider.java`就是個wrapper
+三個provider裡面分別用Android `LocationManager`這個system service去拿GPS和Network location
+和使用Google Mobile Service(GMS)的Fused location
+&quot;gps&quot; 這個應該是`LocationManager.GPS_PROVIDER`, &quot;network&quot; 是`LocationManager.NETWORK_PROVIDER`
+``` java LocationMangerProvider.java
+this.locationManager = ((LocationManager)this.context.getSystemService(&quot;location&quot;));
+</pre></div>
+
+
+<p>實際拿location的方法是呼叫<a href="https://developer.android.com/reference/android/location/LocationManager.html#requestLocationUpdates(java.lang.String,%20long,%20float,%20android.location.LocationListener)">requestLocationUpdates(String, long, float, LocationListener)</a>註冊更新location時的listener
+其中<em>最小更新時間&amp;距離</em>的參數就是上面constructor帶入的
+``` java NianticLocationManager.java
+  private float gpsUpdateDistanceM = 0.0F;
+  private int gpsUpdateTimeMs = 1000;
+  private float netUpdateDistanceM = 0.0F;
+  private int netUpdateTimeMs = 5000;</p>
+<div class="highlight"><pre><span></span>更新時的listener則是統一使用`NianticLocationManager.java`裡建立的listener
+這個listener最後會call到native lib，未看先猜應該是接到unity遊戲引擎
+
+## Sensor
+主要都在`NianticSensorManager.java`
+接了一堆sensor service，但感覺最終目標都是要偵測手機旋轉和方位
+最後接回native lib給遊戲引擎使用，未看先猜用來進省電模式和update地圖畫面使用
+尤其是角色在地圖上的方向旋轉部分
+``` java
+  public NianticSensorManager(Context paramContext, long paramLong)
+  {
+    super(paramContext, paramLong);
+    this.display = ((WindowManager)paramContext.getSystemService(&quot;window&quot;)).getDefaultDisplay();
+    this.sensorManager = ((SensorManager)paramContext.getSystemService(&quot;sensor&quot;));
+    this.gravity = this.sensorManager.getDefaultSensor(9);
+    this.gyroscope = this.sensorManager.getDefaultSensor(4);
+    this.accelerometer = this.sensorManager.getDefaultSensor(1);
+    this.magnetic = this.sensorManager.getDefaultSensor(2);
+    this.rotation = this.sensorManager.getDefaultSensor(11);
+    this.linearAcceleration = this.sensorManager.getDefaultSensor(10);
+  }
+</pre></div>
+
+
+<h2>Activity Recognition</h2>
+<p>最後，他居然有用Google 的<a href="https://developers.google.com/android/reference/com/google/android/gms/location/ActivityRecognitionApi">Acitivity Recognition API</a>!
+看起來一樣也是接到Activity之後直接call native function。</p>
+<p>瞄一下<a href="https://developers.google.com/android/reference/com/google/android/gms/location/DetectedActivity">目前Google AR可以detect到的activity</a>
+可以偵測到的Activity有以下幾項:</p>
+<div class="highlight"><pre><span></span>int     IN_VEHICLE  The device is in a vehicle, such as a car.
+int     ON_BICYCLE  The device is on a bicycle.
+int     ON_FOOT     The device is on a user who is walking or running.
+int     RUNNING     The device is on a user who is running.
+int     STILL   The device is still (not moving).
+int     TILTING     The device angle relative to gravity changed significantly.
+int     UNKNOWN     Unable to detect the current activity.
+int     WALKING     The device is on a user who is walking.
+</pre></div>
+
+
+<p>可能是拿來偵測玩家是否在跑動和是否在開車
+(雖然專家指出，因為他目前實做似乎只有拿三軸資料，IN_VEHICLE ON_BICYCLE都很不準...)</p>
+<h1>Conclusion</h1>
+<p>只是decompile .dex看code能知道的還是有限
+有試著用ELF tools decompile .so檔，但是大部分的symbol都mangled過不好分析</p>
+<p>目前看不出來有做其他的省電機制(e.g. 玩家靜止就降低或停止location query)
+想想這款遊戲核心技術部分本來就不在終端裝置，還沒有做多少優化也是滿合理的 : P</p>
+<p>至於剩下有關網路的部分還是看原本的神文就好XD
+API實作方法應該不會改動太大</p>
+<p>以上~</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+    </p>
+  </div>
+
+
+
+
+
+</article>
+
+    <footer>
+<p>&copy;  </p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Solring Lin ",
+  "url" : "http://solring.github.io",
+  "image": "images/profile.jpg",
+  "description": "Technical notes and everything."
+}
+</script>
+
+</body>
+</html>

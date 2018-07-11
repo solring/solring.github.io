@@ -1,0 +1,292 @@
+
+<!DOCTYPE html>
+<html lang="chinese (traditional)">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="http://solring.github.io/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="http://solring.github.io/theme/pygments/monokai.min.css">
+  <link rel="stylesheet" type="text/css" href="http://solring.github.io/theme/font-awesome/css/font-awesome.min.css">
+
+
+    <link href="http://solring.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Solring Lin Atom">
+
+
+
+
+
+<meta name="author" content="Solring Lin" />
+<meta name="description" content="(archive) Vim &amp; tmux plugins" />
+<meta name="keywords" content="">
+
+<meta property="og:site_name" content="Solring Lin"/>
+<meta property="og:title" content="Vim &amp; tmux plugins"/>
+<meta property="og:description" content="(archive) Vim &amp; tmux plugins"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="http://solring.github.io/vim-tmux-plugins.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2016-01-25 02:50:00+08:00"/>
+<meta property="article:modified_time" content="2016-01-25 02:50:00+08:00"/>
+<meta property="article:author" content="http://solring.github.io/author/solring-lin.html">
+<meta property="article:section" content="Archive"/>
+<meta property="og:image" content="images/profile.jpg">
+
+  <title>Solring Lin &ndash; Vim &amp; tmux plugins</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="http://solring.github.io">
+        <img src="images/profile.jpg" alt="SOLRING LIN" title="SOLRING LIN">
+      </a>
+      <h1><a href="http://solring.github.io">SOLRING LIN</a></h1>
+
+<p>Software Developer</p>
+      <nav>
+        <ul class="list">
+
+          <li><a href="#" target="_blank">About</a></li>
+          <li><a href="sherry12714@gmail.com" target="_blank">Email</a></li>
+        </ul>
+      </nav>
+
+      <ul class="social">
+        <li><a class="sc-github" href="http://github.com/solring" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-linkedin" href="https://www.linkedin.com/in/sherry-lin-73312843/" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+        <li><a class="sc-twitter" href="http://twitter.com/solringlin" target="_blank"><i class="fa fa-twitter"></i></a></li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+    <nav>
+      <a href="http://solring.github.io">    Home
+</a>
+
+      <a href="/archives.html">Archives</a>
+      <a href="/categories.html">categories</a>
+      <a href="/tags.html">Tags</a>
+
+      <a href="http://solring.github.io/feeds/all.atom.xml">    Atom
+</a>
+
+    </nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="vim-tmux-plugins">Vim & tmux plugins</h1>
+    <p>
+          Posted on 一 25 1月 2016 in <a href="http://solring.github.io/category/archive.html">Archive</a>
+
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>整理一下目前使用的一些Vim plugin和tmux設定</p>
+<h1>Vundle</h1>
+<p>不管怎樣都要先裝Vundle~</p>
+<p>下載</p>
+<div class="highlight"><pre><span></span>git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+</pre></div>
+
+
+<p>修改<code>.vimrc</code></p>
+<div class="highlight"><pre><span></span>set nocompatible
+filetype off
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin &#39;gmarik/Vundle.vim&#39;
+
+call vundle#end()
+filetype plugin indent on
+</pre></div>
+
+
+<p>再重新打開vim輸入<code>:PluginInstall</code>就OK了
+或是</p>
+<div class="highlight"><pre><span></span>vim +PluginInstall +qall
+</pre></div>
+
+
+<p>之後要安裝其他的Plugin
+就只要在<code>vundle#begin</code>之後加想要安裝的Plugin, 再<code>:PluginInstall</code>就可以了</p>
+<h1>vim-airline</h1>
+<p>純vimscript版本的Powerline
+有各種theme，還支援git virtualenv等狀態
+https://github.com/vim-airline/vim-airline</p>
+<p>Vundle:</p>
+<div class="highlight"><pre><span></span>Plugin &#39;vim-airline/vim-airline&#39;
+</pre></div>
+
+
+<p>安裝之後需要在<code>.vimrc</code>加上這兩行</p>
+<div class="highlight"><pre><span></span>set laststatus=2
+let g:airline_theme=&#39;solarized&#39; // choose your vim-airline theme
+</pre></div>
+
+
+<p>裝完就可以直接用了~</p>
+<h2>Trouble shooting</h2>
+<p>如果看起來只有白色的符號和字，可能是顯示設定問題
+在.vimrc裡面加上，設定使用256的color code</p>
+<div class="highlight"><pre><span></span>set t_Co=256
+</pre></div>
+
+
+<p>如果看不到目前branch，可能是還沒安裝<a href="https://github.com/tpope/vim-fugitive">fugitive</a>
+一樣可以用Vundle安裝~</p>
+<div class="highlight"><pre><span></span>Plugin &#39;tpope/vim-fugitive&#39;
+</pre></div>
+
+
+<p><strong>NOTE</strong>
+使用tmux的話要加-2這個option才能讓vim知道terminal(tmux)支援256 bit color
+不然的話顏色都只有8色～</p>
+<div class="highlight"><pre><span></span>tmux -2 attach -t <span class="m">0</span>
+</pre></div>
+
+
+<h2>安裝Powerline fonts</h2>
+<p>要顯示branch等特殊符號的話，還要加裝Powerline fonts &amp; symbols</p>
+<p>先執行以下script</p>
+<div class="highlight"><pre><span></span>mkdir .font/<span class="p">;</span> <span class="nb">cd</span> .font/
+git clone https://github.com/Lokaltog/powerline-fonts.git 
+<span class="nb">cd</span> powerline-fonts/
+./install.sh
+</pre></div>
+
+
+<p>之後再設定你使用的terminal字形為剛剛安裝的powerline font
+字形列表可參考官方
+https://github.com/powerline/fonts</p>
+<p>設定.vimrc 讓vim-airline使用powerline的symbols</p>
+<div class="highlight"><pre><span></span>&quot; Enable powerline fonts
+let g:airline_powerline_fonts = 1
+if !exists(&#39;g:airline_symbols&#39;)
+let g:airline_symbols = {}
+endif
+
+&quot; Powerline symbols: unicode
+let g:airline_left_sep = &#39;»&#39;
+let g:airline_left_sep = &#39;▶&#39;
+let g:airline_right_sep = &#39;«&#39;
+let g:airline_right_sep = &#39;◀&#39;
+let g:airline_symbols.linenr = &#39;␊&#39;
+let g:airline_symbols.linenr = &#39;␤&#39;
+let g:airline_symbols.linenr = &#39;¶&#39;
+let g:airline_symbols.branch = &#39;⎇&#39;
+let g:airline_symbols.paste = &#39;ρ&#39;
+let g:airline_symbols.paste = &#39;Þ&#39;
+let g:airline_symbols.paste = &#39;∥&#39;
+let g:airline_symbols.whitespace = &#39;Ξ&#39;
+
+&quot; Powerline symbols: powerline fonts
+let g:airline_left_sep = &#39;&#39;
+let g:airline_left_alt_sep = &#39;&#39;
+let g:airline_right_sep = &#39;&#39;
+let g:airline_right_alt_sep = &#39;&#39;
+let g:airline_symbols.branch = &#39;&#39;
+let g:airline_symbols.readonly = &#39;&#39;
+let g:airline_symbols.linenr = &#39;&#39;
+</pre></div>
+
+
+<h1>Tmuxline</h1>
+<p>Powerline style的tmux status bar
+可以直接用vim-airline的theme~
+https://github.com/edkolev/tmuxline.vim</p>
+<p>Vundle:</p>
+<div class="highlight"><pre><span></span>Plugin &#39;edkolev/tmuxline.vim&#39;
+</pre></div>
+
+
+<p>之後在vim裡面下<code>:Tmuxline airline</code> 就可以選用airline的theme</p>
+<h1>SnipMate</h1>
+<p>超好用BJ4
+一樣用Vundle安裝就可以了
+安裝完SnipMate之後可以加安裝preset snippets</p>
+<p>.vimrc</p>
+<div class="highlight"><pre><span></span>&quot; SnipMate
+Plugin &#39;MarcWeber/vim-addon-mw-utils&#39;
+Plugin &#39;tomtom/tlib_vim&#39;
+Plugin &#39;garbas/vim-snipmate&#39;
+
+&quot; Snippets
+Plugin &#39;honza/vim-snippets&#39;
+</pre></div>
+
+
+<h1>其他好用Plugin</h1>
+<h2>Syntastic</h2>
+<p>語法檢查
+用Vundle安裝的話在.vimrc加這行就OK了</p>
+<div class="highlight"><pre><span></span>Plugin &#39;Syntastic&#39;
+</pre></div>
+
+
+<p>or</p>
+<div class="highlight"><pre><span></span>Plugin &#39;scrooloose/syntastic&#39;
+</pre></div>
+
+
+<h2>Auto complete</h2>
+<p>我是使用AutoComlPop這個plugin
+一樣用Vundle安裝就OK</p>
+<div class="highlight"><pre><span></span>Plugin &#39;AutoCompPop&#39;
+</pre></div>
+
+
+<p>還有一個YouCompleteMe好像比較有名，之後再試試XD</p>
+<h2>Auto pair</h2>
+<p>簡單的懶人好物XD 自動打出一組括號</p>
+<div class="highlight"><pre><span></span>Plugin &#39;Auto-Pairs&#39;
+</pre></div>
+  </div>
+  <div class="tag-cloud">
+    <p>
+    </p>
+  </div>
+
+
+
+
+
+</article>
+
+    <footer>
+<p>&copy;  </p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Solring Lin ",
+  "url" : "http://solring.github.io",
+  "image": "images/profile.jpg",
+  "description": "Technical notes and everything."
+}
+</script>
+
+</body>
+</html>

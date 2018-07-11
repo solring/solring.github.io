@@ -1,0 +1,219 @@
+
+<!DOCTYPE html>
+<html lang="chinese (traditional)">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="http://solring.github.io/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="http://solring.github.io/theme/pygments/monokai.min.css">
+  <link rel="stylesheet" type="text/css" href="http://solring.github.io/theme/font-awesome/css/font-awesome.min.css">
+
+
+    <link href="http://solring.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Solring Lin Atom">
+
+
+
+
+
+<meta name="author" content="Solring Lin" />
+<meta name="description" content="(archive) Google Magenta Micro-kernel Survey" />
+<meta name="keywords" content="">
+
+<meta property="og:site_name" content="Solring Lin"/>
+<meta property="og:title" content="Google Magenta Micro-kernel Survey"/>
+<meta property="og:description" content="(archive) Google Magenta Micro-kernel Survey"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="http://solring.github.io/google-magenta-micro-kernel-survey.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2017-06-17 12:26:00+08:00"/>
+<meta property="article:modified_time" content="2017-06-17 12:26:00+08:00"/>
+<meta property="article:author" content="http://solring.github.io/author/solring-lin.html">
+<meta property="article:section" content="Archive"/>
+<meta property="og:image" content="images/profile.jpg">
+
+  <title>Solring Lin &ndash; Google Magenta Micro-kernel Survey</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="http://solring.github.io">
+        <img src="images/profile.jpg" alt="SOLRING LIN" title="SOLRING LIN">
+      </a>
+      <h1><a href="http://solring.github.io">SOLRING LIN</a></h1>
+
+<p>Software Developer</p>
+      <nav>
+        <ul class="list">
+
+          <li><a href="#" target="_blank">About</a></li>
+          <li><a href="sherry12714@gmail.com" target="_blank">Email</a></li>
+        </ul>
+      </nav>
+
+      <ul class="social">
+        <li><a class="sc-github" href="http://github.com/solring" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-linkedin" href="https://www.linkedin.com/in/sherry-lin-73312843/" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+        <li><a class="sc-twitter" href="http://twitter.com/solringlin" target="_blank"><i class="fa fa-twitter"></i></a></li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+    <nav>
+      <a href="http://solring.github.io">    Home
+</a>
+
+      <a href="/archives.html">Archives</a>
+      <a href="/categories.html">categories</a>
+      <a href="/tags.html">Tags</a>
+
+      <a href="http://solring.github.io/feeds/all.atom.xml">    Atom
+</a>
+
+    </nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="google-magenta-micro-kernel-survey">Google Magenta Micro-kernel Survey</h1>
+    <p>
+          Posted on 六 17 6月 2017 in <a href="http://solring.github.io/category/archive.html">Archive</a>
+
+
+    </p>
+  </header>
+
+
+  <div>
+    <h1>Introduction</h1>
+<p>Google設計了一個跨平台的OS <a href="https://zh.wikipedia.org/wiki/Google_Fuchsia">Fuchsia</a> (wiki)
+他的主要的基礎micro-kernel OS就是<a href="https://fuchsia.googlesource.com/magenta/">Magenta</a> (codebase &amp; doc)
+裡面加了很多Security相關的設計</p>
+<p>先放重點:
+- Based on Little Kernel
+- With user/kernel space
+- Object-based resource management, syscall --&gt; for security</p>
+<h1>Security Design</h1>
+<p>Magenta裡面多加了很多設計以補足LK的安全問題
+主要是資源(e.g. memory)的權限管理等
+refs: https://fuchsia.googlesource.com/magenta/+/HEAD/docs/concepts.md</p>
+<h2>Handle &amp; Right</h2>
+<p>增加Security最主要的設計。
+基本概念就是，user-space要去access任何kernel的資源
+都不是直接取得某個資源的位置之類的，而是要透過handle
+並且在執行某些system call時，檢查這些handle上所帶的權限等資訊
+避免user-space去做危險動作(?)</p>
+<p>每個Handle上都有<a href="https://fuchsia.googlesource.com/magenta/+/HEAD/docs/rights.md">Right</a>
+訂定可以用該handle做哪些動作
+MX_RIGHT_DUPLICATE  Allows handle duplication via mx_handle_duplicate
+MX_RIGHT_TRANSFER   Allows handle transfer via mx_channel_write
+MX_RIGHT_READ   Allows inspection of object state
+Allows reading of data from containers (channels, sockets, VM objects, etc)
+MX_RIGHT_WRITE  Allows modification of object state
+Allows writing of data to containers (channels, sockets, VM objects, etc)
+MX_RIGHT_EXECUTE  <br>
+MX_RIGHT_DEBUG  Placeholder for debugger use, pending audit of all rights usage</p>
+<p>對同個kernel object可以有多個handle，right可以不同
+藉此就可以管理不同應用的資源使用:
+有些app只能read, 只有特定app可以write等等
+避免惡意攻擊或是bug(?</p>
+<h2>System call</h2>
+<p>就像其他OS，Magenta也有system cal來讓user-space使用kernel-space的功能
+主要分三種type:
+- 創造handle的
+- 拿handle做事的
+- 可以直接使用的(很少</p>
+<p>當system call被call的時候，會嚴格檢查handle type, handle rights, process是不是真的有這個handle等</p>
+<h2>Process &amp; Thread</h2>
+<p><strong>有支援multi-thread!</strong>
+這很重要因為Trusty, Trustonic之類的TEE OS都沒有啊哈哈
+在某些平台(咳咳...)Single thread就會是效能瓶頸</p>
+<p>hierarchy: <a href="https://fuchsia.googlesource.com/magenta/+/HEAD/docs/objects/job.md">Job</a> &gt; <a href="https://fuchsia.googlesource.com/magenta/+/HEAD/docs/objects/process.md">Process</a> &gt; <a href="https://fuchsia.googlesource.com/magenta/+/HEAD/docs/objects/thread.md">Thread</a>
+Job: 規定各項resource的權限，<strong>可以有子job</strong>
+Process: 包含在Job內，獨立<strong>Virtual address space, data, handles</strong>
+Thread: 包含在Process內，獨立<strong>Register &amp; stack</strong></p>
+<p>類似Android，一開始會有一個User-Root Job <em>userboot</em>作為第一個user-space process，再由他fork出其他process
+他有所有其他app的job object，所以可以fork出其他job</p>
+<p>/kernel/lib/magenta/user_thread.cpp</p>
+<h2>Inter-Process Communication &amp;</h2>
+<h3>Sockets</h3>
+<ul>
+<li>Streamming，以bytes為單位</li>
+</ul>
+<h3>Channel</h3>
+<ul>
+<li>Datagram(msg based) 一次固定size read/write。</li>
+<li><strong>可以傳handle</strong>，還會自動reference/dereference</li>
+</ul>
+<h2>Synchronization</h2>
+<p>Hmmm 這邊官方文件有點抽像，不過大致上應該要歸類為這兩種方法:</p>
+<h3>Signal</h3>
+<p>Thread可以blocking wait某些Object上的Signal
+目前最多有32個signal(因為是32-bits)，大部分是系統保留使用的，有些可以user自訂
+https://fuchsia.googlesource.com/magenta/+/HEAD/docs/generic_signals.md</p>
+<p><strong>Event</strong>是最基本可以被wait的object</p>
+<p>有些object有成對的handle (e.g. channel, socket, fifo, or eventpair
+當另一個handle被signal(<a href="https://fuchsia.googlesource.com/magenta/+/HEAD/docs/syscalls/object_signal.md">object_signal_peer</a>的時候，另一端就會被通知</p>
+<h3>Port</h3>
+<p>可以一口氣等多個event
+並且可以傳送資料payload(Packet)
+一邊create port(port_create)之後，可以傳給另一邊
+之後就類似event，一邊可以wait(port_wait)，另一邊則是enqueue(port_enqueue) packet
+NOTE: APIs are still changing frequently.</p>
+<h2>Address Space Management &amp; Shared Memory</h2>
+<p>每個Process會有一個<strong>Virtual Memory Address Regions (VMARs)</strong> Object
+可以用它來alloc和free某個大小的memory(類似heap)
+也可以用來map/unmap別的process傳過來的<strong>Virtual Memory Object(VMO)</strong> handle
+Virtual Memory Objects represent a set of physical pages of memory.
+除了map/unmap以外，也可以直接用API對VMO讀寫
+利用VMO可以實現Shared Memory的機制</p>
+<h1>和LK的比較</h1>
+<ul>
+<li>Magenta has first class user-mode support. LK does not.</li>
+<li>Magenta is an object-handle system. LK does not have either concept.</li>
+<li>Magenta has a capability-based security model. In LK all code is trusted.</li>
+</ul>
+  </div>
+  <div class="tag-cloud">
+    <p>
+    </p>
+  </div>
+
+
+
+
+
+</article>
+
+    <footer>
+<p>&copy;  </p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Solring Lin ",
+  "url" : "http://solring.github.io",
+  "image": "images/profile.jpg",
+  "description": "Technical notes and everything."
+}
+</script>
+
+</body>
+</html>

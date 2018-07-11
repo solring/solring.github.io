@@ -1,0 +1,173 @@
+
+<!DOCTYPE html>
+<html lang="chinese (traditional)">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="http://solring.github.io/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="http://solring.github.io/theme/pygments/monokai.min.css">
+  <link rel="stylesheet" type="text/css" href="http://solring.github.io/theme/font-awesome/css/font-awesome.min.css">
+
+
+    <link href="http://solring.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Solring Lin Atom">
+
+
+
+
+
+<meta name="author" content="Solring Lin" />
+<meta name="description" content="(archive) Magenta Job/Process/Thread Study" />
+<meta name="keywords" content="">
+
+<meta property="og:site_name" content="Solring Lin"/>
+<meta property="og:title" content="Magenta Job/Process/Thread Study"/>
+<meta property="og:description" content="(archive) Magenta Job/Process/Thread Study"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="http://solring.github.io/magenta-jobprocessthread-study.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2017-07-10 05:59:00+08:00"/>
+<meta property="article:modified_time" content="2017-07-10 05:59:00+08:00"/>
+<meta property="article:author" content="http://solring.github.io/author/solring-lin.html">
+<meta property="article:section" content="Archive"/>
+<meta property="og:image" content="images/profile.jpg">
+
+  <title>Solring Lin &ndash; Magenta Job/Process/Thread Study</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="http://solring.github.io">
+        <img src="images/profile.jpg" alt="SOLRING LIN" title="SOLRING LIN">
+      </a>
+      <h1><a href="http://solring.github.io">SOLRING LIN</a></h1>
+
+<p>Software Developer</p>
+      <nav>
+        <ul class="list">
+
+          <li><a href="#" target="_blank">About</a></li>
+          <li><a href="sherry12714@gmail.com" target="_blank">Email</a></li>
+        </ul>
+      </nav>
+
+      <ul class="social">
+        <li><a class="sc-github" href="http://github.com/solring" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-linkedin" href="https://www.linkedin.com/in/sherry-lin-73312843/" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+        <li><a class="sc-twitter" href="http://twitter.com/solringlin" target="_blank"><i class="fa fa-twitter"></i></a></li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+    <nav>
+      <a href="http://solring.github.io">    Home
+</a>
+
+      <a href="/archives.html">Archives</a>
+      <a href="/categories.html">categories</a>
+      <a href="/tags.html">Tags</a>
+
+      <a href="http://solring.github.io/feeds/all.atom.xml">    Atom
+</a>
+
+    </nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="magenta-jobprocessthread-study">Magenta Job/Process/Thread Study</h1>
+    <p>
+          Posted on 一 10 7月 2017 in <a href="http://solring.github.io/category/archive.html">Archive</a>
+
+
+    </p>
+  </header>
+
+
+  <div>
+    <h1>Magenta Job/Process/Thread Study</h1>
+<h1>Thread</h1>
+<p>syscall: kernel/lib/syscalls/syscalls_task.cpp
+sys_thread_create
+--&gt;  process-&gt;CreateUserThread
+----&gt; ut-&gt;Initialize(name.data(), name.length());</p>
+<p>source: kernel/lib/magenta/user_thread.cpp</p>
+<h2>Init. flow</h2>
+<ol>
+<li>allocate_stack</li>
+<li>new a LK thread
+    assign <em>user_thread</em> to itself
+    register thread state change callback</li>
+<li>attach process address space
+    <em>vmm_aspace</em></li>
+</ol>
+<h2>Thread Stucture</h2>
+<p>header: include/kernel/thread.h
+最新LK的thread: https://github.com/littlekernel/lk/blob/master/include/kernel/thread.h
+^ 已經有VMM, SMP相關的欄位</p>
+<p>AOSP Trusty裡面LK的thread: https://android.googlesource.com/trusty/lk/common/+/master/include/kernel/thread.h
+^ 比較舊</p>
+<h2>New attributes in Magenta</h2>
+<ol>
+<li>user thread related</li>
+<li>signal</li>
+<li>priority boost</li>
+<li>interruptable</li>
+<li>profiling &amp; debug related</li>
+<li>default一定有vmm_aspace</li>
+<li>default一定有SMP</li>
+</ol>
+<h2>Thread context switch</h2>
+<p>source: kernel/kernel/thread.c</p>
+<p>void thread_resched(void)</p>
+<p>---&gt; void vmm_context_switch(vmm_aspace_t<em> oldspace, vmm_aspace_t</em> newaspace)  kernel/kernel/vm/vmm.c</p>
+<p>-----&gt; arch_mmu_context_switch (Platform dependent here) // change VM space</p>
+<h1>Process</h1>
+<p>source: kernel/lib/magenta/process_dispatcher.cpp</p>
+<h1>System Call kernel entries</h1>
+<p>source location: kernel/lib/syscalls/</p>
+<p>接到各個kernel space object dispatcher</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+    </p>
+  </div>
+
+
+
+
+
+</article>
+
+    <footer>
+<p>&copy;  </p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Solring Lin ",
+  "url" : "http://solring.github.io",
+  "image": "images/profile.jpg",
+  "description": "Technical notes and everything."
+}
+</script>
+
+</body>
+</html>

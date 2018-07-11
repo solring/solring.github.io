@@ -1,0 +1,316 @@
+
+<!DOCTYPE html>
+<html lang="chinese (traditional)">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="http://solring.github.io/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="http://solring.github.io/theme/pygments/monokai.min.css">
+  <link rel="stylesheet" type="text/css" href="http://solring.github.io/theme/font-awesome/css/font-awesome.min.css">
+
+
+    <link href="http://solring.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Solring Lin Atom">
+
+
+
+
+
+<meta name="author" content="Solring Lin" />
+<meta name="description" content="(archive) [DL] Caffe install on Ubuntu 12.04" />
+<meta name="keywords" content="">
+
+<meta property="og:site_name" content="Solring Lin"/>
+<meta property="og:title" content="[DL] Caffe install on Ubuntu 12.04"/>
+<meta property="og:description" content="(archive) [DL] Caffe install on Ubuntu 12.04"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="http://solring.github.io/dl-caffe-install-on-ubuntu-1204.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2015-10-13 03:38:00+08:00"/>
+<meta property="article:modified_time" content="2015-10-13 03:38:00+08:00"/>
+<meta property="article:author" content="http://solring.github.io/author/solring-lin.html">
+<meta property="article:section" content="Archive"/>
+<meta property="og:image" content="images/profile.jpg">
+
+  <title>Solring Lin &ndash; [DL] Caffe install on Ubuntu 12.04</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="http://solring.github.io">
+        <img src="images/profile.jpg" alt="SOLRING LIN" title="SOLRING LIN">
+      </a>
+      <h1><a href="http://solring.github.io">SOLRING LIN</a></h1>
+
+<p>Software Developer</p>
+      <nav>
+        <ul class="list">
+
+          <li><a href="#" target="_blank">About</a></li>
+          <li><a href="sherry12714@gmail.com" target="_blank">Email</a></li>
+        </ul>
+      </nav>
+
+      <ul class="social">
+        <li><a class="sc-github" href="http://github.com/solring" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-linkedin" href="https://www.linkedin.com/in/sherry-lin-73312843/" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+        <li><a class="sc-twitter" href="http://twitter.com/solringlin" target="_blank"><i class="fa fa-twitter"></i></a></li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+    <nav>
+      <a href="http://solring.github.io">    Home
+</a>
+
+      <a href="/archives.html">Archives</a>
+      <a href="/categories.html">categories</a>
+      <a href="/tags.html">Tags</a>
+
+      <a href="http://solring.github.io/feeds/all.atom.xml">    Atom
+</a>
+
+    </nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="dl-caffe-install-on-ubuntu-1204">[DL] Caffe install on Ubuntu 12.04</h1>
+    <p>
+          Posted on 二 13 10月 2015 in <a href="http://solring.github.io/category/archive.html">Archive</a>
+
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>Ref:
+http://www.bubuko.com/infodetail-688569.html</p>
+<h1>安裝dependent package:</h1>
+<div class="highlight"><pre><span></span>sudo apt-get install libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libboost-all-dev libhdf5-serial-dev
+
+<span class="c1"># glog</span>
+wget https://google-glog.googlecode.com/files/glog-0.3.3.tar.gz
+tar zxvf glog-0.3.3.tar.gz
+<span class="nb">cd</span> glog-0.3.3
+./configure
+make <span class="o">&amp;&amp;</span> make install
+<span class="c1"># gflags</span>
+wget https://github.com/schuhschuh/gflags/archive/master.zip
+unzip master.zip
+<span class="nb">cd</span> gflags-master
+mkdir build <span class="o">&amp;&amp;</span> <span class="nb">cd</span> build
+<span class="nb">export</span> <span class="nv">CXXFLAGS</span><span class="o">=</span><span class="s2">&quot;-fPIC&quot;</span> <span class="o">&amp;&amp;</span> cmake .. <span class="o">&amp;&amp;</span> make <span class="nv">VERBOSE</span><span class="o">=</span><span class="m">1</span>
+make <span class="o">&amp;&amp;</span> make install
+<span class="c1"># lmdb</span>
+wget https://github.com/wizawu/lmdb/archive/lmdb.master.zip
+unziplmdb.master.zip
+cdlmdb.master/libraries/liblmdb
+make <span class="o">&amp;&amp;</span> make install
+</pre></div>
+
+
+<h1>安裝OpenBLAS</h1>
+<p>參考 https://github.com/xianyi/OpenBLAS/wiki/Installation-Guide</p>
+<p>這邊我選用gfortran當Fortran compiler</p>
+<div class="highlight"><pre><span></span>make FC=gfortran
+</pre></div>
+
+
+<p>但安裝gfortran之後，一直遇到找不到libgfortran的問題 (-lgfortran失敗)
+<strong>解決方法</strong>: 用 update-alternatives 在/usr/lib/下加libgfortran.so</p>
+<div class="highlight"><pre><span></span>update-alternatives --install /usr/lib/libgfortran.so libgfortran /[path to your libgfortran]/[libgfortran] 1
+</pre></div>
+
+
+<h1>安裝cuda GPU driver</h1>
+<p>不是我裝的XD 先跳過</p>
+<h1>安裝OpenCV</h1>
+<p>這邊我選擇安裝2.4 
+因為Ubuntu 12.04太舊了...3.0會出現一堆相容性問題</p>
+<p>直接到這個github下載相對應版本的安裝script，放到要安裝的資料夾run就可以了
+https://github.com/jayrambhia/Install-OpenCV/tree/master/Ubuntu/2.4</p>
+<p>另外也有ArchLinux和RedHat的版本</p>
+<h1>編譯caffe</h1>
+<p><strong>NOTE: 以下的問題是發生在同時安裝了 OpenCV 2.4和3.0的機器上</strong>
+可能是link時版本相衝的問題
+在另一台只有安裝OpenCV 2.4的 server上就沒有問題</p>
+<p>下載下來後，首先要修改Makefile.config</p>
+<div class="highlight"><pre><span></span><span class="c1">## Refer to http://caffe.berkeleyvision.org/installation.html</span>
+<span class="c1"># Contributions simplifying and improving our build system are welcome!</span>
+
+<span class="c1"># cuDNN acceleration switch (uncomment to build with cuDNN).</span>
+USE_CUDNN :<span class="o">=</span> <span class="m">1</span>
+
+<span class="c1"># CPU-only switch (uncomment to build without GPU support).</span>
+<span class="c1"># CPU_ONLY := 1</span>
+
+<span class="c1"># To customize your choice of compiler, uncomment and set the following.</span>
+<span class="c1"># N.B. the default for Linux is g++ and the default for OSX is clang++</span>
+<span class="c1"># CUSTOM_CXX := g++</span>
+
+<span class="c1"># CUDA directory contains bin/ and lib/ directories that we need.</span>
+CUDA_DIR :<span class="o">=</span> /usr/local/cuda
+<span class="c1"># On Ubuntu 14.04, if cuda tools are installed via</span>
+<span class="c1"># &quot;sudo apt-get install nvidia-cuda-toolkit&quot; then use this instead:</span>
+<span class="c1"># CUDA_DIR := /usr</span>
+
+<span class="c1"># CUDA architecture setting: going with all of them.</span>
+<span class="c1"># For CUDA &lt; 6.0, comment the *_50 lines for compatibility.</span>
+CUDA_ARCH :<span class="o">=</span> -gencode <span class="nv">arch</span><span class="o">=</span>compute_20,code<span class="o">=</span>sm_20 <span class="se">\</span>
+        -gencode <span class="nv">arch</span><span class="o">=</span>compute_20,code<span class="o">=</span>sm_21 <span class="se">\</span>
+        -gencode <span class="nv">arch</span><span class="o">=</span>compute_30,code<span class="o">=</span>sm_30 <span class="se">\</span>
+        -gencode <span class="nv">arch</span><span class="o">=</span>compute_35,code<span class="o">=</span>sm_35 <span class="se">\</span>
+        -gencode <span class="nv">arch</span><span class="o">=</span>compute_50,code<span class="o">=</span>sm_50 <span class="se">\</span>
+        -gencode <span class="nv">arch</span><span class="o">=</span>compute_50,code<span class="o">=</span>compute_50
+
+<span class="c1"># BLAS choice:</span>
+<span class="c1"># atlas for ATLAS (default)</span>
+<span class="c1"># mkl for MKL</span>
+<span class="c1"># open for OpenBlas</span>
+BLAS :<span class="o">=</span> open
+<span class="c1"># Custom (MKL/ATLAS/OpenBLAS) include and lib directories.</span>
+<span class="c1"># Leave commented to accept the defaults for your choice of BLAS</span>
+<span class="c1"># (which should work)!</span>
+<span class="c1"># BLAS_INCLUDE := /path/to/your/blas</span>
+<span class="c1"># BLAS_LIB := /path/to/your/blas</span>
+
+<span class="c1"># Homebrew puts openblas in a directory that is not on the standard search path</span>
+<span class="c1"># BLAS_INCLUDE := $(shell brew --prefix openblas)/include</span>
+<span class="c1"># BLAS_LIB := $(shell brew --prefix openblas)/lib</span>
+
+<span class="c1"># This is required only if you will compile the matlab interface.</span>
+<span class="c1"># MATLAB directory should contain the mex binary in /bin.</span>
+<span class="c1"># MATLAB_DIR := /usr/local</span>
+<span class="c1"># MATLAB_DIR := /Applications/MATLAB_R2012b.app</span>
+
+<span class="c1"># NOTE: this is required only if you will compile the python interface.</span>
+<span class="c1"># We need to be able to find Python.h and numpy/arrayobject.h.</span>
+PYTHON_INCLUDE :<span class="o">=</span> /usr/include/python2.7 <span class="se">\</span>
+        /usr/lib/python2.7/dist-packages/numpy/core/include
+<span class="c1"># Anaconda Python distribution is quite popular. Include path:</span>
+<span class="c1"># Verify anaconda location, sometimes it&#39;s in root.</span>
+<span class="c1"># ANACONDA_HOME := $(HOME)/anaconda</span>
+<span class="c1"># PYTHON_INCLUDE := $(ANACONDA_HOME)/include \</span>
+        <span class="c1"># $(ANACONDA_HOME)/include/python2.7 \</span>
+        <span class="c1"># $(ANACONDA_HOME)/lib/python2.7/site-packages/numpy/core/include \</span>
+
+<span class="c1"># We need to be able to find libpythonX.X.so or .dylib.</span>
+PYTHON_LIB :<span class="o">=</span> /usr/lib
+<span class="c1"># PYTHON_LIB := $(ANACONDA_HOME)/lib</span>
+
+<span class="c1"># Homebrew installs numpy in a non standard path (keg only)</span>
+<span class="c1"># PYTHON_INCLUDE += $(dir $(shell python -c &#39;import numpy.core; print(numpy.core.__file__)&#39;))/include</span>
+<span class="c1"># PYTHON_LIB += $(shell brew --prefix numpy)/lib</span>
+
+<span class="c1"># Uncomment to support layers written in Python (will link against Python libs)</span>
+<span class="c1"># WITH_PYTHON_LAYER := 1</span>
+
+<span class="c1"># Whatever else you find you need goes here.</span>
+INCLUDE_DIRS :<span class="o">=</span> <span class="k">$(</span>PYTHON_INCLUDE<span class="k">)</span> /usr/local/include /usr/include/hdf5/serial /usr/local/cuda/cudnn-6.5-linux-x64-v2
+LIBRARY_DIRS :<span class="o">=</span> <span class="k">$(</span>PYTHON_LIB<span class="k">)</span> /usr/local/lib /usr/lib /usr/lib/x86_64-linux-gnu/hdf5/serial /usr/local/cuda/cudnn-6.5-linux-x64-v2
+
+<span class="c1"># If Homebrew is installed at a non standard location (for example your home directory) and you use it for general dependencies</span>
+<span class="c1"># INCLUDE_DIRS += $(shell brew --prefix)/include</span>
+<span class="c1"># LIBRARY_DIRS += $(shell brew --prefix)/lib</span>
+
+<span class="c1"># Uncomment to use `pkg-config` to specify OpenCV library paths.</span>
+<span class="c1"># (Usually not necessary -- OpenCV libraries are normally installed in one of the above $LIBRARY_DIRS.)</span>
+<span class="c1"># USE_PKG_CONFIG := 1</span>
+
+BUILD_DIR :<span class="o">=</span> build
+DISTRIBUTE_DIR :<span class="o">=</span> distribute
+
+<span class="c1"># Uncomment for debugging. Does not work on OSX due to https://github.com/BVLC/caffe/issues/171</span>
+<span class="c1"># DEBUG := 1</span>
+
+<span class="c1"># The ID of the GPU that &#39;make runtest&#39; will use to run unit tests.</span>
+TEST_GPUID :<span class="o">=</span> <span class="m">0</span>
+
+<span class="c1"># enable pretty build (comment to see full commands)</span>
+Q ?<span class="o">=</span> @
+</pre></div>
+
+
+<p>其中 <code>CPU_ONLY</code> &amp; <code>USE_CUDNN</code> 可以用來控制要不要只使用CPU &amp; 要不要用CUDNN加速</p>
+<ul>
+<li>
+<p>有個issue會找不到hdf5.h和他的lib
+    把 /usr/include/hdf5/serial 加入 INCLUDE_DIRS
+    /usr/lib/x86_64-linux-gnu/hdf5/serial 加入 LIBRARY_DIRS 就可以修好
+    如果libhdf5和他的header不是安裝在上述位置的話，可能要找一下並改成你的安裝位置</p>
+</li>
+<li>
+<p>如果要使用cuDnn的話也要加進他的header file和shared lib路徑
+    這裡是<code>/usr/local/cuda/cudnn-6.5-linux-x64-v2</code></p>
+</li>
+<li>
+<p>另外在compile過程中可能會出現找不到cv::imread和cv::imdecode functions
+    解決方法參考 https://github.com/BVLC/caffe/issues/2288
+    主要是opencv imgdecode lib沒有被包進來
+    修改Makefile，在USE_OPENCL那一段的LIBRARIES加上lib:</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="cp">ifeq ($(USE_OPENCV), 1)                                                                    </span>
+  <span class="nv">LIBRARIES</span> <span class="o">+=</span> opencv_core opencv_highgui opencv_imgproc opencv_imgcodecs
+<span class="cp">endif  </span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="err">另外make</span> <span class="err">test的時候也會遇到同樣問題，但這次是因為```-lcaffe```使用到opencv</span> <span class="err">imgcodecs等的lib</span>
+<span class="err">所以應該要放在前面</span>
+<span class="err">將```TEST_XX_BINS```的</span> <span class="err">```-l</span><span class="k">$(</span><span class="nv">PROJECT</span><span class="k">)</span><span class="err">```</span> <span class="err">跟</span> <span class="err">```</span><span class="k">$(</span><span class="nv">LDFLAGS</span><span class="k">)</span><span class="err">```</span> <span class="err">對調即可</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="err">-o</span> <span class="k">$@</span> <span class="k">$(</span><span class="nv">LINKFLAGS</span><span class="k">)</span> <span class="err">-l</span><span class="k">$(</span><span class="nv">PROJECT</span><span class="k">)</span> <span class="k">$(</span><span class="nv">LDFLAGS</span><span class="k">)</span> <span class="err">-Wl,-rpath,</span><span class="k">$(</span><span class="nv">ORIGIN</span><span class="k">)</span><span class="err">/../lib</span>
+</pre></div>
+
+
+<p>有關ld link shared library的順序:
+http://stackoverflow.com/questions/45135/why-does-the-order-in-which-libraries-are-linked-sometimes-cause-errors-in-gcc</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+    </p>
+  </div>
+
+
+
+
+
+</article>
+
+    <footer>
+<p>&copy;  </p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Solring Lin ",
+  "url" : "http://solring.github.io",
+  "image": "images/profile.jpg",
+  "description": "Technical notes and everything."
+}
+</script>
+
+</body>
+</html>

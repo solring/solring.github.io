@@ -1,0 +1,217 @@
+
+<!DOCTYPE html>
+<html lang="chinese (traditional)">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="http://solring.github.io/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="http://solring.github.io/theme/pygments/monokai.min.css">
+  <link rel="stylesheet" type="text/css" href="http://solring.github.io/theme/font-awesome/css/font-awesome.min.css">
+
+
+    <link href="http://solring.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Solring Lin Atom">
+
+
+
+
+
+<meta name="author" content="Solring Lin" />
+<meta name="description" content="(archive) 神奇的線稿自動上色PaintsChainer - 架設" />
+<meta name="keywords" content="">
+
+<meta property="og:site_name" content="Solring Lin"/>
+<meta property="og:title" content="神奇的線稿自動上色PaintsChainer - 架設"/>
+<meta property="og:description" content="(archive) 神奇的線稿自動上色PaintsChainer - 架設"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="http://solring.github.io/shen-qi-de-xian-gao-zi-dong-shang-se-paintschainer-jia-she.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2017-01-30 02:13:00+08:00"/>
+<meta property="article:modified_time" content="2017-01-30 02:13:00+08:00"/>
+<meta property="article:author" content="http://solring.github.io/author/solring-lin.html">
+<meta property="article:section" content="Archive"/>
+<meta property="og:image" content="images/profile.jpg">
+
+  <title>Solring Lin &ndash; 神奇的線稿自動上色PaintsChainer - 架設</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="http://solring.github.io">
+        <img src="images/profile.jpg" alt="SOLRING LIN" title="SOLRING LIN">
+      </a>
+      <h1><a href="http://solring.github.io">SOLRING LIN</a></h1>
+
+<p>Software Developer</p>
+      <nav>
+        <ul class="list">
+
+          <li><a href="#" target="_blank">About</a></li>
+          <li><a href="sherry12714@gmail.com" target="_blank">Email</a></li>
+        </ul>
+      </nav>
+
+      <ul class="social">
+        <li><a class="sc-github" href="http://github.com/solring" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-linkedin" href="https://www.linkedin.com/in/sherry-lin-73312843/" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+        <li><a class="sc-twitter" href="http://twitter.com/solringlin" target="_blank"><i class="fa fa-twitter"></i></a></li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+    <nav>
+      <a href="http://solring.github.io">    Home
+</a>
+
+      <a href="/archives.html">Archives</a>
+      <a href="/categories.html">categories</a>
+      <a href="/tags.html">Tags</a>
+
+      <a href="http://solring.github.io/feeds/all.atom.xml">    Atom
+</a>
+
+    </nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="shen-qi-de-xian-gao-zi-dong-shang-se-paintschainer-jia-she">神奇的線稿自動上色PaintsChainer - 架設</h1>
+    <p>
+          Posted on 一 30 1月 2017 in <a href="http://solring.github.io/category/archive.html">Archive</a>
+
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>過年發現這個神奇的Project!
+https://github.com/taizan/PaintsChainer
+因為太神了+官方server爆流量(?) 就想要自己架來玩玩
+紀錄一下艱辛的過程...</p>
+<h1>環境</h1>
+<p>Windows 10
+Nvidia GeForce GTX960m</p>
+<h1>Set up Windows</h1>
+<p>因為有用到CUDA，如果使用的電腦沒有C開發環境，就需要整個重新架設</p>
+<h2>下載並安裝Visual C++</h2>
+<p>不想裝IDE的話，使用<a href="http://landinghub.visualstudio.com/visual-cpp-build-tools">Windows Visual C++ 2015 Build tools</a>就夠了</p>
+<h3>NOTE:</h3>
+<p>後來我有遇到Runtime時找不到<code>cl.exe</code>之類的問題
+好像把VC的bin 加進PATH之後就解決了
+C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin</p>
+<h2>安裝Windows Kits</h2>
+<p><strong>!!!!!!!很重要!!!!!!!!!</strong>
+需要安裝Windows Kits 並將他的include和lib加進環境變數
+<a href="https://developer.microsoft.com/zh-tw/windows/downloads/windows-10-sdk">Windows 10載點</a>
+否則會在Runtime時遇到以下error:</p>
+<div class="highlight"><pre><span></span>......
+Files (x86)/Microsoft Visual Studio 14.0/VC/bin/../../VC/INCLUDE\\crtdefs.h&quot;\r\nC:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/bin/../../VC/INCLUDE\crtdefs.h(10): fatal error C1083: Cannot open include file: &#39;corecrt.h&#39;: No such file or directory\r\n
+......
+</pre></div>
+
+
+<p>安裝完畢後，需要另外新增INCLUDE &amp; LIB兩個環境變數
+(這是爛招XD 但是目前這樣最快~~~)
+<img alt="PATH.png" src="http://user-image.logdown.io/user/13673/blog/12890/post/1365466/koQL7A91Qji5LCKs3UOo_PATH.png">
+CUDA討論區有<a href="https://devtalk.nvidia.com/default/topic/969047/cuda-8-vs2015-corecrt-h-error/?offset=7">相關post</a></p>
+<h1>Setup CUDA &amp; cuDNN</h1>
+<p>我是使用<strong>CUDA 8.0.44</strong> &amp; <strong>CUDNN 8.0</strong> for win10
+其中下載完cudnn之後
+要把裡面的<strong>include,bin,lib</strong>裡的檔案都copy到CUDA底下相對應的資料夾</p>
+<h1>Setup Python Chainer &amp; Other packages</h1>
+<h2>小技巧: 在Windows下同時使用Python 2 &amp; 3</h2>
+<p>由於原project使用Python 3，因此以下的package都要裝在Python 3裡面
+在Window環境中都安裝完python 2和3的話
+可以直接在cmd裡面使用<code>py</code> 這個cmd(在安裝python3時會安裝)指定要使用python 2還是3 </p>
+<div class="highlight"><pre><span></span>$ py -2 xxx.py
+</pre></div>
+
+
+<p>同理，要用pip安裝套件到python 3的話:</p>
+<div class="highlight"><pre><span></span>$ py -3 -m pip install xxxx
+</pre></div>
+
+
+<p>這樣就可以指定要安裝套件到哪啦~
+(當然還是推薦用virtualenv啦)</p>
+<h2>Chainer</h2>
+<p><strong>!!!!!!!很重要!!!!!!!!!</strong>
+如果在正確安裝完CUDA和CUDNN之前就先安裝chainer的話，就會吃到錯誤的<code>CUDA_PATH</code>
+Runtime的時候會噴error並提醒你重裝
+總之一定要照順序安裝啦</p>
+<div class="highlight"><pre><span></span>$ py -3 -m pip install chainer --no-cache-dir -vvvv
+</pre></div>
+
+
+<h2>PIL</h2>
+<p>(Currently not used in PaintsChain)
+其實他的名字叫pillow...</p>
+<div class="highlight"><pre><span></span>$ py -3 -m pip install pillow
+</pre></div>
+
+
+<p>http://stackoverflow.com/questions/28155028/installing-pil-for-python-3-4</p>
+<h2>Prebuilt cv2 for Python3</h2>
+<p>現在可以直接用pip安裝的只有Python 2的
+但是有好心人有prebuilt好Python 3版本，並用wheel package的方式release出來給人下載~
+Instruction
+http://lsw.gapp.nthu.edu.tw/note/installation-of-opencv3-1-python3-5-with-windows
+載點
+http://www.lfd.uci.edu/~gohlke/pythonlibs/</p>
+<div class="highlight"><pre><span></span>// download the wheel file first
+$ py -3 -m pip install opencv_python-3.2.0-cp36-cp36m-win_amd64.whl
+</pre></div>
+
+
+<h2>Numpy and other packages</h2>
+<p>直接用pip安裝就OK啦~</p>
+<p><img alt="demo" src="https://68.media.tumblr.com/93ac7fbc3292a788ea175dee27b67d9c/tumblr_oklgg16N5c1vxv7jho2_r1_1280.png">
+差不多這樣就可以跑啦
+Github上也有更新越來越多安裝資訊了
+目前也有一堆人跳下去了，有問題應該都可以在上面發問＆找答案</p>
+<p>code study還是留到下一篇.....</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+    </p>
+  </div>
+
+
+
+
+
+</article>
+
+    <footer>
+<p>&copy;  </p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Solring Lin ",
+  "url" : "http://solring.github.io",
+  "image": "images/profile.jpg",
+  "description": "Technical notes and everything."
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,227 @@
+
+<!DOCTYPE html>
+<html lang="chinese (traditional)">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="http://solring.github.io/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="http://solring.github.io/theme/pygments/monokai.min.css">
+  <link rel="stylesheet" type="text/css" href="http://solring.github.io/theme/font-awesome/css/font-awesome.min.css">
+
+
+    <link href="http://solring.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Solring Lin Atom">
+
+
+
+
+
+<meta name="author" content="Solring Lin" />
+<meta name="description" content="(archive) [DL] Convolutional Neural Network" />
+<meta name="keywords" content="">
+
+<meta property="og:site_name" content="Solring Lin"/>
+<meta property="og:title" content="[DL] Convolutional Neural Network"/>
+<meta property="og:description" content="(archive) [DL] Convolutional Neural Network"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="http://solring.github.io/dl-convolutional-neural-network.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2015-09-30 12:09:00+08:00"/>
+<meta property="article:modified_time" content="2015-09-30 12:09:00+08:00"/>
+<meta property="article:author" content="http://solring.github.io/author/solring-lin.html">
+<meta property="article:section" content="Archive"/>
+<meta property="og:image" content="images/profile.jpg">
+
+  <title>Solring Lin &ndash; [DL] Convolutional Neural Network</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="http://solring.github.io">
+        <img src="images/profile.jpg" alt="SOLRING LIN" title="SOLRING LIN">
+      </a>
+      <h1><a href="http://solring.github.io">SOLRING LIN</a></h1>
+
+<p>Software Developer</p>
+      <nav>
+        <ul class="list">
+
+          <li><a href="#" target="_blank">About</a></li>
+          <li><a href="sherry12714@gmail.com" target="_blank">Email</a></li>
+        </ul>
+      </nav>
+
+      <ul class="social">
+        <li><a class="sc-github" href="http://github.com/solring" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-linkedin" href="https://www.linkedin.com/in/sherry-lin-73312843/" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+        <li><a class="sc-twitter" href="http://twitter.com/solringlin" target="_blank"><i class="fa fa-twitter"></i></a></li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+    <nav>
+      <a href="http://solring.github.io">    Home
+</a>
+
+      <a href="/archives.html">Archives</a>
+      <a href="/categories.html">categories</a>
+      <a href="/tags.html">Tags</a>
+
+      <a href="http://solring.github.io/feeds/all.atom.xml">    Atom
+</a>
+
+    </nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="dl-convolutional-neural-network">[DL] Convolutional Neural Network</h1>
+    <p>
+          Posted on 三 30 9月 2015 in <a href="http://solring.github.io/category/archive.html">Archive</a>
+
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>感想: 這東西真的是玄學啊~~~~~~</p>
+<p>ref: 
+http://www.iro.umontreal.ca/~pift6266/H10/notes/deepintro.html
+http://deeplearning.net/tutorial/lenet.html</p>
+<hr>
+<h1>Background of Neural Network</h1>
+<p>就是嘗試模擬神經元的方式去辨識物體
+每個神經元指會對特定的signal(feature)做出反應，傳給其他神經元，最後有個high level的結果</p>
+<p>那要怎麼知道，為了辨識出東西(貓or早餐or樓下鄰居)，哪個神經元應該對哪個訊號有反應呢? 
+A: <strong>用Train的</strong>
+這就是ML裡面 feature learning/Representation learning 的部份</p>
+<p>在NN中，某neuron h會對其他neuron or input x做反應
+至於反應要多大呢? 就由 <code>Weight(w)</code> + <code>Bias(b)</code> + <code>linear function</code>決定
+也可以說，neuron的 Weight(w)+Bias(b)決定了他會對哪個feature有反應
+<strong>要Train的部份就是對每個input的Weight(w)+Bias(b)</strong></p>
+<h1>Convolutional Neural Network (CNN)</h1>
+<p>傳統fully-connected的Neural network如果套在影像辨識上
+就會發生很恐怖的事情:
+假設有40000個Neuron 對上 200w像素的影像
+每個pixel都會有一個對應的 w 和 b
+就有40000 x 200w x 2 個參數要train
+........Overhead實在是很大</p>
+<p>所以CNN就發想出幾個idea:</p>
+<h2>Locally connected (Sparse Connectivity)</h2>
+<p>模擬visual cortex的行為
+每個視覺neuron一次只能對某塊sub-region<code>receptive field</code>做反應
+<strong>作用就像是某個feature的filter</strong></p>
+<p>所以CNN中不需要整張圖片的pixel都connect到某個neuron上
+一個neuron的input可能只是圖片上的某個區域<code>field</code>
+他所對應的<strong>參數數量就減少到該field的pixel數量</strong></p>
+<h2>Multilayer Neural Network</h2>
+<p>一樣也是模擬visual cortex，就是neuron有很多層<code>layer</code>囉
+在CNN裡，同一層的neuron之間是沒有link的 
+兩個layer可以形成一個<a href="https://en.wikipedia.org/wiki/Restricted_Boltzmann_machine">Restricted Boltzmann machine</a></p>
+<h2>Shared Weight</h2>
+<p>(這個名詞我覺得很難反應原理 :P)
+指的是<strong>input不同位置的neuron的weight可以是相同的</strong></p>
+<p>接續receptive field的概念
+因為neuron只能filter某個sub-region
+如果希望在整張照片找feature，就必須用這個filter一次只掃一部份，掃過整張圖片
+具體的方法就是將這個filter(neuron)重複apply到所有區域
+因為<strong>決定filter特性的是W和B</strong>
+所以<strong>將filter重複apply的方法就是讓多個neuron使用同樣的W和B</strong> (Shared weight就是從這邊來的)
+這些apply相同filter的neuron output組成的就是<code>feature map</code></p>
+<p><img alt="Filter bank就是weight和bias, Feature map是用某個filter的neuron的集合" src="http://user-image.logdown.io/user/13673/blog/12890/post/302641/V21DnAAeTKiOirZRFKhT_dl2.png">
+Filter bank就是weight和bias, Feature map是用某個filter的neuron的集合</p>
+<h2>Multiple Convolutions</h2>
+<p>在某layer的neuron的來源可以是多張上一layer的feature map
+物理意義應該是表示<strong>這個feature是由多個上一層的feature組成的</strong>
+所以越低layer的feature通常是線段之類的primitive element
+而越高layer的則是越high level的feature (e.g. 眼睛)</p>
+<p><img alt="Sample convolutional layer" src="http://deeplearning.net/tutorial/_images/cnn_explained.png"></p>
+<p><img alt="low layer features" src="http://user-image.logdown.io/user/13673/blog/12890/post/302641/DsAYpgsTH63BTPVm8q6g_dl-filters1.png">
+Low layer features</p>
+<p><img alt="high layer features" src="http://user-image.logdown.io/user/13673/blog/12890/post/302641/aaOb1565R8a5f4RSYxLj_dl-filters2.png">
+High layer features</p>
+<h2>Pooling, Subsampling</h2>
+<ol>
+<li>
+<p>Pooling: 
+幾個pixel取平均變成新的pixel
+有smoothing的功能?</p>
+</li>
+<li>
+<p>Subsampling: 
+Pooling時跳著做
+本來可能是每shift一個pixel做一次，變成shift兩格才做
+可以降低維度(資料量)</p>
+</li>
+</ol>
+<h1>Backpropogation (backward propagation)</h1>
+<p>先定義一個loss function (W, B as variables)
+然後用opt. function(e.g. gradient decent)找loss function的最小值</p>
+<h2>Gradiend decent</h2>
+<p>https://zh.wikipedia.org/wiki/%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E6%B3%95
+從某一點開始逼近最小值時，因為梯度相當於斜率，所以沿著梯度下降是最快的</p>
+<div class="highlight"><pre><span></span>\mathbf{x}_{n+1}=\mathbf{x}_n-\gamma_n \nabla F(\mathbf{x}_n),\ n \ge 0.
+</pre></div>
+
+
+<p>一直逼近到<code>$ \mathbf{x} $</code>為最小為止</p>
+<p>如果到套用到CNN某一層neuron的話就像是</p>
+<div class="highlight"><pre><span></span>(\mathbf{W},\mathbf{B})_{n+1}=(\mathbf{W},\mathbf{B})_n-\gamma_n \nabla F(\mathbf{W}_n, \mathbf{B}_n),\ n \ge 0.
+</pre></div>
+
+
+<p>//Notation應該是不太對XD 之後再改
+其中function <code>$ F(\mathbf{W}_n, \mathbf{B}_n) $</code>是loss function
+loss function要可微分，才能算梯度
+連帶也表示不同層的activation function也要可以微分</p>
+<p>令某一層的activation function <code>$ a(X) $</code>
+帶入一個train input X得到的答案是y
+改把W, B看成變數的話就是 <code>$ A(W, B)=y $</code>
+假設正確答案是y'
+Loss function <code>$ F(W, B)=y'-y=y'-A(W, B) $</code>
+因此更新W, B的方法就是算出<code>$ y'-A(W, B) $</code>梯度之後，乘一個比率減回去</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+    </p>
+  </div>
+
+
+
+
+
+</article>
+
+    <footer>
+<p>&copy;  </p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Solring Lin ",
+  "url" : "http://solring.github.io",
+  "image": "images/profile.jpg",
+  "description": "Technical notes and everything."
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,192 @@
+
+<!DOCTYPE html>
+<html lang="chinese (traditional)">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="http://solring.github.io/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="http://solring.github.io/theme/pygments/monokai.min.css">
+  <link rel="stylesheet" type="text/css" href="http://solring.github.io/theme/font-awesome/css/font-awesome.min.css">
+
+
+    <link href="http://solring.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Solring Lin Atom">
+
+
+
+
+
+<meta name="author" content="Solring Lin" />
+<meta name="description" content="(archive) Sony Smartwatch 3 Root Instructions" />
+<meta name="keywords" content="">
+
+<meta property="og:site_name" content="Solring Lin"/>
+<meta property="og:title" content="Sony Smartwatch 3 Root Instructions"/>
+<meta property="og:description" content="(archive) Sony Smartwatch 3 Root Instructions"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="http://solring.github.io/sony-smartwatch-3-root-instructions.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2015-07-31 10:58:00+08:00"/>
+<meta property="article:modified_time" content="2015-07-31 10:58:00+08:00"/>
+<meta property="article:author" content="http://solring.github.io/author/solring-lin.html">
+<meta property="article:section" content="Archive"/>
+<meta property="og:image" content="images/profile.jpg">
+
+  <title>Solring Lin &ndash; Sony Smartwatch 3 Root Instructions</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="http://solring.github.io">
+        <img src="images/profile.jpg" alt="SOLRING LIN" title="SOLRING LIN">
+      </a>
+      <h1><a href="http://solring.github.io">SOLRING LIN</a></h1>
+
+<p>Software Developer</p>
+      <nav>
+        <ul class="list">
+
+          <li><a href="#" target="_blank">About</a></li>
+          <li><a href="sherry12714@gmail.com" target="_blank">Email</a></li>
+        </ul>
+      </nav>
+
+      <ul class="social">
+        <li><a class="sc-github" href="http://github.com/solring" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-linkedin" href="https://www.linkedin.com/in/sherry-lin-73312843/" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+        <li><a class="sc-twitter" href="http://twitter.com/solringlin" target="_blank"><i class="fa fa-twitter"></i></a></li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+    <nav>
+      <a href="http://solring.github.io">    Home
+</a>
+
+      <a href="/archives.html">Archives</a>
+      <a href="/categories.html">categories</a>
+      <a href="/tags.html">Tags</a>
+
+      <a href="http://solring.github.io/feeds/all.atom.xml">    Atom
+</a>
+
+    </nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="sony-smartwatch-3-root-instructions">Sony Smartwatch 3 Root Instructions</h1>
+    <p>
+          Posted on 五 31 7月 2015 in <a href="http://solring.github.io/category/archive.html">Archive</a>
+
+
+    </p>
+  </header>
+
+
+  <div>
+    <ol>
+<li><strong>安裝driver</strong>
+    用Sony的PC Companion裡的driver
+    如果有問題的話也可以改用Google的USB driver
+    但是要手動加smartwatch 3 SWR50進支援清單
+    到Google USB driver的目錄下修改 <em>androidwinusb.inf</em></li>
+</ol>
+<div class="highlight"><pre><span></span>; Sony Smartwatch 3 SWR50 ADB interface
+%SonyFastbootInterface%    = USB_Install, USB\VID_0FCE&amp;PID_0DDE
+%SonyFastbootInterface%    = USB_Install, USB\VID_0FCE&amp;PID_0DDE&amp;REV_0001
+%SonySmartwatch3ADBInterface%  = USB_Install, USB\VID_0FCE&amp;PID_A1BD
+%SonySmartwatch3ADBInterface%  = USB_Install, USB\VID_0FCE&amp;PID_A1BD&amp;REV_0100
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>後面的ID用裝置管理員查device hardware ID就查的到了
+</pre></div>
+
+
+<ol>
+<li>
+<p><strong>連接裝置到電腦</strong>
+    用usb連到電腦上之後
+    手錶還要往下滑一下找"Allow debugging?"的認證確認卡片
+    Open on phone之後，手機上會出現一般的adb authorization畫面
+    確認後才能連的上去</p>
+</li>
+<li>
+<p><strong>unlock device</strong>
+    手錶關機之後，長壓電源按鈕，會出現insert USB的畫面
+    在按兩下會進入工程畫面，可以進fastboot, recovery之類的
+    按一下按鈕switch, 按兩下確認
+    進fastboot之後unlock:</p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span>fastboot oem unlock
+</pre></div>
+
+
+<ol>
+<li>
+<p><strong>下載Wear-Supersu,zip 丟進sdcard裡面待用</strong></p>
+</li>
+<li>
+<p><strong>刷TWRP recovery</strong>
+    下載修改過的TWRP recovery for smartwatch 3, 用fastboot刷進去
+http://forum.xda-developers.com/smartwatch-3/development/recovery-twrp-2-8-3-0-sony-smartwatch-3-t2986907</p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span>fastboot flash recovery 
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>刷進去之後
+想辦法先關機，之後進fastboot再轉recovery mode
+如果用fastboot continue會reboot的話，就要再重刷一次recovery
+因為他boot進系統之後會回復recovery, TWRP會不見 : P
+
+成功在剛刷完TWRP就進recovery之後
+就可以將先放到sdcard裡面的.zip檔刷進去啦~
+</pre></div>
+  </div>
+  <div class="tag-cloud">
+    <p>
+    </p>
+  </div>
+
+
+
+
+
+</article>
+
+    <footer>
+<p>&copy;  </p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Solring Lin ",
+  "url" : "http://solring.github.io",
+  "image": "images/profile.jpg",
+  "description": "Technical notes and everything."
+}
+</script>
+
+</body>
+</html>

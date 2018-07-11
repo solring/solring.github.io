@@ -1,0 +1,251 @@
+
+<!DOCTYPE html>
+<html lang="chinese (traditional)">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="http://solring.github.io/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="http://solring.github.io/theme/pygments/monokai.min.css">
+  <link rel="stylesheet" type="text/css" href="http://solring.github.io/theme/font-awesome/css/font-awesome.min.css">
+
+
+    <link href="http://solring.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Solring Lin Atom">
+
+
+
+
+
+<meta name="author" content="Solring Lin" />
+<meta name="description" content="(archive) [Linux] cpuidle menu driver &amp; I/O latency predict driver" />
+<meta name="keywords" content="">
+
+<meta property="og:site_name" content="Solring Lin"/>
+<meta property="og:title" content="[Linux] cpuidle menu driver &amp; I/O latency predict driver"/>
+<meta property="og:description" content="(archive) [Linux] cpuidle menu driver &amp; I/O latency predict driver"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="http://solring.github.io/linux-cpuidle-menu-driver-io-latency-predict-driver.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2015-09-15 05:47:00+08:00"/>
+<meta property="article:modified_time" content="2015-09-15 05:47:00+08:00"/>
+<meta property="article:author" content="http://solring.github.io/author/solring-lin.html">
+<meta property="article:section" content="Archive"/>
+<meta property="og:image" content="images/profile.jpg">
+
+  <title>Solring Lin &ndash; [Linux] cpuidle menu driver &amp; I/O latency predict driver</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="http://solring.github.io">
+        <img src="images/profile.jpg" alt="SOLRING LIN" title="SOLRING LIN">
+      </a>
+      <h1><a href="http://solring.github.io">SOLRING LIN</a></h1>
+
+<p>Software Developer</p>
+      <nav>
+        <ul class="list">
+
+          <li><a href="#" target="_blank">About</a></li>
+          <li><a href="sherry12714@gmail.com" target="_blank">Email</a></li>
+        </ul>
+      </nav>
+
+      <ul class="social">
+        <li><a class="sc-github" href="http://github.com/solring" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-linkedin" href="https://www.linkedin.com/in/sherry-lin-73312843/" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+        <li><a class="sc-twitter" href="http://twitter.com/solringlin" target="_blank"><i class="fa fa-twitter"></i></a></li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+    <nav>
+      <a href="http://solring.github.io">    Home
+</a>
+
+      <a href="/archives.html">Archives</a>
+      <a href="/categories.html">categories</a>
+      <a href="/tags.html">Tags</a>
+
+      <a href="http://solring.github.io/feeds/all.atom.xml">    Atom
+</a>
+
+    </nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="linux-cpuidle-menu-driver-io-latency-predict-driver">[Linux] cpuidle menu driver & I/O latency predict driver</h1>
+    <p>
+          Posted on 二 15 9月 2015 in <a href="http://solring.github.io/category/archive.html">Archive</a>
+
+
+    </p>
+  </header>
+
+
+  <div>
+    <h1>CPU idle driver</h1>
+<p>基本上是利用各種數據去預測接下來的cpu idle時間，以選擇適當的CPU idle state
+CPU idle的state數量，idle時電流，switch時間都可以拿來衡量</p>
+<h1>為何不能想睡就睡?</h1>
+<p>既然idle state很省電，為何不能逮到機會就想辦法進idle睡呢?</p>
+<ol>
+<li>
+<p>Switch overhead
+跟據關掉的東西的數量程度，每個idle等級要進入和出來的時間都不一樣
+睡的越沉，醒的越慢
+要是一直睡睡醒醒，反而會多花時間又耗電</p>
+</li>
+<li>
+<p>系統目前不容忍睡太死
+跟Linux PM Framework有關
+有時候系統會需要很即時的反應(e.g. DMA)，這個時候也不能睡太死</p>
+</li>
+</ol>
+<h1>Menu driver</h1>
+<p>Reference: 
+http://www.wowotech.net/pm_subsystem/cpuidle_menu_governor.html
+http://lxr.free-electrons.com/source/drivers/cpuidle/governors/menu.c</p>
+<h2>menu</h2>
+<p>目前普遍的cpuidle driver
+<strong>超級簡化</strong>來說，就是在系統允許的idle時間以內
+用目前已知的<strong>下一次timer距離、上次實際的idle時間、i/o task queue長度、i/o種類、cpu loading</strong>來估計適合的idle時間 &amp; 
+另外也有偵測periodic event的機制
+但基本精神是: 用上一次實際idle時間慢慢修正factor，乘上已知的下次timer時間</p>
+<h3>menu_select</h3>
+<p>主要選擇idle state的function</p>
+<p><strong>Steps</strong></p>
+<ol>
+<li>Call <code>pm_qos_request</code> 得到CPU和DMA可接受的delay(latency_req)</li>
+<li>Call <code>menu_update</code>，用<strong>上一次實際idle的時間</strong>更正上一次使用的factor</li>
+<li>取得nohz下預計的sleep時間<code>next_timer_us</code> &amp; 目前在I/O wait queue的task數量<code>iowaiters</code> </li>
+<li>用3的結果來取得factor
+    Governor會根據next_timer_us和有沒有iowaiters來個別maintain不同的factor，共有12個</li>
+<li>計算預計的idle時間<code>predicted_us</code>: </li>
+</ol>
+<div class="highlight"><pre><span></span><span class="n">data</span><span class="o">-&gt;</span><span class="n">predicted_us</span> <span class="o">=</span> <span class="n">DIV_ROUND_CLOSEST_ULL</span><span class="p">((</span><span class="kt">uint64_t</span><span class="p">)</span><span class="n">data</span><span class="o">-&gt;</span><span class="n">next_timer_us</span> <span class="o">*</span>
+                                        <span class="n">data</span><span class="o">-&gt;</span><span class="n">correction_factor</span><span class="p">[</span><span class="n">data</span><span class="o">-&gt;</span><span class="n">bucket</span><span class="p">],</span>
+                                        <span class="n">RESOLUTION</span> <span class="o">*</span> <span class="n">DECAY</span><span class="p">);</span>
+</pre></div>
+
+
+<ol>
+<li>
+<p>用5的結果和iowaiters和cpuload，算出另一個最大可接受delay
+    <code>predicted_us / (1 + 2 * loadavg +10 * iowaiters)</code>
+  和1算的取min值
+  基本精神是<strong>越忙越不能delay</strong></p>
+</li>
+<li>
+<p>用估計出來的idle時間(predicted_us)和可接受的delay(latency_req)選擇適合的idle state</p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="n">CPUIDLE_DRIVER_STATE_START</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">drv</span><span class="o">-&gt;</span><span class="n">state_count</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+                 <span class="k">struct</span> <span class="n">cpuidle_state</span> <span class="o">*</span><span class="n">s</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">drv</span><span class="o">-&gt;</span><span class="n">states</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+                 <span class="k">struct</span> <span class="n">cpuidle_state_usage</span> <span class="o">*</span><span class="n">su</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">dev</span><span class="o">-&gt;</span><span class="n">states_usage</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+
+                 <span class="k">if</span> <span class="p">(</span><span class="n">s</span><span class="o">-&gt;</span><span class="n">disabled</span> <span class="o">||</span> <span class="n">su</span><span class="o">-&gt;</span><span class="n">disable</span><span class="p">)</span>
+                         <span class="k">continue</span><span class="p">;</span>
+                 <span class="k">if</span> <span class="p">(</span><span class="n">s</span><span class="o">-&gt;</span><span class="n">target_residency</span> <span class="o">&gt;</span> <span class="n">data</span><span class="o">-&gt;</span><span class="n">predicted_us</span><span class="p">)</span>
+                         <span class="k">continue</span><span class="p">;</span>
+                 <span class="k">if</span> <span class="p">(</span><span class="n">s</span><span class="o">-&gt;</span><span class="n">exit_latency</span> <span class="o">&gt;</span> <span class="n">latency_req</span><span class="p">)</span>
+                         <span class="k">continue</span><span class="p">;</span>
+                 <span class="n">data</span><span class="o">-&gt;</span><span class="n">last_state_idx</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+         <span class="p">}</span>
+</pre></div>
+
+
+<h3>menu_update</h3>
+<p>跟據上一次實際idle的時間 update上一次使用的factor
+大至上是: factor = old_factor * ( 實際 / 預計下一次 idle timer)</p>
+<p>選擇factor是根據<strong>預計idle時間的長短</strong>和<strong>有沒有io waiting的task</strong>決定
+因為<strong>不同預計時間對factor的反應程度</strong>不同
+初始預計時間越長，factor對實際值的影響就越大(base比較大嘛)
+對長預計時間剛好的factor，用在短預計時間上可能就會矯正過度
+所以某範圍的預計時間會被分到同個<strong>bucket</strong>，共用同個factor
+有io wait task的話就會加權，分到比較長的預計時間bucket</p>
+<p>目前是用指數分法 10^(n-1) ~ 10^n 已內的為一個bucket
+有io waiter的話 n += 6</p>
+<h2>I/O tracker cpuidle driver</h2>
+<p>Ref: 
+http://events.linuxfoundation.org/sites/events/files/slides/IOlatencyPrediction.pdf</p>
+<h3>Problem of menu driver</h3>
+<p>基本上Menu driver用已知的time來預測下一次的itle時間
+並用之前實際因為其他interrupt而提早的idle時間來調整
+........算是非常簡單的learning
+而且是建立在<strong>一段時間內的interrupt數量間隔差不多</strong>的前提下
+這樣的作法有幾個問題:</p>
+<ol>
+<li>把所有的interrupt都一起算，混在一起可能會將原本有period的interrupt忽略or算錯period</li>
+<li>需要時間收斂</li>
+<li>如果換CPU的話，收斂過程要重來</li>
+</ol>
+<h3>I/O Tracking cpu driver</h3>
+<p>因此Lenaro PM team的人就提出 <strong>預測I/O idle time</strong>的想法，因為:
+- I/O時間(e.g. HD, Flash)是固定or非常接近的
+    例如固定block size W/R的I/O wait time是差不多的
+- 一口氣read/write大量data時，就會是一連串類似的I/O time or 有重複的pattern
+- CPU migration也沒有關係，因為是根據I/O time算的</p>
+<p><img alt="ssd-iotime.png" src="http://user-image.logdown.io/user/13673/blog/12890/post/300400/9ayfcScLQcGZnYaQCxOi_ssd-iotime.png"></p>
+<h3>Implement</h3>
+<ol>
+<li>對每個Task，紀錄被I/O block的時間</li>
+<li>將I/O block時間分成好幾個區間(bucket)，統計次數</li>
+<li>將bucket跟據現在距上次hit的時間排序</li>
+<li>估計下次I/O block time <code>next_io_event</code>時，就取距離最近越常發生的(?
+<code>Score = nrhits / (pos + 1)²</code></li>
+</ol>
+<p><img alt="IOTrackingCPUIdle.png" src="http://user-image.logdown.io/user/13673/blog/12890/post/300400/sPFcKASwQWKDLZiXq1QB_IOTrackingCPUIdle.png"></p>
+<ol>
+<li>如果有多個task在wait，取最小的估計時間</li>
+<li>一樣從timer system取得<code>next_timer_event</code></li>
+<li>預計<strong>idle time = min(next_timer_event, next_io_event)</strong></li>
+</ol>
+<p>跟據他的實驗結果，這樣猜測的準卻度可以比menu driver好上很多
+而且這樣的設計可以和schedule綁在一起(在要進idle or I/O queue時做預測)<br>
+以後也可以做更準確的預測(e.g. predict I/O time per hardware device)</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+    </p>
+  </div>
+
+
+
+
+
+</article>
+
+    <footer>
+<p>&copy;  </p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Solring Lin ",
+  "url" : "http://solring.github.io",
+  "image": "images/profile.jpg",
+  "description": "Technical notes and everything."
+}
+</script>
+
+</body>
+</html>

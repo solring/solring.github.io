@@ -1,0 +1,224 @@
+
+<!DOCTYPE html>
+<html lang="chinese (traditional)">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="http://solring.github.io/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="http://solring.github.io/theme/pygments/monokai.min.css">
+  <link rel="stylesheet" type="text/css" href="http://solring.github.io/theme/font-awesome/css/font-awesome.min.css">
+
+
+    <link href="http://solring.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Solring Lin Atom">
+
+
+
+
+
+<meta name="author" content="Solring Lin" />
+<meta name="description" content="(archive) [GIT] Tips &amp; 碎碎念" />
+<meta name="keywords" content="">
+
+<meta property="og:site_name" content="Solring Lin"/>
+<meta property="og:title" content="[GIT] Tips &amp; 碎碎念"/>
+<meta property="og:description" content="(archive) [GIT] Tips &amp; 碎碎念"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="http://solring.github.io/git-tips-sui-sui-nian.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2016-01-19 07:45:00+08:00"/>
+<meta property="article:modified_time" content="2016-01-19 07:45:00+08:00"/>
+<meta property="article:author" content="http://solring.github.io/author/solring-lin.html">
+<meta property="article:section" content="Archive"/>
+<meta property="og:image" content="images/profile.jpg">
+
+  <title>Solring Lin &ndash; [GIT] Tips &amp; 碎碎念</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="http://solring.github.io">
+        <img src="images/profile.jpg" alt="SOLRING LIN" title="SOLRING LIN">
+      </a>
+      <h1><a href="http://solring.github.io">SOLRING LIN</a></h1>
+
+<p>Software Developer</p>
+      <nav>
+        <ul class="list">
+
+          <li><a href="#" target="_blank">About</a></li>
+          <li><a href="sherry12714@gmail.com" target="_blank">Email</a></li>
+        </ul>
+      </nav>
+
+      <ul class="social">
+        <li><a class="sc-github" href="http://github.com/solring" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-linkedin" href="https://www.linkedin.com/in/sherry-lin-73312843/" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+        <li><a class="sc-twitter" href="http://twitter.com/solringlin" target="_blank"><i class="fa fa-twitter"></i></a></li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+    <nav>
+      <a href="http://solring.github.io">    Home
+</a>
+
+      <a href="/archives.html">Archives</a>
+      <a href="/categories.html">categories</a>
+      <a href="/tags.html">Tags</a>
+
+      <a href="http://solring.github.io/feeds/all.atom.xml">    Atom
+</a>
+
+    </nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="git-tips-sui-sui-nian">[GIT] Tips & 碎碎念</h1>
+    <p>
+          Posted on 二 19 1月 2016 in <a href="http://solring.github.io/category/archive.html">Archive</a>
+
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>終於有時間把這一兩個月參與Project遇到的小問題&amp;解法紀錄下來啦(淚</p>
+<h3>Conflict of binary files</h3>
+<p>在merge or rebase的時候
+當Project裡面有一些prebuilt lib之類的東西conflict的時候
+就要手動solve......都已經變binary了無法手動選自己需要的feature啦ˊ_&gt;ˋ
+只好二選一，不是你的就是我的</p>
+<div class="highlight"><pre><span></span><span class="c1"># 選擇merge來源的</span>
+git checkout --theirs <span class="o">[</span>binary file name<span class="o">]</span>
+
+<span class="c1"># 選擇原本branch的</span>
+git checkout --ours <span class="o">[</span>binary file name<span class="o">]</span>
+
+git add <span class="o">[</span>binary file name<span class="o">]</span>
+
+<span class="c1"># add &amp; commit if doing merge</span>
+git commit
+
+<span class="c1"># continue if doing rebase</span>
+git rebase --continue
+</pre></div>
+
+
+<h3>修改上一個Commit message or 多加修改內容</h3>
+<p>有時候實在會腦殘忘記要多改什麼東西 or 眼殘忘記add哪個改好的file
+但相對應的內容的commit進去了
+這個時候就可以用<code>--amend</code>這個參數:</p>
+<div class="highlight"><pre><span></span>git add <span class="o">[</span>some thing u forgot to add :P<span class="o">]</span>
+git commit --amend
+<span class="c1"># Use editor edit commit msg</span>
+</pre></div>
+
+
+<p>這樣就不會多一個新的commit，而是拿上次的commit內容再重新commit一次
+也因為這樣<strong>commit的SHA1會改變</strong>
+意思是說，如果之前的commit已經上傳到remote的話就沒救啦XDDD
+想要push上去會一直被reject QQ
+這個時候就只好回復到remote的版本，再乖乖多加一個commit啦</p>
+<div class="highlight"><pre><span></span><span class="c1"># 回到上一個commit，並把修改的東西pop到working tree</span>
+git reset HEAD^
+
+<span class="c1"># save your new changes</span>
+git stash
+
+<span class="c1"># 完全回復到這個commit, 之後fast forward才不會掛掉</span>
+git reset --hard HEAD <span class="o">&amp;&amp;</span> git clean -df
+git merge <span class="o">[</span>your remote<span class="o">]</span>/<span class="o">[</span>corresponding branch<span class="o">]</span>
+
+<span class="c1"># 把新修改的pop出來</span>
+git stash pop
+
+<span class="c1"># 重新commit...</span>
+</pre></div>
+
+
+<h3>清除所有untracked files</h3>
+<p>解決上一個問題所發現的新招 :P</p>
+<div class="highlight"><pre><span></span>git clean -df
+
+# 包含回復.gitignore的話:
+git clean -dfx
+</pre></div>
+
+
+<h3>Rebase 多個conflict</h3>
+<p>有時候開branch自己開心的開發完，想要rebase回去比較漂亮的時候
+就會發現master也改到你的東西啦
+如果想要以master為準的話
+就會發現每rebase continue一次就要手動solve一次conflict............
+這個時候除了乖乖用merge以外
+也可以用squash把多個commit合併，這樣只要solve一次就可以了</p>
+<div class="highlight"><pre><span></span>git rebase -i master
+
+# in vim
+squash SHA1_1 your_first_commit
+squash SHA1_2 your_second_commit
+...
+pick SHA1 your_last_commit
+</pre></div>
+
+
+<p>不過這麼作的話就會把很多不相關的commit都打包在一起 :/
+所以比較厚工的作法就是rebase到不會出現conflict的地方
+再將master rebase到該branch上
+必要的時候可能還要先整理一下master branch :/</p>
+<div class="highlight"><pre><span></span># at branch dev
+git rebase --onto [SHA1 of the commit]
+git checkout master
+git rebase dev
+</pre></div>
+
+
+<p>應該還有更漂亮的解決方法
+不過重點是要盡量避開這種狀況 : P</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+    </p>
+  </div>
+
+
+
+
+
+</article>
+
+    <footer>
+<p>&copy;  </p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Solring Lin ",
+  "url" : "http://solring.github.io",
+  "image": "images/profile.jpg",
+  "description": "Technical notes and everything."
+}
+</script>
+
+</body>
+</html>
