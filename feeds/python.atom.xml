@@ -1,5 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Solring Lin - Python</title><link href="http://solring.github.io/" rel="alternate"></link><link href="http://solring.github.io/feeds/python.atom.xml" rel="self"></link><id>http://solring.github.io/</id><updated>2018-07-09T23:45:00+08:00</updated><entry><title>The very first Pelican post</title><link href="http://solring.github.io/my-first-post.html" rel="alternate"></link><published>2018-07-09T23:45:00+08:00</published><updated>2018-07-09T23:45:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:solring.github.io,2018-07-09:/my-first-post.html</id><summary type="html">&lt;p&gt;the very fist try&lt;/p&gt;</summary><content type="html">&lt;h1&gt;Hello World!!&lt;/h1&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Solring Lin - Python</title><link href="/" rel="alternate"></link><link href="/feeds/python.atom.xml" rel="self"></link><id>/</id><updated>2018-07-12T21:33:00+08:00</updated><entry><title>使用Pelican架設Blog</title><link href="/building-personal-blog-with-pelican.html" rel="alternate"></link><published>2018-07-12T21:33:00+08:00</published><updated>2018-07-12T21:33:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:None,2018-07-12:/building-personal-blog-with-pelican.html</id><summary type="html">&lt;p&gt;一直以來都是把技術筆記放在Logdown上，但他後來就沒有再繼續維護了，還是移出來好。技術文件嘛，我主要需求是...&lt;/p&gt;</summary><content type="html">&lt;h1&gt;某天我想不開...&lt;/h1&gt;
+&lt;p&gt;一直以來都是把技術筆記放在Logdown上，但他後來就沒有再繼續維護了，還是移出來好。
+技術文件嘛，我主要需求是:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;貼code要方便+漂亮 (有syntax highlight)&lt;/li&gt;
+&lt;li&gt;要可以用Markdown寫!!! (非常堅持) &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;原本是有想要放&lt;a href="https://medium.com/"&gt;Medium&lt;/a&gt;，又潮又漂亮。
+然而他不能用markdown.....
+老牌的Blogger也不太符合需求......好吧如此Geek的requirement看來還是要自己來滿足了。&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;(題外話，我架完站的瞬間發現Tumblr可以用markdown + 有支援code block, highlight好像也可以設定...)&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Survey了一下，自架技術Blog最受歡迎的方案應該算是&lt;a href="https://jekyllrb.com/"&gt;Jekyll + Github pages&lt;/a&gt;。資源多又穩定，而且聽說很快。但我不知怎麼腦袋壞掉...
+應該說，覺得還是用比較熟的Python和有碰過的jinja2 template engine會比較好自己客製化，
+就決定採用&lt;a href="https://blog.getpelican.com/"&gt;Pelican&lt;/a&gt;這個Static Site Generator來試著架在&lt;strong&gt;Github pages&lt;/strong&gt;上啦~~~&lt;/p&gt;
+&lt;h1&gt;Pelican Blog 架設流程&lt;/h1&gt;
+&lt;p&gt;以下會以&lt;a href="http://docs.getpelican.com/en/3.7.1/index.html"&gt;官方文件&lt;/a&gt;和我查到的&lt;a href="https://fedoramagazine.org/make-github-pages-blog-with-pelican/"&gt;這個流程&lt;/a&gt;為主，
+並說明一些要注意or調整的地方 (撞過的牆和一堆毛) : /。&lt;/p&gt;
+&lt;h2&gt;環境設定&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Windows: Python 3.7/2.7.15 (官方安裝包裝下去就是了，兩個都可用)&lt;/li&gt;
+&lt;li&gt;Mac OS: Python 2.7.15&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;使用&lt;code&gt;virtualenv&lt;/code&gt;建立虛擬環境後安裝官網建議的package:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ pip install markdown pelican typogrify
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;官方Build tool之一的&lt;code&gt;fabric&lt;/code&gt;不需要，原因之後會提到~&lt;/p&gt;
+&lt;h2&gt;新建立Pelican Site&lt;/h2&gt;
+&lt;p&gt;先照文件產生一個template site:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ pelican-quickstart
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;就會出現這樣的目錄結構:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;yourproject/
+├── content
+│   └── (pages)
+├── output                  # 產生的網站在這
+├── develop_server.sh
+├── fabfile.py              # fabric build tool用的檔案
+├── Makefile
+├── pelicanconf.py          # Main settings file
+└── publishconf.py          # Settings to use when ready to publish
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;使用make build&lt;/h3&gt;
+&lt;p&gt;如果要使用Python2的話要先改一下&lt;code&gt;Makefile&lt;/code&gt;的&lt;code&gt;PY&lt;/code&gt;參數，將python3改成python:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;PY?&lt;span class="o"&gt;=&lt;/span&gt;python
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;然後就可以直接build和跑起來了~&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ make html &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; make serve
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;使用fabric&lt;/h3&gt;
+&lt;p&gt;在Windows上我有嘗試用fabric來build，但他使用的API是v1太舊，已經無法使用現在直接安裝的fabric。
+(請參考&lt;a href="https://unix.stackexchange.com/questions/443643/import-error-fabric-api"&gt;這篇&lt;/a&gt;)
+嘗試著安裝fabric v1 package也會遇到以下的問題&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;......&lt;/span&gt;\&lt;span class="n"&gt;pelican&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;env2&lt;/span&gt;\&lt;span class="n"&gt;lib&lt;/span&gt;\&lt;span class="n"&gt;site&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;packages&lt;/span&gt;\&lt;span class="n"&gt;fabric&lt;/span&gt;\&lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;, line 13, in &amp;lt;module&amp;gt;&lt;/span&gt;
+    &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;operator&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;isMappingType&lt;/span&gt;
+&lt;span class="ne"&gt;ImportError&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;cannot&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;name&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;isMappingType&amp;#39;&lt;/span&gt; &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;operator&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;\&lt;span class="n"&gt;users&lt;/span&gt;\&lt;span class="n"&gt;solring&lt;/span&gt;\&lt;span class="n"&gt;projects&lt;/span&gt;\&lt;span class="n"&gt;pelican&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;env2&lt;/span&gt;\&lt;span class="n"&gt;lib&lt;/span&gt;\&lt;span class="n"&gt;operator&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;要porting到fabric v2又實在太麻煩XD 於是我就直接用官方build指令，一樣也可以成功產生網站。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pelican content -s publishconf.py
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;//待續~~~~~&lt;/p&gt;
+&lt;h2&gt;寫(搬)文章~&lt;/h2&gt;
+&lt;h2&gt;Pelican Themes&lt;/h2&gt;</content><category term="pelican"></category></entry><entry><title>The very first Pelican post</title><link href="/my-first-post.html" rel="alternate"></link><published>2018-07-09T23:45:00+08:00</published><updated>2018-07-09T23:45:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:None,2018-07-09:/my-first-post.html</id><summary type="html">&lt;p&gt;the very fist try&lt;/p&gt;</summary><content type="html">&lt;h1&gt;Hello World!!&lt;/h1&gt;
 &lt;p&gt;百廢待興。&lt;/p&gt;
 &lt;p&gt;看來離搬舊文章過來還有一段時間。(倒)&lt;/p&gt;
 &lt;h3&gt;TODO:&lt;/h3&gt;

@@ -1,0 +1,209 @@
+
+<!DOCTYPE html>
+<html lang="chinese (traditional)">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="./theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="./theme/pygments/monokai.min.css">
+  <link rel="stylesheet" type="text/css" href="./theme/font-awesome/css/font-awesome.min.css">
+
+
+    <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Solring Lin Atom">
+
+
+
+
+
+<meta name="author" content="Solring Lin" />
+<meta name="description" content="一直以來都是把技術筆記放在Logdown上，但他後來就沒有再繼續維護了，還是移出來好。技術文件嘛，我主要需求是..." />
+<meta name="keywords" content="pelican">
+
+<meta property="og:site_name" content="Solring Lin"/>
+<meta property="og:title" content="使用Pelican架設Blog"/>
+<meta property="og:description" content="一直以來都是把技術筆記放在Logdown上，但他後來就沒有再繼續維護了，還是移出來好。技術文件嘛，我主要需求是..."/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="./building-personal-blog-with-pelican.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2018-07-12 21:33:00+08:00"/>
+<meta property="article:modified_time" content="2018-07-12 21:33:00+08:00"/>
+<meta property="article:author" content="./author/solring-lin.html">
+<meta property="article:section" content="Python"/>
+<meta property="article:tag" content="pelican"/>
+<meta property="og:image" content="images/profile.jpg">
+
+  <title>Solring Lin &ndash; 使用Pelican架設Blog</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href=".">
+        <img src="images/profile.jpg" alt="SOLRING LIN" title="SOLRING LIN">
+      </a>
+      <h1><a href=".">SOLRING LIN</a></h1>
+
+<p>Software Developer | Technical notes and everything</p>
+      <nav>
+        <ul class="list">
+
+          <li><a href="#" target="_blank">About</a></li>
+          <li><a href="sherry12714@gmail.com" target="_blank">Email</a></li>
+        </ul>
+      </nav>
+
+      <ul class="social">
+        <li><a class="sc-github" href="http://github.com/solring" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-linkedin" href="https://www.linkedin.com/in/sherry-lin-73312843/" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+        <li><a class="sc-twitter" href="http://twitter.com/solringlin" target="_blank"><i class="fa fa-twitter"></i></a></li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+    <nav>
+      <a href=".">    Home
+</a>
+
+      <a href="/archives.html">Archives</a>
+      <a href="/categories.html">categories</a>
+      <a href="/tags.html">Tags</a>
+
+      <a href="/feeds/all.atom.xml">    Atom
+</a>
+
+    </nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="building-personal-blog-with-pelican">使用Pelican架設Blog</h1>
+    <p>
+          Posted on 週四 12 七月 2018 in <a href="./category/python.html">Python</a>
+
+
+    </p>
+  </header>
+
+
+  <div>
+    <h1>某天我想不開...</h1>
+<p>一直以來都是把技術筆記放在Logdown上，但他後來就沒有再繼續維護了，還是移出來好。
+技術文件嘛，我主要需求是:</p>
+<ul>
+<li>貼code要方便+漂亮 (有syntax highlight)</li>
+<li>要可以用Markdown寫!!! (非常堅持) </li>
+</ul>
+<p>原本是有想要放<a href="https://medium.com/">Medium</a>，又潮又漂亮。
+然而他不能用markdown.....
+老牌的Blogger也不太符合需求......好吧如此Geek的requirement看來還是要自己來滿足了。</p>
+<p><em>(題外話，我架完站的瞬間發現Tumblr可以用markdown + 有支援code block, highlight好像也可以設定...)</em></p>
+<p>Survey了一下，自架技術Blog最受歡迎的方案應該算是<a href="https://jekyllrb.com/">Jekyll + Github pages</a>。資源多又穩定，而且聽說很快。但我不知怎麼腦袋壞掉...
+應該說，覺得還是用比較熟的Python和有碰過的jinja2 template engine會比較好自己客製化，
+就決定採用<a href="https://blog.getpelican.com/">Pelican</a>這個Static Site Generator來試著架在<strong>Github pages</strong>上啦~~~</p>
+<h1>Pelican Blog 架設流程</h1>
+<p>以下會以<a href="http://docs.getpelican.com/en/3.7.1/index.html">官方文件</a>和我查到的<a href="https://fedoramagazine.org/make-github-pages-blog-with-pelican/">這個流程</a>為主，
+並說明一些要注意or調整的地方 (撞過的牆和一堆毛) : /。</p>
+<h2>環境設定</h2>
+<ul>
+<li>Windows: Python 3.7/2.7.15 (官方安裝包裝下去就是了，兩個都可用)</li>
+<li>Mac OS: Python 2.7.15</li>
+</ul>
+<p>使用<code>virtualenv</code>建立虛擬環境後安裝官網建議的package:</p>
+<div class="highlight"><pre><span></span>$ pip install markdown pelican typogrify
+</pre></div>
+
+
+<p>官方Build tool之一的<code>fabric</code>不需要，原因之後會提到~</p>
+<h2>新建立Pelican Site</h2>
+<p>先照文件產生一個template site:</p>
+<div class="highlight"><pre><span></span>$ pelican-quickstart
+</pre></div>
+
+
+<p>就會出現這樣的目錄結構:</p>
+<div class="highlight"><pre><span></span>yourproject/
+├── content
+│   └── (pages)
+├── output                  # 產生的網站在這
+├── develop_server.sh
+├── fabfile.py              # fabric build tool用的檔案
+├── Makefile
+├── pelicanconf.py          # Main settings file
+└── publishconf.py          # Settings to use when ready to publish
+</pre></div>
+
+
+<h3>使用make build</h3>
+<p>如果要使用Python2的話要先改一下<code>Makefile</code>的<code>PY</code>參數，將python3改成python:</p>
+<div class="highlight"><pre><span></span>PY?<span class="o">=</span>python
+</pre></div>
+
+
+<p>然後就可以直接build和跑起來了~</p>
+<div class="highlight"><pre><span></span>$ make html <span class="o">&amp;&amp;</span> make serve
+</pre></div>
+
+
+<h3>使用fabric</h3>
+<p>在Windows上我有嘗試用fabric來build，但他使用的API是v1太舊，已經無法使用現在直接安裝的fabric。
+(請參考<a href="https://unix.stackexchange.com/questions/443643/import-error-fabric-api">這篇</a>)
+嘗試著安裝fabric v1 package也會遇到以下的問題</p>
+<div class="highlight"><pre><span></span><span class="o">......</span>\<span class="n">pelican</span><span class="o">-</span><span class="n">env2</span>\<span class="n">lib</span>\<span class="n">site</span><span class="o">-</span><span class="n">packages</span>\<span class="n">fabric</span>\<span class="n">main</span><span class="o">.</span><span class="n">py</span><span class="s2">&quot;, line 13, in &lt;module&gt;</span>
+    <span class="kn">from</span> <span class="nn">operator</span> <span class="kn">import</span> <span class="n">isMappingType</span>
+<span class="ne">ImportError</span><span class="p">:</span> <span class="n">cannot</span> <span class="kn">import</span> <span class="nn">name</span> <span class="s1">&#39;isMappingType&#39;</span> <span class="kn">from</span> <span class="s1">&#39;operator&#39;</span> <span class="p">(</span><span class="n">c</span><span class="p">:</span>\<span class="n">users</span>\<span class="n">solring</span>\<span class="n">projects</span>\<span class="n">pelican</span><span class="o">-</span><span class="n">env2</span>\<span class="n">lib</span>\<span class="n">operator</span><span class="o">.</span><span class="n">py</span><span class="p">)</span>
+</pre></div>
+
+
+<p>要porting到fabric v2又實在太麻煩XD 於是我就直接用官方build指令，一樣也可以成功產生網站。</p>
+<div class="highlight"><pre><span></span>pelican content -s publishconf.py
+</pre></div>
+
+
+<p>//待續~~~~~</p>
+<h2>寫(搬)文章~</h2>
+<h2>Pelican Themes</h2>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="./tag/pelican.html">pelican</a>
+    </p>
+  </div>
+
+
+
+
+
+</article>
+
+    <footer>
+<p>&copy;  </p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Solring Lin ",
+  "url" : ".",
+  "image": "images/profile.jpg",
+  "description": "Technical notes and everything."
+}
+</script>
+
+</body>
+</html>

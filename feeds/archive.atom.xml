@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Solring Lin - Archive</title><link href="http://solring.github.io/" rel="alternate"></link><link href="http://solring.github.io/feeds/archive.atom.xml" rel="self"></link><id>http://solring.github.io/</id><updated>2017-07-10T05:59:00+08:00</updated><entry><title>Magenta Job/Process/Thread Study</title><link href="http://solring.github.io/magenta-jobprocessthread-study.html" rel="alternate"></link><published>2017-07-10T05:59:00+08:00</published><updated>2017-07-10T05:59:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:solring.github.io,2017-07-10:/magenta-jobprocessthread-study.html</id><summary type="html">&lt;p&gt;(archive) Magenta Job/Process/Thread Study&lt;/p&gt;</summary><content type="html">&lt;h1&gt;Magenta Job/Process/Thread Study&lt;/h1&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Solring Lin - Archive</title><link href="/" rel="alternate"></link><link href="/feeds/archive.atom.xml" rel="self"></link><id>/</id><updated>2017-07-10T05:59:00+08:00</updated><entry><title>Magenta Job/Process/Thread Study</title><link href="/magenta-jobprocessthread-study.html" rel="alternate"></link><published>2017-07-10T05:59:00+08:00</published><updated>2017-07-10T05:59:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:None,2017-07-10:/magenta-jobprocessthread-study.html</id><summary type="html">&lt;p&gt;(archive) Magenta Job/Process/Thread Study&lt;/p&gt;</summary><content type="html">&lt;h1&gt;Magenta Job/Process/Thread Study&lt;/h1&gt;
 &lt;h1&gt;Thread&lt;/h1&gt;
 &lt;p&gt;syscall: kernel/lib/syscalls/syscalls_task.cpp
 sys_thread_create
@@ -40,7 +40,7 @@ sys_thread_create
 &lt;p&gt;source: kernel/lib/magenta/process_dispatcher.cpp&lt;/p&gt;
 &lt;h1&gt;System Call kernel entries&lt;/h1&gt;
 &lt;p&gt;source location: kernel/lib/syscalls/&lt;/p&gt;
-&lt;p&gt;接到各個kernel space object dispatcher&lt;/p&gt;</content></entry><entry><title>Google Magenta Micro-kernel Survey</title><link href="http://solring.github.io/google-magenta-micro-kernel-survey.html" rel="alternate"></link><published>2017-06-17T12:26:00+08:00</published><updated>2017-06-17T12:26:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:solring.github.io,2017-06-17:/google-magenta-micro-kernel-survey.html</id><summary type="html">&lt;p&gt;(archive) Google Magenta Micro-kernel Survey&lt;/p&gt;</summary><content type="html">&lt;h1&gt;Introduction&lt;/h1&gt;
+&lt;p&gt;接到各個kernel space object dispatcher&lt;/p&gt;</content></entry><entry><title>Google Magenta Micro-kernel Survey</title><link href="/google-magenta-micro-kernel-survey.html" rel="alternate"></link><published>2017-06-17T12:26:00+08:00</published><updated>2017-06-17T12:26:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:None,2017-06-17:/google-magenta-micro-kernel-survey.html</id><summary type="html">&lt;p&gt;(archive) Google Magenta Micro-kernel Survey&lt;/p&gt;</summary><content type="html">&lt;h1&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;Google設計了一個跨平台的OS &lt;a href="https://zh.wikipedia.org/wiki/Google_Fuchsia"&gt;Fuchsia&lt;/a&gt; (wiki)
 他的主要的基礎micro-kernel OS就是&lt;a href="https://fuchsia.googlesource.com/magenta/"&gt;Magenta&lt;/a&gt; (codebase &amp;amp; doc)
 裡面加了很多Security相關的設計&lt;/p&gt;
@@ -127,31 +127,10 @@ Virtual Memory Objects represent a set of physical pages of memory.
 &lt;li&gt;Magenta has first class user-mode support. LK does not.&lt;/li&gt;
 &lt;li&gt;Magenta is an object-handle system. LK does not have either concept.&lt;/li&gt;
 &lt;li&gt;Magenta has a capability-based security model. In LK all code is trusted.&lt;/li&gt;
-&lt;/ul&gt;</content></entry><entry><title>[NOTE] ARM Secure Monitor Call</title><link href="http://solring.github.io/note-arm-secure-monitor-call.html" rel="alternate"></link><published>2017-06-14T12:26:00+08:00</published><updated>2017-06-14T12:26:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:solring.github.io,2017-06-14:/note-arm-secure-monitor-call.html</id><summary type="html">&lt;p&gt;(archive) [NOTE] ARM Secure Monitor Call&lt;/p&gt;</summary><content type="html">&lt;p&gt;https://read01.com/AEDBeJ.html&lt;/p&gt;
+&lt;/ul&gt;</content></entry><entry><title>[NOTE] ARM Secure Monitor Call</title><link href="/note-arm-secure-monitor-call.html" rel="alternate"></link><published>2017-06-14T12:26:00+08:00</published><updated>2017-06-14T12:26:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:None,2017-06-14:/note-arm-secure-monitor-call.html</id><summary type="html">&lt;p&gt;(archive) [NOTE] ARM Secure Monitor Call&lt;/p&gt;</summary><content type="html">&lt;p&gt;https://read01.com/AEDBeJ.html&lt;/p&gt;
 &lt;p&gt;https://mycpp.hackpad.com/ep/pad/static/nSiBMBB9RNN&lt;/p&gt;
 &lt;p&gt;有關手機安全　相當詳細的報導
-https://read01.com/4k0azR.html&lt;/p&gt;</content></entry><entry><title>[Poem] Invisible Tears in Fish Bowl</title><link href="http://solring.github.io/poem-invisible-tears-in-fish-bowl.html" rel="alternate"></link><published>2017-05-22T17:05:00+08:00</published><updated>2017-05-22T17:05:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:solring.github.io,2017-05-22:/poem-invisible-tears-in-fish-bowl.html</id><summary type="html">&lt;p&gt;(archive) [Poem] Invisible Tears in Fish Bowl&lt;/p&gt;</summary><content type="html">&lt;p&gt;[]&lt;/p&gt;
-&lt;p&gt;像斷尾的金魚&lt;/p&gt;
-&lt;p&gt;原地打轉&lt;/p&gt;
-&lt;p&gt;這樣也好 免得&lt;/p&gt;
-&lt;p&gt;追著眼角你離去的身影&lt;/p&gt;
-&lt;p&gt;卻只撞到&lt;/p&gt;
-&lt;p&gt;尷尬的玻璃壁&lt;/p&gt;</content></entry><entry><title>[Poem] All you can do is be elegant.</title><link href="http://solring.github.io/poem-all-you-can-do-is-be-elegant.html" rel="alternate"></link><published>2017-05-22T16:59:00+08:00</published><updated>2017-05-22T16:59:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:solring.github.io,2017-05-22:/poem-all-you-can-do-is-be-elegant.html</id><summary type="html">&lt;p&gt;(archive) [Poem] All you can do is be elegant.&lt;/p&gt;</summary><content type="html">&lt;p&gt;他們說 沒有人需要為你的悲傷負責
-你所能做的只是變得優雅
-優雅地轉身
-優雅地跌倒
-優雅地滑行100公尺
-再優雅地爬起來&lt;/p&gt;
-&lt;p&gt;把扎在心上 不著邊際的玩笑話 拔起來
-記在帳本裡
-(每天翻一翻 練習疼痛)
-沒被磨掉的 沒準之後還會用上&lt;/p&gt;
-&lt;p&gt;夜裡 在頭殼鑽個洞
-把沸騰的思緒倒出來
-用詩 畫 音樂 和酒精回填&lt;/p&gt;
-&lt;p&gt;最後別忘了
-為你達不到的每項優雅
-優雅地和觀眾道歉&lt;/p&gt;</content><category term="[Poem]"></category></entry><entry><title>[Trusty OS] 加system call</title><link href="http://solring.github.io/trusty-os-jia-system-call.html" rel="alternate"></link><published>2017-02-15T07:32:00+08:00</published><updated>2017-02-15T07:32:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:solring.github.io,2017-02-15:/trusty-os-jia-system-call.html</id><summary type="html">&lt;p&gt;(archive) [Trusty OS] 加system call&lt;/p&gt;</summary><content type="html">&lt;p&gt;Tool: lk/trusty/lib/syscall/stubgen/stubgen.py&lt;/p&gt;
+https://read01.com/4k0azR.html&lt;/p&gt;</content></entry><entry><title>[Trusty OS] 加system call</title><link href="/trusty-os-jia-system-call.html" rel="alternate"></link><published>2017-02-15T07:32:00+08:00</published><updated>2017-02-15T07:32:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:None,2017-02-15:/trusty-os-jia-system-call.html</id><summary type="html">&lt;p&gt;(archive) [Trusty OS] 加system call&lt;/p&gt;</summary><content type="html">&lt;p&gt;Tool: lk/trusty/lib/syscall/stubgen/stubgen.py&lt;/p&gt;
 &lt;h2&gt;Implement system call&lt;/h2&gt;
 &lt;p&gt;在&lt;code&gt;lk/trusty/lib/trusty/syscall.c&lt;/code&gt;裡面加system call的entry
 NOTE: function開頭一定要是&lt;code&gt;sys_&lt;/code&gt;，例如&lt;code&gt;sys_write&lt;/code&gt;&lt;/p&gt;
@@ -170,7 +149,7 @@ NOTE: function開頭一定要是&lt;code&gt;sys_&lt;/code&gt;，例如&lt;code&g
 &lt;p&gt;生成實際使用的header file和vector table
 這邊可能要看你的平台實際上是使用哪裡的&lt;code&gt;trusty_syscall.S&lt;/code&gt;和&lt;code&gt;trusty_syscall.h&lt;/code&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;python lk/trusty/lib/syscall/stubgen/stubgen.py -s lib/lib/libc-trusty/arch/arm/trusty_syscall.S -d lib/include/trusty_syscalls.h lk/trusty/lib/trusty/include/syscall_table.h
-&lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>神奇的線稿自動上色PaintsChainer - 架設</title><link href="http://solring.github.io/shen-qi-de-xian-gao-zi-dong-shang-se-paintschainer-jia-she.html" rel="alternate"></link><published>2017-01-30T02:13:00+08:00</published><updated>2017-01-30T02:13:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:solring.github.io,2017-01-30:/shen-qi-de-xian-gao-zi-dong-shang-se-paintschainer-jia-she.html</id><summary type="html">&lt;p&gt;(archive) 神奇的線稿自動上色PaintsChainer - 架設&lt;/p&gt;</summary><content type="html">&lt;p&gt;過年發現這個神奇的Project!
+&lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>神奇的線稿自動上色PaintsChainer - 架設</title><link href="/shen-qi-de-xian-gao-zi-dong-shang-se-paintschainer-jia-she.html" rel="alternate"></link><published>2017-01-30T02:13:00+08:00</published><updated>2017-01-30T02:13:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:None,2017-01-30:/shen-qi-de-xian-gao-zi-dong-shang-se-paintschainer-jia-she.html</id><summary type="html">&lt;p&gt;(archive) 神奇的線稿自動上色PaintsChainer - 架設&lt;/p&gt;</summary><content type="html">&lt;p&gt;過年發現這個神奇的Project!
 https://github.com/taizan/PaintsChainer
 因為太神了+官方server爆流量(?) 就想要自己架來玩玩
 紀錄一下艱辛的過程...&lt;/p&gt;
@@ -255,7 +234,7 @@ $ py -3 -m pip install opencv_python-3.2.0-cp36-cp36m-win_amd64.whl
 差不多這樣就可以跑啦
 Github上也有更新越來越多安裝資訊了
 目前也有一堆人跳下去了，有問題應該都可以在上面發問＆找答案&lt;/p&gt;
-&lt;p&gt;code study還是留到下一篇.....&lt;/p&gt;</content></entry><entry><title>D3.js notes realtime chart</title><link href="http://solring.github.io/d3js-notes-realtime-chart.html" rel="alternate"></link><published>2016-09-30T07:24:00+08:00</published><updated>2016-09-30T07:24:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:solring.github.io,2016-09-30:/d3js-notes-realtime-chart.html</id><summary type="html">&lt;p&gt;(archive) D3.js notes realtime chart&lt;/p&gt;</summary><content type="html">&lt;p&gt;http://bl.ocks.org/simenbrekken/6634070
+&lt;p&gt;code study還是留到下一篇.....&lt;/p&gt;</content></entry><entry><title>D3.js notes realtime chart</title><link href="/d3js-notes-realtime-chart.html" rel="alternate"></link><published>2016-09-30T07:24:00+08:00</published><updated>2016-09-30T07:24:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:None,2016-09-30:/d3js-notes-realtime-chart.html</id><summary type="html">&lt;p&gt;(archive) D3.js notes realtime chart&lt;/p&gt;</summary><content type="html">&lt;p&gt;http://bl.ocks.org/simenbrekken/6634070
 https://bl.ocks.org/boeric/6a83de20f780b42fadb9&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;!&lt;/span&gt;&lt;span class="nx"&gt;doctype&lt;/span&gt; &lt;span class="nx"&gt;html&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
 &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nx"&gt;html&lt;/span&gt; &lt;span class="nx"&gt;lang&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;en&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
@@ -470,7 +449,7 @@ https://bl.ocks.org/boeric/6a83de20f780b42fadb9&lt;/p&gt;
 &lt;span class="nx"&gt;dataGenerator&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
 
 &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="err"&gt;/script&amp;gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>[GIT] patch只apply部份檔案</title><link href="http://solring.github.io/git-patchzhi-applybu-fen-dang-an.html" rel="alternate"></link><published>2016-09-20T07:21:00+08:00</published><updated>2016-09-20T07:21:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:solring.github.io,2016-09-20:/git-patchzhi-applybu-fen-dang-an.html</id><summary type="html">&lt;p&gt;(archive) [GIT] patch只apply部份檔案&lt;/p&gt;</summary><content type="html">&lt;p&gt;因為commit沒有切乾淨or實在是太多commit很難pick
+&lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>[GIT] patch只apply部份檔案</title><link href="/git-patchzhi-applybu-fen-dang-an.html" rel="alternate"></link><published>2016-09-20T07:21:00+08:00</published><updated>2016-09-20T07:21:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:None,2016-09-20:/git-patchzhi-applybu-fen-dang-an.html</id><summary type="html">&lt;p&gt;(archive) [GIT] patch只apply部份檔案&lt;/p&gt;</summary><content type="html">&lt;p&gt;因為commit沒有切乾淨or實在是太多commit很難pick
 想把某個branch上開發的功能做成patch抽出來apply到另一個codebase的時候
 就會因為有些檔案不存在而apply fail
 或是產生很難resolve的conflict&lt;/p&gt;
@@ -482,7 +461,7 @@ https://bl.ocks.org/boeric/6a83de20f780b42fadb9&lt;/p&gt;
 &lt;p&gt;然後再從error看出哪些檔案不存在，直接用&lt;code&gt;--exclude&lt;/code&gt;繞開
 其他的conflict再用3-way merge的方法resolve&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git apply -3 --exclude=paths/to/exclude/* your.patch
-&lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>[Android] [PokemonGO] 我也來inverse engineering一下</title><link href="http://solring.github.io/android-pokemongo-wo-ye-lai-inverse-engineeringyi-xia.html" rel="alternate"></link><published>2016-08-25T02:22:00+08:00</published><updated>2016-08-25T02:22:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:solring.github.io,2016-08-25:/android-pokemongo-wo-ye-lai-inverse-engineeringyi-xia.html</id><summary type="html">&lt;p&gt;(archive) [Android] [PokemonGO] 我也來inverse engineering一下&lt;/p&gt;</summary><content type="html">&lt;p&gt;其實大部分的分析就靠這篇&lt;a href="http://www.inside.com.tw/2016/08/24/source-code-of-pokemon-go"&gt;神文&lt;/a&gt;就可以了XD
+&lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>[Android] [PokemonGO] 我也來inverse engineering一下</title><link href="/android-pokemongo-wo-ye-lai-inverse-engineeringyi-xia.html" rel="alternate"></link><published>2016-08-25T02:22:00+08:00</published><updated>2016-08-25T02:22:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:None,2016-08-25:/android-pokemongo-wo-ye-lai-inverse-engineeringyi-xia.html</id><summary type="html">&lt;p&gt;(archive) [Android] [PokemonGO] 我也來inverse engineering一下&lt;/p&gt;</summary><content type="html">&lt;p&gt;其實大部分的分析就靠這篇&lt;a href="http://www.inside.com.tw/2016/08/24/source-code-of-pokemon-go"&gt;神文&lt;/a&gt;就可以了XD
 但其中對於Sensor/Location資訊是如何利用的著墨較少，所以只好自己來一下
 亂猜的部分很多，還請不吝指教&amp;lt;(&lt;em&gt;    &lt;/em&gt;)&amp;gt;&lt;/p&gt;
 &lt;h1&gt;Use dex2jar &amp;amp; JD-GUI to decompile .dex files&lt;/h1&gt;
@@ -612,7 +591,7 @@ int     WALKING     The device is on a user who is walking.
 想想這款遊戲核心技術部分本來就不在終端裝置，還沒有做多少優化也是滿合理的 : P&lt;/p&gt;
 &lt;p&gt;至於剩下有關網路的部分還是看原本的神文就好XD
 API實作方法應該不會改動太大&lt;/p&gt;
-&lt;p&gt;以上~&lt;/p&gt;</content></entry><entry><title>[Android] N版PowerManager powerHint</title><link href="http://solring.github.io/android-nban-powermanager-powerhint.html" rel="alternate"></link><published>2016-08-04T04:09:00+08:00</published><updated>2016-08-04T04:09:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:solring.github.io,2016-08-04:/android-nban-powermanager-powerhint.html</id><summary type="html">&lt;p&gt;(archive) [Android] N版PowerManager powerHint&lt;/p&gt;</summary><content type="html">&lt;p&gt;Power hint顧名思義就是從framework層打hint下去給平台，讓下層知道說現在上面是在謥殺虫(所謂上情下達)
+&lt;p&gt;以上~&lt;/p&gt;</content></entry><entry><title>[Android] N版PowerManager powerHint</title><link href="/android-nban-powermanager-powerhint.html" rel="alternate"></link><published>2016-08-04T04:09:00+08:00</published><updated>2016-08-04T04:09:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:None,2016-08-04:/android-nban-powermanager-powerhint.html</id><summary type="html">&lt;p&gt;(archive) [Android] N版PowerManager powerHint&lt;/p&gt;</summary><content type="html">&lt;p&gt;Power hint顧名思義就是從framework層打hint下去給平台，讓下層知道說現在上面是在謥殺虫(所謂上情下達)
 就可以根據情境調整power management的機制(e.g. boost performance, 降freq省電....blahblah)
 先來看一下Power HAL有哪些hint:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cm"&gt;/*&lt;/span&gt;
@@ -672,7 +651,7 @@ mPowerManagerInternal.powerHint(PowerManagerInternal.POWER_HINT_INTERACTION, 0);
 
 &lt;p&gt;Surface Flinger則是從native層使用&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;status_t&lt;/span&gt; &lt;span class="n"&gt;status&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;mPowerManager&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;powerHint&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;POWER_HINT_VSYNC&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;enabled&lt;/span&gt; &lt;span class="o"&gt;?&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</content><category term="[Android PowerManagement]"></category></entry><entry><title>[ARM] general registers</title><link href="http://solring.github.io/arm-general-registers.html" rel="alternate"></link><published>2016-05-05T05:58:00+08:00</published><updated>2016-05-05T05:58:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:solring.github.io,2016-05-05:/arm-general-registers.html</id><summary type="html">&lt;p&gt;(archive) [ARM] general registers&lt;/p&gt;</summary><content type="html">&lt;p&gt;General Registers
+&lt;/pre&gt;&lt;/div&gt;</content><category term="[Android PowerManagement]"></category></entry><entry><title>[ARM] general registers</title><link href="/arm-general-registers.html" rel="alternate"></link><published>2016-05-05T05:58:00+08:00</published><updated>2016-05-05T05:58:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:None,2016-05-05:/arm-general-registers.html</id><summary type="html">&lt;p&gt;(archive) [ARM] general registers&lt;/p&gt;</summary><content type="html">&lt;p&gt;General Registers
 .................&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Name    Number      APCS Role
 
@@ -694,10 +673,10 @@ ip      12          scratch register / new-sb in inter-link-unit calls
 sp      13          lower end of current stack frame
 lr      14          link address / scratch register
 pc      15          program counter
-&lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>[ARM] bug of binutil for CortexM3/4 .plt generation</title><link href="http://solring.github.io/arm-bug-of-binutil-for-cortexm34-plt-generation.html" rel="alternate"></link><published>2016-05-05T04:24:00+08:00</published><updated>2016-05-05T04:24:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:solring.github.io,2016-05-05:/arm-bug-of-binutil-for-cortexm34-plt-generation.html</id><summary type="html">&lt;p&gt;(archive) [ARM] bug of binutil for CortexM3/4 .plt generation&lt;/p&gt;</summary><content type="html">&lt;p&gt;記錄一下最近踩到的地雷
-https://sourceware.org/bugzilla/show_bug.cgi?id=16017&lt;/p&gt;</content></entry><entry><title>[轉] C語言字串切割</title><link href="http://solring.github.io/zhuan-cyu-yan-zi-chuan-qie-ge.html" rel="alternate"></link><published>2016-04-26T12:15:00+08:00</published><updated>2016-04-26T12:15:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:solring.github.io,2016-04-26:/zhuan-cyu-yan-zi-chuan-qie-ge.html</id><summary type="html">&lt;p&gt;(archive) [轉] C語言字串切割&lt;/p&gt;</summary><content type="html">&lt;p&gt;厲害的分析!
+&lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>[ARM] bug of binutil for CortexM3/4 .plt generation</title><link href="/arm-bug-of-binutil-for-cortexm34-plt-generation.html" rel="alternate"></link><published>2016-05-05T04:24:00+08:00</published><updated>2016-05-05T04:24:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:None,2016-05-05:/arm-bug-of-binutil-for-cortexm34-plt-generation.html</id><summary type="html">&lt;p&gt;(archive) [ARM] bug of binutil for CortexM3/4 .plt generation&lt;/p&gt;</summary><content type="html">&lt;p&gt;記錄一下最近踩到的地雷
+https://sourceware.org/bugzilla/show_bug.cgi?id=16017&lt;/p&gt;</content></entry><entry><title>[轉] C語言字串切割</title><link href="/zhuan-cyu-yan-zi-chuan-qie-ge.html" rel="alternate"></link><published>2016-04-26T12:15:00+08:00</published><updated>2016-04-26T12:15:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:None,2016-04-26:/zhuan-cyu-yan-zi-chuan-qie-ge.html</id><summary type="html">&lt;p&gt;(archive) [轉] C語言字串切割&lt;/p&gt;</summary><content type="html">&lt;p&gt;厲害的分析!
 (用了那麼久才知道strtok會改到原字串 :PPPP)
-https://xiwan.info/archive/string-split-strtok-strtok-r-strsep.html&lt;/p&gt;</content></entry><entry><title>GNU LD指定symbol address</title><link href="http://solring.github.io/gnu-ldzhi-ding-symbol-address.html" rel="alternate"></link><published>2016-03-23T05:54:00+08:00</published><updated>2016-03-23T05:54:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:solring.github.io,2016-03-23:/gnu-ldzhi-ding-symbol-address.html</id><summary type="html">&lt;p&gt;(archive) GNU LD指定symbol address&lt;/p&gt;</summary><content type="html">&lt;p&gt;在Embedded System有時候會需要強制修改shared object用到的OS routine symbol address
+https://xiwan.info/archive/string-split-strtok-strtok-r-strsep.html&lt;/p&gt;</content></entry><entry><title>GNU LD指定symbol address</title><link href="/gnu-ldzhi-ding-symbol-address.html" rel="alternate"></link><published>2016-03-23T05:54:00+08:00</published><updated>2016-03-23T05:54:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:None,2016-03-23:/gnu-ldzhi-ding-symbol-address.html</id><summary type="html">&lt;p&gt;(archive) GNU LD指定symbol address&lt;/p&gt;</summary><content type="html">&lt;p&gt;在Embedded System有時候會需要強制修改shared object用到的OS routine symbol address
 讓他可以指到routine在image裡的位置&lt;/p&gt;
 &lt;p&gt;一樣是參考&lt;a href="https://ftp.gnu.org/old-gnu/Manuals/ld-2.9.1/html_node/ld_3.html"&gt;手冊&lt;/a&gt;，找到這個option:
 &lt;strong&gt;--just-symbols=filename&lt;/strong&gt;&lt;/p&gt;
@@ -714,7 +693,7 @@ symbol2 = 0x23456789;
 
 &lt;p&gt;其中等號旁的空白是必須的，如果format不對的話ld會噴error說他看不懂&lt;/p&gt;
 &lt;p&gt;用了這個之後，link出來的symbol就會從UND變成ABS啦&lt;/p&gt;
-&lt;p&gt;當然也可以用&lt;code&gt;--defsym symbol=0x12345678&lt;/code&gt;，但是symbol一多的時候還是用symbol file比較快&lt;/p&gt;</content></entry><entry><title>GNU LD Script - OVERLAY 和 AT的神奇用法</title><link href="http://solring.github.io/gnu-ld-script-overlay-he-atde-shen-qi-yong-fa.html" rel="alternate"></link><published>2016-03-10T12:23:00+08:00</published><updated>2016-03-10T12:23:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:solring.github.io,2016-03-10:/gnu-ld-script-overlay-he-atde-shen-qi-yong-fa.html</id><summary type="html">&lt;p&gt;(archive) GNU LD Script - OVERLAY 和 AT的神奇用法&lt;/p&gt;</summary><content type="html">&lt;p&gt;GNU ld linker有設計一套專用的script，可以讓programmer自訂你link出來的東西長什麼樣(?
+&lt;p&gt;當然也可以用&lt;code&gt;--defsym symbol=0x12345678&lt;/code&gt;，但是symbol一多的時候還是用symbol file比較快&lt;/p&gt;</content></entry><entry><title>GNU LD Script - OVERLAY 和 AT的神奇用法</title><link href="/gnu-ld-script-overlay-he-atde-shen-qi-yong-fa.html" rel="alternate"></link><published>2016-03-10T12:23:00+08:00</published><updated>2016-03-10T12:23:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:None,2016-03-10:/gnu-ld-script-overlay-he-atde-shen-qi-yong-fa.html</id><summary type="html">&lt;p&gt;(archive) GNU LD Script - OVERLAY 和 AT的神奇用法&lt;/p&gt;</summary><content type="html">&lt;p&gt;GNU ld linker有設計一套專用的script，可以讓programmer自訂你link出來的東西長什麼樣(?
 從Memory的layout、code RO/RW data的位置、Load前和實際上run的address等等
 這樣的工具在Embedded System很常用到&lt;/p&gt;
 &lt;p&gt;詳細的用法可以參照&lt;a href="http://www.math.utah.edu/docs/info/ld_3.html"&gt;手冊&lt;/a&gt;和這位大大整理的&lt;a href="http://wen00072-blog.logdown.com/posts/246070-study-on-the-linker-script-2-setcion-command"&gt;導讀&lt;/a&gt;&lt;/p&gt;
@@ -739,7 +718,7 @@ SECTION {
 
 &lt;p&gt;這樣這個Section的LMA就會和其他Section照順序被排進RAM，而LMA則是照順序排進ROM
 &lt;strong&gt;但要注意的是，這樣做的話在OVERLAY後面的section的LMA也會被自動排進ROM&lt;/strong&gt;
-在後面的section手動用&lt;code&gt;&amp;gt; RAM&lt;/code&gt;也無效，要再研究一下有沒有其他辦法設定&lt;/p&gt;</content></entry><entry><title>幫elf減肥</title><link href="http://solring.github.io/bang-elfjian-fei.html" rel="alternate"></link><published>2016-02-24T07:12:00+08:00</published><updated>2016-02-24T07:12:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:solring.github.io,2016-02-24:/bang-elfjian-fei.html</id><summary type="html">&lt;p&gt;(archive) 幫elf減肥&lt;/p&gt;</summary><content type="html">&lt;p&gt;編譯完的elf檔案都預設會包含symbol table和debug等等資料
+在後面的section手動用&lt;code&gt;&amp;gt; RAM&lt;/code&gt;也無效，要再研究一下有沒有其他辦法設定&lt;/p&gt;</content></entry><entry><title>幫elf減肥</title><link href="/bang-elfjian-fei.html" rel="alternate"></link><published>2016-02-24T07:12:00+08:00</published><updated>2016-02-24T07:12:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:None,2016-02-24:/bang-elfjian-fei.html</id><summary type="html">&lt;p&gt;(archive) 幫elf減肥&lt;/p&gt;</summary><content type="html">&lt;p&gt;編譯完的elf檔案都預設會包含symbol table和debug等等資料
 如果要去除的話可以用strip&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;cp myApp myApp_striped
 strip myApp_striped
@@ -752,7 +731,7 @@ strip myApp_striped
 
 
 &lt;p&gt;ref: 
-http://calamaryshop.blogspot.tw/2011/11/linux-strip-objcopy.htmlhttp://calamaryshop.blogspot.tw/2011/11/linux-strip-objcopy.html&lt;/p&gt;</content></entry><entry><title>Vim &amp; tmux plugins</title><link href="http://solring.github.io/vim-tmux-plugins.html" rel="alternate"></link><published>2016-01-25T02:50:00+08:00</published><updated>2016-01-25T02:50:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:solring.github.io,2016-01-25:/vim-tmux-plugins.html</id><summary type="html">&lt;p&gt;(archive) Vim &amp;amp; tmux plugins&lt;/p&gt;</summary><content type="html">&lt;p&gt;整理一下目前使用的一些Vim plugin和tmux設定&lt;/p&gt;
+http://calamaryshop.blogspot.tw/2011/11/linux-strip-objcopy.htmlhttp://calamaryshop.blogspot.tw/2011/11/linux-strip-objcopy.html&lt;/p&gt;</content></entry><entry><title>Vim &amp; tmux plugins</title><link href="/vim-tmux-plugins.html" rel="alternate"></link><published>2016-01-25T02:50:00+08:00</published><updated>2016-01-25T02:50:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:None,2016-01-25:/vim-tmux-plugins.html</id><summary type="html">&lt;p&gt;(archive) Vim &amp;amp; tmux plugins&lt;/p&gt;</summary><content type="html">&lt;p&gt;整理一下目前使用的一些Vim plugin和tmux設定&lt;/p&gt;
 &lt;h1&gt;Vundle&lt;/h1&gt;
 &lt;p&gt;不管怎樣都要先裝Vundle~&lt;/p&gt;
 &lt;p&gt;下載&lt;/p&gt;
@@ -912,7 +891,7 @@ Plugin &amp;#39;honza/vim-snippets&amp;#39;
 &lt;h2&gt;Auto pair&lt;/h2&gt;
 &lt;p&gt;簡單的懶人好物XD 自動打出一組括號&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Plugin &amp;#39;Auto-Pairs&amp;#39;
-&lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>VPN material</title><link href="http://solring.github.io/vpn-material.html" rel="alternate"></link><published>2016-01-21T08:05:00+08:00</published><updated>2016-01-21T08:05:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:solring.github.io,2016-01-21:/vpn-material.html</id><summary type="html">&lt;p&gt;(archive) VPN material&lt;/p&gt;</summary><content type="html"></content></entry><entry><title>[GIT] Tips &amp; 碎碎念</title><link href="http://solring.github.io/git-tips-sui-sui-nian.html" rel="alternate"></link><published>2016-01-19T07:45:00+08:00</published><updated>2016-01-19T07:45:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:solring.github.io,2016-01-19:/git-tips-sui-sui-nian.html</id><summary type="html">&lt;p&gt;(archive) [GIT] Tips &amp;amp; 碎碎念&lt;/p&gt;</summary><content type="html">&lt;p&gt;終於有時間把這一兩個月參與Project遇到的小問題&amp;amp;解法紀錄下來啦(淚&lt;/p&gt;
+&lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>VPN material</title><link href="/vpn-material.html" rel="alternate"></link><published>2016-01-21T08:05:00+08:00</published><updated>2016-01-21T08:05:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:None,2016-01-21:/vpn-material.html</id><summary type="html">&lt;p&gt;(archive) VPN material&lt;/p&gt;</summary><content type="html"></content></entry><entry><title>[GIT] Tips &amp; 碎碎念</title><link href="/git-tips-sui-sui-nian.html" rel="alternate"></link><published>2016-01-19T07:45:00+08:00</published><updated>2016-01-19T07:45:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:None,2016-01-19:/git-tips-sui-sui-nian.html</id><summary type="html">&lt;p&gt;(archive) [GIT] Tips &amp;amp; 碎碎念&lt;/p&gt;</summary><content type="html">&lt;p&gt;終於有時間把這一兩個月參與Project遇到的小問題&amp;amp;解法紀錄下來啦(淚&lt;/p&gt;
 &lt;h3&gt;Conflict of binary files&lt;/h3&gt;
 &lt;p&gt;在merge or rebase的時候
 當Project裡面有一些prebuilt lib之類的東西conflict的時候
@@ -1004,34 +983,10 @@ git rebase dev
 
 
 &lt;p&gt;應該還有更漂亮的解決方法
-不過重點是要盡量避開這種狀況 : P&lt;/p&gt;</content></entry><entry><title>GitLab &amp; GitLab CI 筆記 (備用)</title><link href="http://solring.github.io/gitlab-gitlab-ci-bi-ji-bei-yong.html" rel="alternate"></link><published>2016-01-13T05:51:00+08:00</published><updated>2016-01-13T05:51:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:solring.github.io,2016-01-13:/gitlab-gitlab-ci-bi-ji-bei-yong.html</id><summary type="html">&lt;p&gt;(archive) GitLab &amp;amp; GitLab CI 筆記 (備用)&lt;/p&gt;</summary><content type="html">&lt;p&gt;使用Docker架設
+不過重點是要盡量避開這種狀況 : P&lt;/p&gt;</content></entry><entry><title>GitLab &amp; GitLab CI 筆記 (備用)</title><link href="/gitlab-gitlab-ci-bi-ji-bei-yong.html" rel="alternate"></link><published>2016-01-13T05:51:00+08:00</published><updated>2016-01-13T05:51:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:None,2016-01-13:/gitlab-gitlab-ci-bi-ji-bei-yong.html</id><summary type="html">&lt;p&gt;(archive) GitLab &amp;amp; GitLab CI 筆記 (備用)&lt;/p&gt;</summary><content type="html">&lt;p&gt;使用Docker架設
 http://notes.jigsawye.com/2015/09/25/gitlab-ce-in-docker/&lt;/p&gt;
 &lt;p&gt;讓Project使用GitLab CI
-http://doc.gitlab.com/ce/ci/quick_start/README.html&lt;/p&gt;</content></entry><entry><title>tmp</title><link href="http://solring.github.io/tmp.html" rel="alternate"></link><published>2016-01-04T18:04:00+08:00</published><updated>2016-01-04T18:04:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:solring.github.io,2016-01-04:/tmp.html</id><summary type="html">&lt;p&gt;(archive) tmp&lt;/p&gt;</summary><content type="html">&lt;h1&gt;Definition for singly-linked list.&lt;/h1&gt;
-&lt;h1&gt;class ListNode(object):&lt;/h1&gt;
-&lt;h1&gt;def &lt;strong&gt;init&lt;/strong&gt;(self, x):&lt;/h1&gt;
-&lt;h1&gt;self.val = x&lt;/h1&gt;
-&lt;h1&gt;self.next = None&lt;/h1&gt;
-&lt;p&gt;class Solution(object):
-    def &lt;strong&gt;init&lt;/strong&gt;(self):
-        self.first = None&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;def isPalindrome(self, head):
-    &amp;quot;&amp;quot;&amp;quot;
-    :type head: ListNode
-    :rtype: bool
-    &amp;quot;&amp;quot;&amp;quot;
-    self.first = head
-    return self.isPalin(head)
-
-def isPalin(self, root):
-    if root.next is None:
-        return True
-    else:
-        interm = self.isPalin(root.next)
-        res = (root.val == self.first.val)
-        self.first = self.first.next
-        return interm and res
-&lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>[Linux] Execution檔shared library 名稱錯誤</title><link href="http://solring.github.io/linux-executiondang-shared-library-ming-cheng-cuo-wu.html" rel="alternate"></link><published>2015-12-22T06:51:00+08:00</published><updated>2015-12-22T06:51:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:solring.github.io,2015-12-22:/linux-executiondang-shared-library-ming-cheng-cuo-wu.html</id><summary type="html">&lt;p&gt;(archive) [Linux] Execution檔shared library 名稱錯誤&lt;/p&gt;</summary><content type="html">&lt;p&gt;用NDK使用prebuilt library編execution時意外產生奇觀:&lt;/p&gt;
+http://doc.gitlab.com/ce/ci/quick_start/README.html&lt;/p&gt;</content></entry><entry><title>[Linux] Execution檔shared library 名稱錯誤</title><link href="/linux-executiondang-shared-library-ming-cheng-cuo-wu.html" rel="alternate"></link><published>2015-12-22T06:51:00+08:00</published><updated>2015-12-22T06:51:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:None,2015-12-22:/linux-executiondang-shared-library-ming-cheng-cuo-wu.html</id><summary type="html">&lt;p&gt;(archive) [Linux] Execution檔shared library 名稱錯誤&lt;/p&gt;</summary><content type="html">&lt;p&gt;用NDK使用prebuilt library編execution時意外產生奇觀:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ readelf -d test-audio
 Dynamic section at offset 0x35b54 contains &lt;span class="m"&gt;30&lt;/span&gt; entries:
   Tag        Type                         Name/Value
@@ -1058,7 +1013,7 @@ $ &lt;span class="o"&gt;(&lt;/span&gt;nothing...&lt;span class="o"&gt;)&lt;/span
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;趕緊用&lt;code&gt;-Wl,-soname,libkaldifeats.so&lt;/code&gt;補加SONAME就解決啦~&lt;/p&gt;</content></entry><entry><title>[Tips] Include static libraries in shared library</title><link href="http://solring.github.io/tips-include-static-libraries-in-shared-library.html" rel="alternate"></link><published>2015-12-15T06:48:00+08:00</published><updated>2015-12-15T06:48:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:solring.github.io,2015-12-15:/tips-include-static-libraries-in-shared-library.html</id><summary type="html">&lt;p&gt;(archive) [Tips] Include static libraries in shared library&lt;/p&gt;</summary><content type="html">&lt;p&gt;//又是個不記下來就老是忘記的參數orz&lt;/p&gt;
+&lt;p&gt;趕緊用&lt;code&gt;-Wl,-soname,libkaldifeats.so&lt;/code&gt;補加SONAME就解決啦~&lt;/p&gt;</content></entry><entry><title>[Tips] Include static libraries in shared library</title><link href="/tips-include-static-libraries-in-shared-library.html" rel="alternate"></link><published>2015-12-15T06:48:00+08:00</published><updated>2015-12-15T06:48:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:None,2015-12-15:/tips-include-static-libraries-in-shared-library.html</id><summary type="html">&lt;p&gt;(archive) [Tips] Include static libraries in shared library&lt;/p&gt;</summary><content type="html">&lt;p&gt;//又是個不記下來就老是忘記的參數orz&lt;/p&gt;
 &lt;p&gt;Ref: 
 http://stackoverflow.com/questions/14889941/link-a-static-library-to-a-shared-one-during-build
 http://stackoverflow.com/questions/2649735/how-to-link-static-library-into-dynamic-library-in-gcc&lt;/p&gt;
@@ -1069,7 +1024,7 @@ http://stackoverflow.com/questions/2649735/how-to-link-static-library-into-dynam
 
 
 &lt;p&gt;這樣會把&lt;strong&gt;整個Static library&lt;/strong&gt;都包進去
-如果沒有加的話，會只包用到的部份&lt;/p&gt;</content></entry><entry><title>[Note] 機器學習速遊</title><link href="http://solring.github.io/note-ji-qi-xue-xi-su-you.html" rel="alternate"></link><published>2015-12-12T01:08:00+08:00</published><updated>2015-12-12T01:08:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:solring.github.io,2015-12-12:/note-ji-qi-xue-xi-su-you.html</id><summary type="html">&lt;p&gt;(archive) [Note] 機器學習速遊&lt;/p&gt;</summary><content type="html">&lt;p&gt;SlideShare: http://www.slideshare.net/tw_dsconf/ss-56071386&lt;/p&gt;
+如果沒有加的話，會只包用到的部份&lt;/p&gt;</content></entry><entry><title>[Note] 機器學習速遊</title><link href="/note-ji-qi-xue-xi-su-you.html" rel="alternate"></link><published>2015-12-12T01:08:00+08:00</published><updated>2015-12-12T01:08:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:None,2015-12-12:/note-ji-qi-xue-xi-su-you.html</id><summary type="html">&lt;p&gt;(archive) [Note] 機器學習速遊&lt;/p&gt;</summary><content type="html">&lt;p&gt;SlideShare: http://www.slideshare.net/tw_dsconf/ss-56071386&lt;/p&gt;
 &lt;h1&gt;Learning from Data&lt;/h1&gt;
 &lt;p&gt;ML: improving some &lt;strong&gt;performance measure&lt;/strong&gt; with &lt;strong&gt;experience computed&lt;/strong&gt; from data&lt;/p&gt;
 &lt;h2&gt;Scenarios&lt;/h2&gt;
@@ -1256,7 +1211,7 @@ http://kddcup2015.com/information.html&lt;/p&gt;
 http://pages.cs.wisc.edu/~jerryzhu/pub/sslicml07.pdf&lt;/p&gt;
 &lt;p&gt;Scikit-learn
 https://github.com/scikit-learn/scikit-learn
-http://scikit-learn.org/stable/index.html&lt;/p&gt;</content></entry><entry><title>OpenCV Cascade Classifier training</title><link href="http://solring.github.io/opencv-cascade-classifier-training.html" rel="alternate"></link><published>2015-12-07T05:21:00+08:00</published><updated>2015-12-07T05:21:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:solring.github.io,2015-12-07:/opencv-cascade-classifier-training.html</id><summary type="html">&lt;p&gt;(archive) OpenCV Cascade Classifier training&lt;/p&gt;</summary><content type="html">&lt;h3&gt;Tutorial&lt;/h3&gt;
+http://scikit-learn.org/stable/index.html&lt;/p&gt;</content></entry><entry><title>OpenCV Cascade Classifier training</title><link href="/opencv-cascade-classifier-training.html" rel="alternate"></link><published>2015-12-07T05:21:00+08:00</published><updated>2015-12-07T05:21:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:None,2015-12-07:/opencv-cascade-classifier-training.html</id><summary type="html">&lt;p&gt;(archive) OpenCV Cascade Classifier training&lt;/p&gt;</summary><content type="html">&lt;h3&gt;Tutorial&lt;/h3&gt;
 &lt;p&gt;http://docs.opencv.org/2.4/doc/user_guide/ug_traincascade.html
 http://coding-robin.de/2013/07/22/train-your-own-opencv-haar-classifier.html&lt;/p&gt;
 &lt;p&gt;http://answers.opencv.org/question/7141/about-traincascade-paremeters-samples-and-other/&lt;/p&gt;
@@ -1269,11 +1224,11 @@ S: count of samples from vec-file that can be recognized as background right awa
 &lt;ol&gt;
 &lt;li&gt;背景不要用白的&lt;/li&gt;
 &lt;li&gt;HAAS會比LBP慢很多&lt;/li&gt;
-&lt;/ol&gt;</content></entry><entry><title>[Android Studio] Import project from Git</title><link href="http://solring.github.io/android-studio-import-project-from-git.html" rel="alternate"></link><published>2015-12-04T08:24:00+08:00</published><updated>2015-12-04T08:24:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:solring.github.io,2015-12-04:/android-studio-import-project-from-git.html</id><summary type="html">&lt;p&gt;(archive) [Android Studio] Import project from Git&lt;/p&gt;</summary><content type="html">&lt;p&gt;不記下來就會一直忘記XD&lt;/p&gt;
+&lt;/ol&gt;</content></entry><entry><title>[Android Studio] Import project from Git</title><link href="/android-studio-import-project-from-git.html" rel="alternate"></link><published>2015-12-04T08:24:00+08:00</published><updated>2015-12-04T08:24:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:None,2015-12-04:/android-studio-import-project-from-git.html</id><summary type="html">&lt;p&gt;(archive) [Android Studio] Import project from Git&lt;/p&gt;</summary><content type="html">&lt;p&gt;不記下來就會一直忘記XD&lt;/p&gt;
 &lt;p&gt;ref: 
 https://teamtreehouse.com/library/android-tools/using-git-for-android/pulling-down-github-projects-to-android-studio&lt;/p&gt;
 &lt;p&gt;VCS -&amp;gt; Checkout form Version Control -&amp;gt; Git 
-輸入repo name(走http)還有帳密就可以了&lt;/p&gt;</content></entry><entry><title>[Android][Hack] 工具＆步驟整理</title><link href="http://solring.github.io/androidhack-gong-ju-bu-zou-zheng-li.html" rel="alternate"></link><published>2015-11-24T07:08:00+08:00</published><updated>2015-11-24T07:08:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:solring.github.io,2015-11-24:/androidhack-gong-ju-bu-zou-zheng-li.html</id><summary type="html">&lt;p&gt;(archive) [Android][Hack] 工具＆步驟整理&lt;/p&gt;</summary><content type="html">&lt;p&gt;如果懶得從AOSP上抓下來自己編的話 這邊有一些prebuild tools：&lt;/p&gt;
+輸入repo name(走http)還有帳密就可以了&lt;/p&gt;</content></entry><entry><title>[Android][Hack] 工具＆步驟整理</title><link href="/androidhack-gong-ju-bu-zou-zheng-li.html" rel="alternate"></link><published>2015-11-24T07:08:00+08:00</published><updated>2015-11-24T07:08:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:None,2015-11-24:/androidhack-gong-ju-bu-zou-zheng-li.html</id><summary type="html">&lt;p&gt;(archive) [Android][Hack] 工具＆步驟整理&lt;/p&gt;</summary><content type="html">&lt;p&gt;如果懶得從AOSP上抓下來自己編的話 這邊有一些prebuild tools：&lt;/p&gt;
 &lt;h2&gt;Various prebuild tools...&lt;/h2&gt;
 &lt;p&gt;http://web.djodjo.org/?a=download:android:tools:x86_linux:alltools&lt;/p&gt;
 &lt;h2&gt;Unpack/pack system.img&lt;/h2&gt;
@@ -1312,11 +1267,11 @@ http://blog.djodjo.org/?p=536&lt;/p&gt;
 
 
 &lt;p&gt;如何得到offsets:
-http://blog.djodjo.org/?p=195&lt;/p&gt;</content></entry><entry><title>介紹Android Camera 2 不錯的slide</title><link href="http://solring.github.io/jie-shao-android-camera-2-bu-cuo-de-slide.html" rel="alternate"></link><published>2015-11-12T09:36:00+08:00</published><updated>2015-11-12T09:36:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:solring.github.io,2015-11-12:/jie-shao-android-camera-2-bu-cuo-de-slide.html</id><summary type="html">&lt;p&gt;(archive) 介紹Android Camera 2 不錯的slide&lt;/p&gt;</summary><content type="html">&lt;p&gt;http://www.slideshare.net/lbk003/b-kaur-computationalphotographycamera2v3ss
+http://blog.djodjo.org/?p=195&lt;/p&gt;</content></entry><entry><title>介紹Android Camera 2 不錯的slide</title><link href="/jie-shao-android-camera-2-bu-cuo-de-slide.html" rel="alternate"></link><published>2015-11-12T09:36:00+08:00</published><updated>2015-11-12T09:36:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:None,2015-11-12:/jie-shao-android-camera-2-bu-cuo-de-slide.html</id><summary type="html">&lt;p&gt;(archive) 介紹Android Camera 2 不錯的slide&lt;/p&gt;</summary><content type="html">&lt;p&gt;http://www.slideshare.net/lbk003/b-kaur-computationalphotographycamera2v3ss
 架構在第22 23&lt;/p&gt;
 &lt;iframe src="//www.slideshare.net/slideshow/embed_code/key/IFBAPzCzMeRObh" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen&gt; &lt;/iframe&gt;
 
-&lt;p&gt;&lt;div style="margin-bottom:5px"&gt; &lt;strong&gt; &lt;a href="//www.slideshare.net/lbk003/b-kaur-computationalphotographycamera2v3ss" title="Android 5.0 Camera2 APIs" target="_blank"&gt;Android 5.0 Camera2 APIs&lt;/a&gt; &lt;/strong&gt; from &lt;strong&gt;&lt;a href="//www.slideshare.net/lbk003" target="_blank"&gt;Balwinder Kaur&lt;/a&gt;&lt;/strong&gt; &lt;/div&gt;&lt;/p&gt;</content></entry><entry><title>[OpenCV][Android] Build OpenCV Android SDK &amp; enable OpenCL</title><link href="http://solring.github.io/opencvandroid-build-opencv-android-sdk-enable-opencl.html" rel="alternate"></link><published>2015-11-04T08:22:00+08:00</published><updated>2015-11-04T08:22:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:solring.github.io,2015-11-04:/opencvandroid-build-opencv-android-sdk-enable-opencl.html</id><summary type="html">&lt;p&gt;(archive) [OpenCV][Android] Build OpenCV Android SDK &amp;amp; enable OpenCL&lt;/p&gt;</summary><content type="html">&lt;h2&gt;設NDK環境變數&lt;/h2&gt;
+&lt;p&gt;&lt;div style="margin-bottom:5px"&gt; &lt;strong&gt; &lt;a href="//www.slideshare.net/lbk003/b-kaur-computationalphotographycamera2v3ss" title="Android 5.0 Camera2 APIs" target="_blank"&gt;Android 5.0 Camera2 APIs&lt;/a&gt; &lt;/strong&gt; from &lt;strong&gt;&lt;a href="//www.slideshare.net/lbk003" target="_blank"&gt;Balwinder Kaur&lt;/a&gt;&lt;/strong&gt; &lt;/div&gt;&lt;/p&gt;</content></entry><entry><title>[OpenCV][Android] Build OpenCV Android SDK &amp; enable OpenCL</title><link href="/opencvandroid-build-opencv-android-sdk-enable-opencl.html" rel="alternate"></link><published>2015-11-04T08:22:00+08:00</published><updated>2015-11-04T08:22:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:None,2015-11-04:/opencvandroid-build-opencv-android-sdk-enable-opencl.html</id><summary type="html">&lt;p&gt;(archive) [OpenCV][Android] Build OpenCV Android SDK &amp;amp; enable OpenCL&lt;/p&gt;</summary><content type="html">&lt;h2&gt;設NDK環境變數&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;ANDROID_NDK&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/path/to/your/ndk
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -1367,7 +1322,7 @@ make -j4
 (當然，在java層要記得load :P)&lt;/p&gt;
 &lt;p&gt;另外也需要把用到的的&lt;em&gt;opencv_contrib&lt;/em&gt; headers放到sdk裡
 或是一起放到jni資料夾裡, 自己在Android.mk裡面加include路徑
-就可以在jni c++ source裡面用opencv_contrib裡面的東西了~&lt;/p&gt;</content></entry><entry><title>[OpenCV][OCR] Tesseract OCR on OpenCV 3.0</title><link href="http://solring.github.io/opencvocr-tesseract-ocr-on-opencv-30.html" rel="alternate"></link><published>2015-11-03T09:30:00+08:00</published><updated>2015-11-03T09:30:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:solring.github.io,2015-11-03:/opencvocr-tesseract-ocr-on-opencv-30.html</id><summary type="html">&lt;p&gt;(archive) [OpenCV][OCR] Tesseract OCR on OpenCV 3.0&lt;/p&gt;</summary><content type="html">&lt;h1&gt;Tesseract on Linux&lt;/h1&gt;
+就可以在jni c++ source裡面用opencv_contrib裡面的東西了~&lt;/p&gt;</content></entry><entry><title>[OpenCV][OCR] Tesseract OCR on OpenCV 3.0</title><link href="/opencvocr-tesseract-ocr-on-opencv-30.html" rel="alternate"></link><published>2015-11-03T09:30:00+08:00</published><updated>2015-11-03T09:30:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:None,2015-11-03:/opencvocr-tesseract-ocr-on-opencv-30.html</id><summary type="html">&lt;p&gt;(archive) [OpenCV][OCR] Tesseract OCR on OpenCV 3.0&lt;/p&gt;</summary><content type="html">&lt;h1&gt;Tesseract on Linux&lt;/h1&gt;
 &lt;p&gt;OpenCV 3.0 有整合TesseractOCR的API
 但這部份是不在mainline裡面的~ 而是放在&lt;em&gt;opencv_contrib&lt;/em&gt; project的&lt;em&gt;text&lt;/em&gt; module裡
 而且text module預設是沒有TesseractOCR的~
@@ -1458,7 +1413,7 @@ File -&amp;gt; New -&amp;gt; Import module -&amp;gt; 選Tess-two的folder&lt;/p&
 &lt;/ol&gt;
 &lt;p&gt;Tess-two的詳細使用方法可以參考以下ref:
 - Stack Overflow: https://stackoverflow.com/questions/tagged/tess-two
-- tesseract-ocr: https://groups.google.com/forum/#!forum/tesseract-ocr&lt;/p&gt;</content></entry><entry><title>[Survey] 文字辨識 Papers</title><link href="http://solring.github.io/survey-wen-zi-bian-shi-papers.html" rel="alternate"></link><published>2015-10-27T02:19:00+08:00</published><updated>2015-10-27T02:19:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:solring.github.io,2015-10-27:/survey-wen-zi-bian-shi-papers.html</id><summary type="html">&lt;p&gt;(archive) [Survey] 文字辨識 Papers&lt;/p&gt;</summary><content type="html">&lt;h1&gt;Papers&lt;/h1&gt;
+- tesseract-ocr: https://groups.google.com/forum/#!forum/tesseract-ocr&lt;/p&gt;</content></entry><entry><title>[Survey] 文字辨識 Papers</title><link href="/survey-wen-zi-bian-shi-papers.html" rel="alternate"></link><published>2015-10-27T02:19:00+08:00</published><updated>2015-10-27T02:19:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:None,2015-10-27:/survey-wen-zi-bian-shi-papers.html</id><summary type="html">&lt;p&gt;(archive) [Survey] 文字辨識 Papers&lt;/p&gt;</summary><content type="html">&lt;h1&gt;Papers&lt;/h1&gt;
 &lt;p&gt;http://2015.icdar.org/program/accepted-papers/&lt;/p&gt;
 &lt;h2&gt;Text Segmentation&lt;/h2&gt;
 &lt;ul&gt;
@@ -1486,7 +1441,7 @@ http://transcriptorium.eu/~htrcontest/&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;DRR&lt;/h2&gt;
-&lt;p&gt;http://drr2014.irisa.fr/&lt;/p&gt;</content></entry><entry><title>[Android][轉] AndroidStudio NDK plugin使用方法</title><link href="http://solring.github.io/androidzhuan-androidstudio-ndk-pluginshi-yong-fang-fa.html" rel="alternate"></link><published>2015-10-21T01:16:00+08:00</published><updated>2015-10-21T01:16:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:solring.github.io,2015-10-21:/androidzhuan-androidstudio-ndk-pluginshi-yong-fang-fa.html</id><summary type="html">&lt;p&gt;(archive) [Android][轉] AndroidStudio NDK plugin使用方法&lt;/p&gt;</summary><content type="html">&lt;p&gt;https://8085studio.wordpress.com/2015/04/25/android-studio-ndk-jni/&lt;/p&gt;
+&lt;p&gt;http://drr2014.irisa.fr/&lt;/p&gt;</content></entry><entry><title>[Android][轉] AndroidStudio NDK plugin使用方法</title><link href="/androidzhuan-androidstudio-ndk-pluginshi-yong-fang-fa.html" rel="alternate"></link><published>2015-10-21T01:16:00+08:00</published><updated>2015-10-21T01:16:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:None,2015-10-21:/androidzhuan-androidstudio-ndk-pluginshi-yong-fang-fa.html</id><summary type="html">&lt;p&gt;(archive) [Android][轉] AndroidStudio NDK plugin使用方法&lt;/p&gt;</summary><content type="html">&lt;p&gt;https://8085studio.wordpress.com/2015/04/25/android-studio-ndk-jni/&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;Setting --&amp;gt; Tools --&amp;gt; External tools
@@ -1502,7 +1457,7 @@ http://transcriptorium.eu/~htrcontest/&lt;/p&gt;
 &lt;span class="n"&gt;Options&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="err"&gt;全打勾&lt;/span&gt;
 &lt;span class="n"&gt;Show&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="err"&gt;全打勾&lt;/span&gt;
 &lt;span class="n"&gt;Tools&lt;/span&gt; &lt;span class="n"&gt;Settings&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
-&lt;span class="n"&gt;Program&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;NDK&lt;/span&gt;&lt;span class="err"&gt;目錄&lt;/span&gt;&lt;span class="n"&gt;ndk&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;build&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;cmd&lt;/span&gt;
+&lt;span class="n"&gt;Program&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;NDK目錄ndk&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;build&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;cmd&lt;/span&gt;
 &lt;span class="n"&gt;Parameters&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;NDK_PROJECT_PATH&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;$ModuleFileDir$&lt;/span&gt;&lt;span class="sr"&gt;/build/intermediates/ndk NDK_LIBS_OUT=$ModuleFileDir$/src/main/jniLibs NDK_APPLICATION_MK=$ModuleFileDir$/src/main/jni/Application.mk APP_BUILD_SCRIPT=$ModuleFileDir$/src/main/jni/&lt;/span&gt;&lt;span class="n"&gt;Android&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;mk&lt;/span&gt; &lt;span class="n"&gt;V&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
 &lt;span class="n"&gt;Working&lt;/span&gt; &lt;span class="n"&gt;directory&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;$SourcepathEntry$&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -1517,7 +1472,7 @@ http://transcriptorium.eu/~htrcontest/&lt;/p&gt;
 &lt;span class="n"&gt;Options&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="err"&gt;全打勾&lt;/span&gt;
 &lt;span class="n"&gt;Show&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="err"&gt;全打勾&lt;/span&gt;
 &lt;span class="n"&gt;Tools&lt;/span&gt; &lt;span class="n"&gt;Settings&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
-&lt;span class="n"&gt;Program&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Java&lt;/span&gt; &lt;span class="n"&gt;JDK&lt;/span&gt;&lt;span class="err"&gt;目錄&lt;/span&gt;&lt;span class="n"&gt;binjavah&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;exe&lt;/span&gt;
+&lt;span class="n"&gt;Program&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Java&lt;/span&gt; &lt;span class="n"&gt;JDK目錄binjavah&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;exe&lt;/span&gt;
 &lt;span class="n"&gt;Parameters&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;v&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;jni&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt; &lt;span class="n"&gt;$ModuleFileDir$srcmainjni&lt;/span&gt; &lt;span class="n"&gt;$FileClass$&lt;/span&gt;
 &lt;span class="n"&gt;Working&lt;/span&gt; &lt;span class="n"&gt;directory&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;$SourcepathEntry$&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -1540,7 +1495,7 @@ http://transcriptorium.eu/~htrcontest/&lt;/p&gt;
             jni.srcDirs = [] //disable auto ndk-build
         }
     }
-&lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>文字辨識相關</title><link href="http://solring.github.io/wen-zi-bian-shi-xiang-guan.html" rel="alternate"></link><published>2015-10-13T13:34:00+08:00</published><updated>2015-10-13T13:34:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:solring.github.io,2015-10-13:/wen-zi-bian-shi-xiang-guan.html</id><summary type="html">&lt;p&gt;(archive) 文字辨識相關&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Android 環境設定&lt;/h2&gt;
+&lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>文字辨識相關</title><link href="/wen-zi-bian-shi-xiang-guan.html" rel="alternate"></link><published>2015-10-13T13:34:00+08:00</published><updated>2015-10-13T13:34:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:None,2015-10-13:/wen-zi-bian-shi-xiang-guan.html</id><summary type="html">&lt;p&gt;(archive) 文字辨識相關&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Android 環境設定&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;在AndroidStudio上用OpenCV SDK
@@ -1608,7 +1563,7 @@ http://stackoverflow.com/questions/25666120/converting-from-yuv-colour-space-to-
 &lt;ul&gt;
 &lt;li&gt;Tesseract
 https://github.com/tesseract-ocr/tesseract&lt;/li&gt;
-&lt;/ul&gt;</content></entry><entry><title>[DL] Caffe install on Ubuntu 12.04</title><link href="http://solring.github.io/dl-caffe-install-on-ubuntu-1204.html" rel="alternate"></link><published>2015-10-13T03:38:00+08:00</published><updated>2015-10-13T03:38:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:solring.github.io,2015-10-13:/dl-caffe-install-on-ubuntu-1204.html</id><summary type="html">&lt;p&gt;(archive) [DL] Caffe install on Ubuntu 12.04&lt;/p&gt;</summary><content type="html">&lt;p&gt;Ref:
+&lt;/ul&gt;</content></entry><entry><title>[DL] Caffe install on Ubuntu 12.04</title><link href="/dl-caffe-install-on-ubuntu-1204.html" rel="alternate"></link><published>2015-10-13T03:38:00+08:00</published><updated>2015-10-13T03:38:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:None,2015-10-13:/dl-caffe-install-on-ubuntu-1204.html</id><summary type="html">&lt;p&gt;(archive) [DL] Caffe install on Ubuntu 12.04&lt;/p&gt;</summary><content type="html">&lt;p&gt;Ref:
 http://www.bubuko.com/infodetail-688569.html&lt;/p&gt;
 &lt;h1&gt;安裝dependent package:&lt;/h1&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt-get install libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libboost-all-dev libhdf5-serial-dev
@@ -1792,7 +1747,7 @@ Q ?&lt;span class="o"&gt;=&lt;/span&gt; @
 
 
 &lt;p&gt;有關ld link shared library的順序:
-http://stackoverflow.com/questions/45135/why-does-the-order-in-which-libraries-are-linked-sometimes-cause-errors-in-gcc&lt;/p&gt;</content></entry><entry><title>[轉] 好用的Linux commands</title><link href="http://solring.github.io/zhuan-hao-yong-de-linux-commands.html" rel="alternate"></link><published>2015-10-01T23:44:00+08:00</published><updated>2015-10-01T23:44:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:solring.github.io,2015-10-01:/zhuan-hao-yong-de-linux-commands.html</id><summary type="html">&lt;p&gt;(archive) [轉] 好用的Linux commands&lt;/p&gt;</summary><content type="html">&lt;p&gt;兵器大全(?
+http://stackoverflow.com/questions/45135/why-does-the-order-in-which-libraries-are-linked-sometimes-cause-errors-in-gcc&lt;/p&gt;</content></entry><entry><title>[轉] 好用的Linux commands</title><link href="/zhuan-hao-yong-de-linux-commands.html" rel="alternate"></link><published>2015-10-01T23:44:00+08:00</published><updated>2015-10-01T23:44:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:None,2015-10-01:/zhuan-hao-yong-de-linux-commands.html</id><summary type="html">&lt;p&gt;(archive) [轉] 好用的Linux commands&lt;/p&gt;</summary><content type="html">&lt;p&gt;兵器大全(?
 http://www.tecmint.com/10-most-dangerous-commands-you-should-never-execute-on-linux/&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;同場加映好用的Linux指令
@@ -1892,7 +1847,7 @@ tree版ps&lt;/p&gt;
 Size, Blocks, Access Permission, Date-time of file last access, Modify, change, etc.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;/li&gt;
-&lt;/ul&gt;</content></entry><entry><title>[Android] Android Wear Data API</title><link href="http://solring.github.io/android-android-wear-data-api.html" rel="alternate"></link><published>2015-10-01T13:04:00+08:00</published><updated>2015-10-01T13:04:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:solring.github.io,2015-10-01:/android-android-wear-data-api.html</id><summary type="html">&lt;p&gt;(archive) [Android] Android Wear Data API&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;Android Wear Data API&lt;/strong&gt; 可以將app裡的data存入Google Data layer
+&lt;/ul&gt;</content></entry><entry><title>[Android] Android Wear Data API</title><link href="/android-android-wear-data-api.html" rel="alternate"></link><published>2015-10-01T13:04:00+08:00</published><updated>2015-10-01T13:04:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:None,2015-10-01:/android-android-wear-data-api.html</id><summary type="html">&lt;p&gt;(archive) [Android] Android Wear Data API&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;Android Wear Data API&lt;/strong&gt; 可以將app裡的data存入Google Data layer
 讓data在wearable和phone之間自動sync、做batch傳輸，或是傳遞一次性資訊和命令
 另外還有Channel API 專門用來做streaming，但這邊主要介紹Data API中的&lt;strong&gt;Item API&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;: 只有已安裝&lt;em&gt;Google Mobile Service(GMS)&lt;/em&gt; (有com.google.android.gms這個service)的device才能使用DATA API&lt;/p&gt;
@@ -1993,7 +1948,7 @@ Project上按右建 -&amp;gt; New -&amp;gt; Module -&amp;gt; Andorid Wear Module
             &lt;span class="o"&gt;}&lt;/span&gt;
         &lt;span class="o"&gt;}&lt;/span&gt;
     &lt;span class="o"&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>[Linux] Ubuntu 12.04.5 install g++-4.8 up</title><link href="http://solring.github.io/linux-ubuntu-12045-install-g-48-up.html" rel="alternate"></link><published>2015-10-01T09:30:00+08:00</published><updated>2015-10-01T09:30:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:solring.github.io,2015-10-01:/linux-ubuntu-12045-install-g-48-up.html</id><summary type="html">&lt;p&gt;(archive) [Linux] Ubuntu 12.04.5 install g++-4.8 up&lt;/p&gt;</summary><content type="html">&lt;p&gt;筆記一下~
+&lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>[Linux] Ubuntu 12.04.5 install g++-4.8 up</title><link href="/linux-ubuntu-12045-install-g-48-up.html" rel="alternate"></link><published>2015-10-01T09:30:00+08:00</published><updated>2015-10-01T09:30:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:None,2015-10-01:/linux-ubuntu-12045-install-g-48-up.html</id><summary type="html">&lt;p&gt;(archive) [Linux] Ubuntu 12.04.5 install g++-4.8 up&lt;/p&gt;</summary><content type="html">&lt;p&gt;筆記一下~
 Ubuntu 12.04.5要update g++的話要額外加ppa&lt;/p&gt;
 &lt;p&gt;而且12.04預設是沒有add-apt-repository的 (很神秘...
 要先安裝python-software-properties&lt;/p&gt;
@@ -2006,7 +1961,7 @@ sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.8 &lt;span cl
 
 
 &lt;p&gt;ref:
-http://askubuntu.com/questions/271388/how-to-install-gcc-4-8&lt;/p&gt;</content></entry><entry><title>[DL] 實做</title><link href="http://solring.github.io/dl-shi-zuo.html" rel="alternate"></link><published>2015-10-01T01:49:00+08:00</published><updated>2015-10-01T01:49:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:solring.github.io,2015-10-01:/dl-shi-zuo.html</id><summary type="html">&lt;p&gt;(archive) [DL] 實做&lt;/p&gt;</summary><content type="html">&lt;h1&gt;Facescrub&lt;/h1&gt;
+http://askubuntu.com/questions/271388/how-to-install-gcc-4-8&lt;/p&gt;</content></entry><entry><title>[DL] 實做</title><link href="/dl-shi-zuo.html" rel="alternate"></link><published>2015-10-01T01:49:00+08:00</published><updated>2015-10-01T01:49:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:None,2015-10-01:/dl-shi-zuo.html</id><summary type="html">&lt;p&gt;(archive) [DL] 實做&lt;/p&gt;</summary><content type="html">&lt;h1&gt;Facescrub&lt;/h1&gt;
 &lt;p&gt;名人的臉
 但是只有uri沒有圖片本身
 還有臉的位置(框)
@@ -2026,7 +1981,7 @@ num_output: 幾個filter&lt;/p&gt;
 每次iteration負責矯正參數的
 learing rate: gradient decent的幅度  &lt;/p&gt;
 &lt;h1&gt;cuDNN&lt;/h1&gt;
-&lt;p&gt;Tensor描述data input的排列&lt;/p&gt;</content></entry><entry><title>[DL] Convolutional Neural Network</title><link href="http://solring.github.io/dl-convolutional-neural-network.html" rel="alternate"></link><published>2015-09-30T12:09:00+08:00</published><updated>2015-09-30T12:09:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:solring.github.io,2015-09-30:/dl-convolutional-neural-network.html</id><summary type="html">&lt;p&gt;(archive) [DL] Convolutional Neural Network&lt;/p&gt;</summary><content type="html">&lt;p&gt;感想: 這東西真的是玄學啊~~~~~~&lt;/p&gt;
+&lt;p&gt;Tensor描述data input的排列&lt;/p&gt;</content></entry><entry><title>[DL] Convolutional Neural Network</title><link href="/dl-convolutional-neural-network.html" rel="alternate"></link><published>2015-09-30T12:09:00+08:00</published><updated>2015-09-30T12:09:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:None,2015-09-30:/dl-convolutional-neural-network.html</id><summary type="html">&lt;p&gt;(archive) [DL] Convolutional Neural Network&lt;/p&gt;</summary><content type="html">&lt;p&gt;感想: 這東西真的是玄學啊~~~~~~&lt;/p&gt;
 &lt;p&gt;ref: 
 http://www.iro.umontreal.ca/~pift6266/H10/notes/deepintro.html
 http://deeplearning.net/tutorial/lenet.html&lt;/p&gt;
@@ -2121,7 +2076,7 @@ loss function要可微分，才能算梯度
 改把W, B看成變數的話就是 &lt;code&gt;$ A(W, B)=y $&lt;/code&gt;
 假設正確答案是y'
 Loss function &lt;code&gt;$ F(W, B)=y'-y=y'-A(W, B) $&lt;/code&gt;
-因此更新W, B的方法就是算出&lt;code&gt;$ y'-A(W, B) $&lt;/code&gt;梯度之後，乘一個比率減回去&lt;/p&gt;</content></entry><entry><title>[Java] JNI referece lifetime</title><link href="http://solring.github.io/java-jni-referece-lifetime.html" rel="alternate"></link><published>2015-09-30T02:40:00+08:00</published><updated>2015-09-30T02:40:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:solring.github.io,2015-09-30:/java-jni-referece-lifetime.html</id><summary type="html">&lt;p&gt;(archive) [Java] JNI referece lifetime&lt;/p&gt;</summary><content type="html">&lt;p&gt;https://www3.ntu.edu.sg/home/ehchua/programming/java/JavaNativeInterface.html
+因此更新W, B的方法就是算出&lt;code&gt;$ y'-A(W, B) $&lt;/code&gt;梯度之後，乘一個比率減回去&lt;/p&gt;</content></entry><entry><title>[Java] JNI referece lifetime</title><link href="/java-jni-referece-lifetime.html" rel="alternate"></link><published>2015-09-30T02:40:00+08:00</published><updated>2015-09-30T02:40:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:None,2015-09-30:/java-jni-referece-lifetime.html</id><summary type="html">&lt;p&gt;(archive) [Java] JNI referece lifetime&lt;/p&gt;</summary><content type="html">&lt;p&gt;https://www3.ntu.edu.sg/home/ehchua/programming/java/JavaNativeInterface.html
 http://docs.oracle.com/javase/7/docs/technotes/guides/jni/spec/types.html&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
@@ -2138,7 +2093,7 @@ http://docs.oracle.com/javase/7/docs/technotes/guides/jni/spec/types.html&lt;/p&
 &lt;li&gt;
 &lt;p&gt;Reference type (jobject): jclass, jmethodID, jfieldID, jarray, jexception, jstring&lt;/p&gt;
 &lt;/li&gt;
-&lt;/ol&gt;</content></entry><entry><title>[Linux] Linux page cache</title><link href="http://solring.github.io/linux-linux-page-cache.html" rel="alternate"></link><published>2015-09-15T08:50:00+08:00</published><updated>2015-09-15T08:50:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:solring.github.io,2015-09-15:/linux-linux-page-cache.html</id><summary type="html">&lt;p&gt;(archive) [Linux] Linux page cache&lt;/p&gt;</summary><content type="html">&lt;p&gt;Reference:
+&lt;/ol&gt;</content></entry><entry><title>[Linux] Linux page cache</title><link href="/linux-linux-page-cache.html" rel="alternate"></link><published>2015-09-15T08:50:00+08:00</published><updated>2015-09-15T08:50:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:None,2015-09-15:/linux-linux-page-cache.html</id><summary type="html">&lt;p&gt;(archive) [Linux] Linux page cache&lt;/p&gt;</summary><content type="html">&lt;p&gt;Reference:
 http://www.westnet.com/~gsmith/content/linux-pdflush.htm&lt;/p&gt;
 &lt;h1&gt;怎麼看Page cache使用情況?&lt;/h1&gt;
 &lt;p&gt;從procsys查看: &lt;code&gt;/proc/meminfo&lt;/code&gt;&lt;/p&gt;
@@ -2175,7 +2130,7 @@ Dirty就是被write的部份，如果Dirty pages被寫回去的話就會歸零&l
 &lt;p&gt;&lt;code&gt;dirty_writeback_centisecs&lt;/code&gt;
 據說太複雜了 被disable?&lt;/p&gt;
 &lt;/li&gt;
-&lt;/ol&gt;</content></entry><entry><title>[Linux] cpuidle menu driver &amp; I/O latency predict driver</title><link href="http://solring.github.io/linux-cpuidle-menu-driver-io-latency-predict-driver.html" rel="alternate"></link><published>2015-09-15T05:47:00+08:00</published><updated>2015-09-15T05:47:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:solring.github.io,2015-09-15:/linux-cpuidle-menu-driver-io-latency-predict-driver.html</id><summary type="html">&lt;p&gt;(archive) [Linux] cpuidle menu driver &amp;amp; I/O latency predict driver&lt;/p&gt;</summary><content type="html">&lt;h1&gt;CPU idle driver&lt;/h1&gt;
+&lt;/ol&gt;</content></entry><entry><title>[Linux] cpuidle menu driver &amp; I/O latency predict driver</title><link href="/linux-cpuidle-menu-driver-io-latency-predict-driver.html" rel="alternate"></link><published>2015-09-15T05:47:00+08:00</published><updated>2015-09-15T05:47:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:None,2015-09-15:/linux-cpuidle-menu-driver-io-latency-predict-driver.html</id><summary type="html">&lt;p&gt;(archive) [Linux] cpuidle menu driver &amp;amp; I/O latency predict driver&lt;/p&gt;</summary><content type="html">&lt;h1&gt;CPU idle driver&lt;/h1&gt;
 &lt;p&gt;基本上是利用各種數據去預測接下來的cpu idle時間，以選擇適當的CPU idle state
 CPU idle的state數量，idle時電流，switch時間都可以拿來衡量&lt;/p&gt;
 &lt;h1&gt;為何不能想睡就睡?&lt;/h1&gt;
@@ -2294,7 +2249,7 @@ http://events.linuxfoundation.org/sites/events/files/slides/IOlatencyPrediction.
 &lt;/ol&gt;
 &lt;p&gt;跟據他的實驗結果，這樣猜測的準卻度可以比menu driver好上很多
 而且這樣的設計可以和schedule綁在一起(在要進idle or I/O queue時做預測)&lt;br&gt;
-以後也可以做更準確的預測(e.g. predict I/O time per hardware device)&lt;/p&gt;</content></entry><entry><title>[GIS] Leaflet+GIS tools~</title><link href="http://solring.github.io/gis-leafletgis-tools.html" rel="alternate"></link><published>2015-09-03T12:28:00+08:00</published><updated>2015-09-03T12:28:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:solring.github.io,2015-09-03:/gis-leafletgis-tools.html</id><summary type="html">&lt;p&gt;(archive) [GIS] Leaflet+GIS tools~&lt;/p&gt;</summary><content type="html">&lt;h1&gt;GIS Tools&lt;/h1&gt;
+以後也可以做更準確的預測(e.g. predict I/O time per hardware device)&lt;/p&gt;</content></entry><entry><title>[GIS] Leaflet+GIS tools~</title><link href="/gis-leafletgis-tools.html" rel="alternate"></link><published>2015-09-03T12:28:00+08:00</published><updated>2015-09-03T12:28:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:None,2015-09-03:/gis-leafletgis-tools.html</id><summary type="html">&lt;p&gt;(archive) [GIS] Leaflet+GIS tools~&lt;/p&gt;</summary><content type="html">&lt;h1&gt;GIS Tools&lt;/h1&gt;
 &lt;h2&gt;經緯度及坐標系統&lt;/h2&gt;
 &lt;p&gt;二度分帶坐標 TWD97
 http://www.sunriver.com.tw/grid_tm2.htm&lt;/p&gt;
@@ -2353,10 +2308,10 @@ https://leanpub.com/leaflet-tips-and-tricks/read#leanpub-auto-html-1&lt;/p&gt;
 &lt;h2&gt;Google map styler&lt;/h2&gt;
 &lt;p&gt;&lt;a href="http://www.mapstylr.com/"&gt;http://www.mapstylr.com/&lt;/a&gt;
 可以修改顯示的圖層，顏色，線段寬度等資訊
-最後會產生一個json file，可餵給Google map API or leaflet GMAP plugin&lt;/p&gt;</content><category term="[GIS"></category><category term="front-end]"></category></entry><entry><title>[Android][Tool] Butter Knife</title><link href="http://solring.github.io/androidtool-butter-knife.html" rel="alternate"></link><published>2015-08-07T04:34:00+08:00</published><updated>2015-08-07T04:34:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:solring.github.io,2015-08-07:/androidtool-butter-knife.html</id><summary type="html">&lt;p&gt;(archive) [Android][Tool] Butter Knife&lt;/p&gt;</summary><content type="html">&lt;p&gt;終於不用在findViewById和type casting啦~
+最後會產生一個json file，可餵給Google map API or leaflet GMAP plugin&lt;/p&gt;</content><category term="[GIS"></category><category term="front-end]"></category></entry><entry><title>[Android][Tool] Butter Knife</title><link href="/androidtool-butter-knife.html" rel="alternate"></link><published>2015-08-07T04:34:00+08:00</published><updated>2015-08-07T04:34:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:None,2015-08-07:/androidtool-butter-knife.html</id><summary type="html">&lt;p&gt;(archive) [Android][Tool] Butter Knife&lt;/p&gt;</summary><content type="html">&lt;p&gt;終於不用在findViewById和type casting啦~
 還有listener binder
 先記錄一下&lt;/p&gt;
-&lt;p&gt;http://jakewharton.github.io/butterknife/&lt;/p&gt;</content><category term="[android]"></category></entry><entry><title>[Android] 解決setsockopt在multicast的問題</title><link href="http://solring.github.io/android-jie-jue-setsockoptzai-multicastde-wen-ti.html" rel="alternate"></link><published>2015-07-31T11:14:00+08:00</published><updated>2015-07-31T11:14:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:solring.github.io,2015-07-31:/android-jie-jue-setsockoptzai-multicastde-wen-ti.html</id><summary type="html">&lt;p&gt;(archive) [Android] 解決setsockopt在multicast的問題&lt;/p&gt;</summary><content type="html">&lt;p&gt;參考以下這一篇
+&lt;p&gt;http://jakewharton.github.io/butterknife/&lt;/p&gt;</content><category term="[android]"></category></entry><entry><title>[Android] 解決setsockopt在multicast的問題</title><link href="/android-jie-jue-setsockoptzai-multicastde-wen-ti.html" rel="alternate"></link><published>2015-07-31T11:14:00+08:00</published><updated>2015-07-31T11:14:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:None,2015-07-31:/android-jie-jue-setsockoptzai-multicastde-wen-ti.html</id><summary type="html">&lt;p&gt;(archive) [Android] 解決setsockopt在multicast的問題&lt;/p&gt;</summary><content type="html">&lt;p&gt;參考以下這一篇
 http://developerweb.net/viewtopic.php?id=5784&lt;/p&gt;
 &lt;p&gt;原因是Android開Wi-Fi AP Mode之後
 系統把routing table寫死成只有內網(192.168.xx)才有route
@@ -2374,7 +2329,7 @@ http://developerweb.net/viewtopic.php?id=5784&lt;/p&gt;
 
 &lt;hr&gt;
 &lt;p&gt;後來有在AOSP上發現相關issue，但是目前被放置中...
-http://code.google.com/p/android/issues/detail?id=40003&lt;/p&gt;</content><category term="[android]"></category></entry><entry><title>Sony Smartwatch 3 Root Instructions</title><link href="http://solring.github.io/sony-smartwatch-3-root-instructions.html" rel="alternate"></link><published>2015-07-31T10:58:00+08:00</published><updated>2015-07-31T10:58:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:solring.github.io,2015-07-31:/sony-smartwatch-3-root-instructions.html</id><summary type="html">&lt;p&gt;(archive) Sony Smartwatch 3 Root Instructions&lt;/p&gt;</summary><content type="html">&lt;ol&gt;
+http://code.google.com/p/android/issues/detail?id=40003&lt;/p&gt;</content><category term="[android]"></category></entry><entry><title>Sony Smartwatch 3 Root Instructions</title><link href="/sony-smartwatch-3-root-instructions.html" rel="alternate"></link><published>2015-07-31T10:58:00+08:00</published><updated>2015-07-31T10:58:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:None,2015-07-31:/sony-smartwatch-3-root-instructions.html</id><summary type="html">&lt;p&gt;(archive) Sony Smartwatch 3 Root Instructions&lt;/p&gt;</summary><content type="html">&lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;安裝driver&lt;/strong&gt;
     用Sony的PC Companion裡的driver
     如果有問題的話也可以改用Google的USB driver
@@ -2434,7 +2389,7 @@ http://forum.xda-developers.com/smartwatch-3/development/recovery-twrp-2-8-3-0-s
 
 成功在剛刷完TWRP就進recovery之後
 就可以將先放到sdcard裡面的.zip檔刷進去啦~
-&lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>Hello World</title><link href="http://solring.github.io/hello-world.html" rel="alternate"></link><published>2015-07-21T07:30:00+08:00</published><updated>2015-07-21T07:30:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:solring.github.io,2015-07-21:/hello-world.html</id><summary type="html">&lt;p&gt;(archive) Hello World&lt;/p&gt;</summary><content type="html">&lt;p&gt;Hi, This a demo post of &lt;a href="http://logdown.com"&gt;Logdown&lt;/a&gt;. &lt;/p&gt;
+&lt;/pre&gt;&lt;/div&gt;</content></entry><entry><title>Hello World</title><link href="/hello-world.html" rel="alternate"></link><published>2015-07-21T07:30:00+08:00</published><updated>2015-07-21T07:30:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:None,2015-07-21:/hello-world.html</id><summary type="html">&lt;p&gt;(archive) Hello World&lt;/p&gt;</summary><content type="html">&lt;p&gt;Hi, This a demo post of &lt;a href="http://logdown.com"&gt;Logdown&lt;/a&gt;. &lt;/p&gt;
 &lt;p&gt;Logdown use Markdown as main syntax, you can find more example by reading this &lt;a href="http://en.wikipedia.org/wiki/Markdown"&gt;document on Wikipedia&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Logdown also support drag &amp;amp; drop image uploading. The picture syntax is like this:&lt;/p&gt;
 &lt;p&gt;&lt;img alt="" src="http://logdown.com/images/logo.png"&gt;&lt;/p&gt;
