@@ -1,5 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Solring Lin - Python</title><link href="/" rel="alternate"></link><link href="/feeds/python.atom.xml" rel="self"></link><id>/</id><updated>2018-07-12T21:33:00+08:00</updated><entry><title>使用Pelican架設Blog</title><link href="/building-personal-blog-with-pelican.html" rel="alternate"></link><published>2018-07-12T21:33:00+08:00</published><updated>2018-07-12T21:33:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:None,2018-07-12:/building-personal-blog-with-pelican.html</id><summary type="html">&lt;p&gt;一直以來都是把技術筆記放在Logdown上，但他後來就沒有再繼續維護了，還是移出來好。技術文件嘛，我主要需求是...&lt;/p&gt;</summary><content type="html">&lt;h1&gt;某天我想不開...&lt;/h1&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Solring Lin - Python</title><link href="/" rel="alternate"></link><link href="/feeds/python.atom.xml" rel="self"></link><id>/</id><updated>2018-07-17T19:51:00+08:00</updated><entry><title>TLS過舊導致pip安裝套件失敗(找不到package)</title><link href="/pip-issue-package-not-found.html" rel="alternate"></link><published>2018-07-17T19:51:00+08:00</published><updated>2018-07-17T19:51:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:None,2018-07-17:/pip-issue-package-not-found.html</id><summary type="html">&lt;p&gt;主要原因是python TLS過舊，很多package site都不支援TLS 1.0了...&lt;/p&gt;</summary><content type="html">&lt;p&gt;拿老mac來用的時後馬上撞到主環境和virtualenv的pip什麼東西都找不到。囧。&lt;/p&gt;
+&lt;p&gt;後來找到這個&lt;a href="https://blog.csdn.net/qq_18863573/article/details/80118496"&gt;Issue&lt;/a&gt;。
+總之就是 Python.org sites 终止支持TLS1.0和1.1，TLS需要&amp;gt;=1.2才能抓到東西~&lt;/p&gt;
+&lt;h3&gt;解決方法&lt;/h3&gt;
+&lt;p&gt;因為pip首先死，不能用pip update。
+所以我就先從官網下載最新python install一口氣打掉，
+反正順便更新openssl那些的。&lt;/p&gt;
+&lt;p&gt;還可以點點script更新PATH之類的，方便XD
+&lt;img alt="install package" src="https://images.plurk.com/1Mw8E3hJvCsi8u3DiJeNT9.png"&gt;&lt;/p&gt;
+&lt;p&gt;然後再upgrade pip和virtualenv, done.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ pip install --upgrade pip
+$ pip install --upgrade virtualenv
+&lt;/pre&gt;&lt;/div&gt;</content><category term="pelican"></category></entry><entry><title>使用Pelican架設技術筆記Blog (2)</title><link href="/building-personal-blog-with-pelican-2.html" rel="alternate"></link><published>2018-07-17T19:49:00+08:00</published><updated>2018-07-17T19:49:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:None,2018-07-17:/building-personal-blog-with-pelican-2.html</id><summary type="html">&lt;p&gt;接續上一次架站的過程，接下來要開始搬文章和裝飾Blog啦...&lt;/p&gt;</summary><content type="html">&lt;p&gt;接續上一次架站的過程，接下來要開始搬文章和裝飾Blog啦~&lt;/p&gt;
+&lt;h2&gt;寫(搬)文章&lt;/h2&gt;
+&lt;p&gt;參考&lt;a href="http://docs.getpelican.com/en/3.7.1/content.html"&gt;官方文件&lt;/a&gt;，文章格式&lt;em&gt;reStructuredText&lt;/em&gt;, &lt;em&gt;Markdown&lt;/em&gt;, &lt;em&gt;html&lt;/em&gt;，
+將檔案直接放在&lt;code&gt;content/&lt;/code&gt;目錄下就可以了。&lt;/p&gt;
+&lt;p&gt;文件Metadata各有相對應的格式。
+例如我這邊使用的Markdown格式如下:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Title: My super title
+Date: 2010-12-03 10:20
+Modified: 2010-12-05 19:30
+Category: Python
+Tags: pelican, publishing
+Slug: my-super-post
+Authors: Alexis Metaireau, Conan Doyle
+Summary: Short version for index and feeds
+
+This is the content of my super blog post.
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Slug&lt;/code&gt;指該文章的local url (預設不是用檔名)。也可以用regular-expression來抽filename產生出來，但我還沒試過XD&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Summary&lt;/code&gt;指文章列表裡，除標題外顯示的預覽或是abstract。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Category&lt;/code&gt;是唯一的文章分類。除了直接指定以外，還會用文章的&lt;em&gt;上一層folder名&lt;/em&gt;來決定。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Tags&lt;/code&gt;可以有多個，由','分開&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;格式上跟Logdown打包下來的markdown檔案很類似，簡單寫個script轉換一下就OK啦~&lt;/p&gt;
+&lt;h2&gt;設定 &amp;amp; 客製化Themes&lt;/h2&gt;
+&lt;p&gt;Pelican改Theme的方法滿簡單，只要修改&lt;code&gt;pelicanconf.py&lt;/code&gt;裡的&lt;code&gt;THEME&lt;/code&gt;變數到指定的PATH就可以了。
+絕對路徑或相對路徑都可以。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;THEME&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;../Flex/&amp;#39;&lt;/span&gt;
+&lt;span class="c1"&gt;#THEME= &amp;#39;/Users/solring/GitWorkspace/nest/&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;(官方也有&lt;code&gt;pelican-themes&lt;/code&gt;這個工具可以管理theme，但我沒有用 :P)&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://pelicanthemes.com/"&gt;Pelican Themes&lt;/a&gt;這個網站有前人貢獻的各種Theme可以挑選，
+選一個喜歡的並從github上clone下來，照文件設定&lt;code&gt;pelicanconf.py&lt;/code&gt;就可以啦~&lt;/p&gt;
+&lt;p&gt;個人挑選的時候主要考慮:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;要可以客製化syntax highlight的顏色主題，畢竟是拿來貼code的嘛。&lt;/li&gt;
+&lt;li&gt;有tag和category列表，好整理&amp;amp;查找&lt;/li&gt;
+&lt;li&gt;文件要清楚，設定要簡潔。有的文件真的不清楚or感覺有誤，很困擾XD"&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;後來就選定了&lt;a href="https://github.com/alexandrevicenzi/Flex"&gt;Flex&lt;/a&gt;這個主題啦~
+版面簡潔，官方wiki也相當清楚。&lt;/p&gt;
+&lt;h3&gt;修改主題&lt;/h3&gt;
+&lt;p&gt;&lt;a href="http://docs.getpelican.com/en/3.7.1/themes.html"&gt;Pelican Theme&lt;/a&gt;主要的目錄結構如下:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;├── static
+│   ├── css
+│   └── images
+└── templates
+    ├── archives.html         // to display archives
+    ├── period_archives.html  // to display time-period archives
+    ├── article.html          // processed for each article
+    ├── author.html           // processed for each author
+    ├── authors.html          // must list all the authors
+    ├── categories.html       // must list all the categories
+    ├── category.html         // processed for each category
+    ├── index.html            // the index (list all the articles)
+    ├── page.html             // processed for each page
+    ├── tag.html              // processed for each tag
+    └── tags.html             // must list all the tags. Can be a tag cloud.
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;使用的是Jinja2 template engine。
+css的部分目錄結構沒有規定，大家都長的不太一樣XD&lt;/p&gt;
+&lt;p&gt;Flex使用的是&lt;em&gt;Less&lt;/em&gt;來gen css，只要修改&lt;code&gt;static/static/stylesheet/&lt;/code&gt;中的&lt;code&gt;style.less&lt;/code&gt;和&lt;code&gt;variables.less&lt;/code&gt;，
+再用&lt;code&gt;lessc&lt;/code&gt;compile成&lt;code&gt;style.min.css&lt;/code&gt;就可以了~&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ lessc style.less style.min.css
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;這樣應該就可以cover顏色、字體大小等大部分的修改。&lt;/p&gt;
+&lt;p&gt;另外因為中文預設新細明體太難看，我參考了&lt;a href="https://free.com.tw/google-fonts-noto-sans-cjk-webfont/"&gt;這篇&lt;/a&gt;將字型改為&lt;strong&gt;Noto Sans TC&lt;/strong&gt;。
+只要修改&lt;code&gt;variables.less&lt;/code&gt;，import指定的css file和修改font family變數設定就可以了~ &lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/solring/Flex/commit/157f4541564b18df5d36dfb3411a6d57fd1f2390"&gt;參考commit&lt;/a&gt;&lt;/p&gt;</content><category term="pelican"></category></entry><entry><title>使用Pelican架設技術筆記Blog (1)</title><link href="/building-personal-blog-with-pelican-1.html" rel="alternate"></link><published>2018-07-12T21:33:00+08:00</published><updated>2018-07-12T21:33:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:None,2018-07-12:/building-personal-blog-with-pelican-1.html</id><summary type="html">&lt;p&gt;一直以來都是把技術筆記放在Logdown上，但他後來就沒有再繼續維護了，還是移出來好。技術文件嘛，我主要需求是...&lt;/p&gt;</summary><content type="html">&lt;h1&gt;某天我想不開...&lt;/h1&gt;
 &lt;p&gt;一直以來都是把技術筆記放在Logdown上，但他後來就沒有再繼續維護了，還是移出來好。
 技術文件嘛，我主要需求是:&lt;/p&gt;
 &lt;ul&gt;
@@ -33,7 +121,16 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;就會出現這樣的目錄結構:&lt;/p&gt;
+&lt;p&gt;接下來他會問一系列問題，設定以下幾個:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Where do you want to create your new web site? (hit Enter)&lt;/li&gt;
+&lt;li&gt;URL prefix: http://username.github.io&lt;/li&gt;
+&lt;li&gt;Generate a Fabfile/Makefile: Yes (for most users)&lt;/li&gt;
+&lt;li&gt;Auto-reload &amp;amp; simpleHTTP script: Yes (for most users)&lt;/li&gt;
+&lt;li&gt;Upload mechanisms: choose No for all except Github Pages&lt;/li&gt;
+&lt;li&gt;Is this your personal page (username.github.io)? Yes&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;之後就會出現這樣的目錄結構:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;yourproject/
 ├── content
 │   └── (pages)
@@ -46,6 +143,60 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
+&lt;h2&gt;Github pages發布設定&lt;/h2&gt;
+&lt;p&gt;我參考&lt;a href="https://fedoramagazine.org/make-github-pages-blog-with-pelican/"&gt;Fedora社群的文章&lt;/a&gt;，
+沒有使用官方github page發布工具&lt;code&gt;ghp-pages&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;根據Github pages的說明，你需要建一個名叫&lt;code&gt;xxxxx.github.io&lt;/code&gt;的repo (xxxxx就是你的github帳號)，
+將static site整個放到repo的&lt;code&gt;master&lt;/code&gt; branch上，之後就可以使用&lt;em&gt;xxxxx.github.io&lt;/em&gt;這個網址來拜訪你的網站&lt;/p&gt;
+&lt;p&gt;(這邊指的是&lt;strong&gt;User page&lt;/strong&gt;的設定，另外有&lt;strong&gt;Project page&lt;/strong&gt;可以使用不同的網址，但設定方法不同，請參考官網~)&lt;/p&gt;
+&lt;h3&gt;準備網站source repo&lt;/h3&gt;
+&lt;p&gt;不是網站本身的repo&lt;code&gt;xxxxx.github.io&lt;/code&gt;，而是放你的pelican project。&lt;/p&gt;
+&lt;p&gt;先將剛剛創好的pelican目錄init成git repo，或是先在github創好repo再clone下來放進去都可以。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git clone https://github.com/your_username/your_pelican_project.git
+$ &lt;span class="nb"&gt;cd&lt;/span&gt; your_pelican_project
+$ pelican-quickstart
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;所以到這邊github上應該會多兩個repo: 一個是&lt;code&gt;xxxxx.github.io&lt;/code&gt;，另一個是他的source repo。
+&lt;img alt="repos" src="https://i.imgur.com/af0rC6n.png"&gt;&lt;/p&gt;
+&lt;h3&gt;設定submodule&lt;/h3&gt;
+&lt;p&gt;原本submodule主要是用來處理用到其他repo-的library之類的dependency問題，
+除了可以用來track該library的更新情況以外，
+也可以紀錄&lt;em&gt;目前這個commit使用的library是對應到哪個版本&lt;/em&gt;，詳細解說可直接參考&lt;a href="https://git-scm.com/book/zh-tw/v1/Git-%E5%B7%A5%E5%85%B7-%E5%AD%90%E6%A8%A1%E7%B5%84-Submodules"&gt;官方&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;不過這邊被拿來記錄output出來的website是對應到哪個source版本。
+也就是說submodule裡的東西是depends on main repo，有點反過來的感覺。&lt;/p&gt;
+&lt;p&gt;首先在&lt;strong&gt;source repo&lt;/strong&gt;裡init submodule。
+&lt;strong&gt;NOTE:&lt;/strong&gt; 
+你需要先刪除pelican創的&lt;code&gt;output/&lt;/code&gt; folder&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git submodule add https://github.com/your_username/you_username.github.io.git output
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;之後應該可以在repo根目錄裡看到新增了&lt;code&gt;.gitmodules&lt;/code&gt;這個檔案和&lt;code&gt;output/&lt;/code&gt;這個folder
+裡面會是另一個獨立repo，git remote應該可以看到他指向你的網站repo。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;.gitmodules&lt;/code&gt;的內容:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;[submodule &amp;quot;output&amp;quot;]&lt;/span&gt;
+    &lt;span class="na"&gt;path&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;output&lt;/span&gt;
+&lt;span class="s"&gt;    url = git@github.com:solring/solring.github.io.git&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;另外，為了避免每次pelican build的時候都重新創一個output folder蓋掉整個submodule。
+需要修改&lt;code&gt;publishconf.py&lt;/code&gt;，將這個變數設為false:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;DELETE_OUTPUT_DIRECTORY&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; 
+另一個比較需要注意的一點是，之後在別的地方clone你的main repo時
+不會馬上連submodule都一起clone下來，需要另外下指令:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git submodule init
+$ git submodule update
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Build Website&lt;/h2&gt;
 &lt;h3&gt;使用make build&lt;/h3&gt;
 &lt;p&gt;如果要使用Python2的話要先改一下&lt;code&gt;Makefile&lt;/code&gt;的&lt;code&gt;PY&lt;/code&gt;參數，將python3改成python:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;PY?&lt;span class="o"&gt;=&lt;/span&gt;python
@@ -72,13 +223,31 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;//待續~~~~~&lt;/p&gt;
-&lt;h2&gt;寫(搬)文章~&lt;/h2&gt;
-&lt;h2&gt;Pelican Themes&lt;/h2&gt;</content><category term="pelican"></category></entry><entry><title>The very first Pelican post</title><link href="/my-first-post.html" rel="alternate"></link><published>2018-07-09T23:45:00+08:00</published><updated>2018-07-09T23:45:00+08:00</updated><author><name>Solring Lin</name></author><id>tag:None,2018-07-09:/my-first-post.html</id><summary type="html">&lt;p&gt;the very fist try&lt;/p&gt;</summary><content type="html">&lt;h1&gt;Hello World!!&lt;/h1&gt;
-&lt;p&gt;百廢待興。&lt;/p&gt;
-&lt;p&gt;看來離搬舊文章過來還有一段時間。(倒)&lt;/p&gt;
-&lt;h3&gt;TODO:&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;寫scipt修改logdown export的文章metadata&lt;/li&gt;
-&lt;li&gt;研究自動gen文章template的方法&lt;/li&gt;
-&lt;/ul&gt;</content><category term="pelican"></category></entry></feed>
+&lt;h2&gt;發布到Github Pages上&lt;/h2&gt;
+&lt;p&gt;如果Submodule已經設定完畢的話，你的&lt;code&gt;output/&lt;/code&gt; folder應該已經是個獨立的repo。
+commit完之後直接push上去即可發布網站。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nb"&gt;cd&lt;/span&gt; output
+$ git commit -m &lt;span class="s2"&gt;&amp;quot;my site ver. n&amp;quot;&lt;/span&gt;
+$ git push origin master
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;至於source本身要等到output commit完並上傳之後再commit+push。
+這樣該commit就會記錄好，這個版本的source是對應到哪個版本的site(commit)。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;NOTE:&lt;/strong&gt;
+發布到Github page上後有遇到過css style吃不到的問題。查看了一下source發現style sheet的路徑是http絕對路徑:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;link&lt;/span&gt; &lt;span class="na"&gt;rel&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;stylesheet&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;type&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;text/css&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;href&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;http://solring.github.io/theme/css/main.css&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+......
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;這應該是在&lt;code&gt;publishconf.sh&lt;/code&gt;中設定到site url的關係。Local跑的時候因為不會用到site url所以不會有這個問題。
+將設定改成這樣就沒問題了:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;SITEURL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;RELATIVE_URLS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr&gt;
+&lt;p&gt;以上~ 應該就可以有個Pelican官方的sample site放在你的Github Page上啦~
+下一篇再繼續介紹怎麼寫文章和設定Theme。&lt;/p&gt;</content><category term="pelican"></category></entry></feed>

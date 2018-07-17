@@ -1,0 +1,211 @@
+
+<!DOCTYPE html>
+<html lang="chinese (traditional)">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="./theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="./theme/pygments/monokai.min.css">
+  <link rel="stylesheet" type="text/css" href="./theme/font-awesome/css/font-awesome.min.css">
+
+
+    <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Solring Lin Atom">
+
+
+
+
+
+<meta name="author" content="Solring Lin" />
+<meta name="description" content="接續上一次架站的過程，接下來要開始搬文章和裝飾Blog啦..." />
+<meta name="keywords" content="pelican">
+
+<meta property="og:site_name" content="Solring Lin"/>
+<meta property="og:title" content="使用Pelican架設技術筆記Blog (2)"/>
+<meta property="og:description" content="接續上一次架站的過程，接下來要開始搬文章和裝飾Blog啦..."/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="./building-personal-blog-with-pelican-2.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2018-07-17 19:49:00+08:00"/>
+<meta property="article:modified_time" content="2018-07-17 19:49:00+08:00"/>
+<meta property="article:author" content="./author/solring-lin.html">
+<meta property="article:section" content="Python"/>
+<meta property="article:tag" content="pelican"/>
+<meta property="og:image" content="images/profile.jpg">
+
+  <title>Solring Lin &ndash; 使用Pelican架設技術筆記Blog (2)</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href=".">
+        <img src="images/profile.jpg" alt="SOLRING LIN" title="SOLRING LIN">
+      </a>
+      <h1><a href=".">SOLRING LIN</a></h1>
+
+<p>Software Developer | Technical notes and everything</p>
+      <nav>
+        <ul class="list">
+
+          <li><a href="/about.html" target="_blank">About</a></li>
+          <li><a href="https://www.linkedin.com/in/sherry-lin-73312843/" target="_blank">Resume</a></li>
+          <li><a href="#" target="_blank">sherry12714@gmail.com</a></li>
+        </ul>
+      </nav>
+
+      <ul class="social">
+        <li><a class="sc-github" href="http://github.com/solring" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-linkedin" href="https://www.linkedin.com/in/sherry-lin-73312843/" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+        <li><a class="sc-twitter" href="http://twitter.com/solringlin" target="_blank"><i class="fa fa-twitter"></i></a></li>
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+    <nav>
+      <a href=".">    Home
+</a>
+
+      <a href="/archives.html">Archives</a>
+      <a href="/categories.html">Categories</a>
+      <a href="/tags.html">Tags</a>
+
+      <a href="/feeds/all.atom.xml">    Atom
+</a>
+
+    </nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="building-personal-blog-with-pelican-2">使用Pelican架設技術筆記Blog (2)</h1>
+    <p>
+          Posted on 週二 17 七月 2018 in <a href="./category/python.html">Python</a>
+
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>接續上一次架站的過程，接下來要開始搬文章和裝飾Blog啦~</p>
+<h2>寫(搬)文章</h2>
+<p>參考<a href="http://docs.getpelican.com/en/3.7.1/content.html">官方文件</a>，文章格式<em>reStructuredText</em>, <em>Markdown</em>, <em>html</em>，
+將檔案直接放在<code>content/</code>目錄下就可以了。</p>
+<p>文件Metadata各有相對應的格式。
+例如我這邊使用的Markdown格式如下:</p>
+<div class="highlight"><pre><span></span>Title: My super title
+Date: 2010-12-03 10:20
+Modified: 2010-12-05 19:30
+Category: Python
+Tags: pelican, publishing
+Slug: my-super-post
+Authors: Alexis Metaireau, Conan Doyle
+Summary: Short version for index and feeds
+
+This is the content of my super blog post.
+</pre></div>
+
+
+<ul>
+<li><code>Slug</code>指該文章的local url (預設不是用檔名)。也可以用regular-expression來抽filename產生出來，但我還沒試過XD</li>
+<li><code>Summary</code>指文章列表裡，除標題外顯示的預覽或是abstract。</li>
+<li><code>Category</code>是唯一的文章分類。除了直接指定以外，還會用文章的<em>上一層folder名</em>來決定。</li>
+<li><code>Tags</code>可以有多個，由','分開</li>
+</ul>
+<p>格式上跟Logdown打包下來的markdown檔案很類似，簡單寫個script轉換一下就OK啦~</p>
+<h2>設定 &amp; 客製化Themes</h2>
+<p>Pelican改Theme的方法滿簡單，只要修改<code>pelicanconf.py</code>裡的<code>THEME</code>變數到指定的PATH就可以了。
+絕對路徑或相對路徑都可以。</p>
+<div class="highlight"><pre><span></span><span class="n">THEME</span><span class="o">=</span> <span class="s1">&#39;../Flex/&#39;</span>
+<span class="c1">#THEME= &#39;/Users/solring/GitWorkspace/nest/&#39;</span>
+</pre></div>
+
+
+<p>(官方也有<code>pelican-themes</code>這個工具可以管理theme，但我沒有用 :P)</p>
+<p><a href="http://pelicanthemes.com/">Pelican Themes</a>這個網站有前人貢獻的各種Theme可以挑選，
+選一個喜歡的並從github上clone下來，照文件設定<code>pelicanconf.py</code>就可以啦~</p>
+<p>個人挑選的時候主要考慮:</p>
+<ul>
+<li>要可以客製化syntax highlight的顏色主題，畢竟是拿來貼code的嘛。</li>
+<li>有tag和category列表，好整理&amp;查找</li>
+<li>文件要清楚，設定要簡潔。有的文件真的不清楚or感覺有誤，很困擾XD"</li>
+</ul>
+<p>後來就選定了<a href="https://github.com/alexandrevicenzi/Flex">Flex</a>這個主題啦~
+版面簡潔，官方wiki也相當清楚。</p>
+<h3>修改主題</h3>
+<p><a href="http://docs.getpelican.com/en/3.7.1/themes.html">Pelican Theme</a>主要的目錄結構如下:</p>
+<div class="highlight"><pre><span></span>├── static
+│   ├── css
+│   └── images
+└── templates
+    ├── archives.html         // to display archives
+    ├── period_archives.html  // to display time-period archives
+    ├── article.html          // processed for each article
+    ├── author.html           // processed for each author
+    ├── authors.html          // must list all the authors
+    ├── categories.html       // must list all the categories
+    ├── category.html         // processed for each category
+    ├── index.html            // the index (list all the articles)
+    ├── page.html             // processed for each page
+    ├── tag.html              // processed for each tag
+    └── tags.html             // must list all the tags. Can be a tag cloud.
+</pre></div>
+
+
+<p>使用的是Jinja2 template engine。
+css的部分目錄結構沒有規定，大家都長的不太一樣XD</p>
+<p>Flex使用的是<em>Less</em>來gen css，只要修改<code>static/static/stylesheet/</code>中的<code>style.less</code>和<code>variables.less</code>，
+再用<code>lessc</code>compile成<code>style.min.css</code>就可以了~</p>
+<div class="highlight"><pre><span></span>$ lessc style.less style.min.css
+</pre></div>
+
+
+<p>這樣應該就可以cover顏色、字體大小等大部分的修改。</p>
+<p>另外因為中文預設新細明體太難看，我參考了<a href="https://free.com.tw/google-fonts-noto-sans-cjk-webfont/">這篇</a>將字型改為<strong>Noto Sans TC</strong>。
+只要修改<code>variables.less</code>，import指定的css file和修改font family變數設定就可以了~ </p>
+<p><a href="https://github.com/solring/Flex/commit/157f4541564b18df5d36dfb3411a6d57fd1f2390">參考commit</a></p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="./tag/pelican.html">pelican</a>
+    </p>
+  </div>
+
+
+
+
+
+</article>
+
+    <footer>
+<p>&copy;  </p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Solring Lin ",
+  "url" : ".",
+  "image": "images/profile.jpg",
+  "description": "Technical notes and everything."
+}
+</script>
+
+</body>
+</html>
